@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+*.log
+tmp/
+.nra.cache
