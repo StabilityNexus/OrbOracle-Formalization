@@ -1,0 +1,4069 @@
+DIGEST 3d220b48ee1a8cd9be5bf07f2ed31d46
+FOracle
+R33:37 Coq.Reals.Reals <> <> lib
+R49:54 Coq.ZArith.ZArith <> <> lib
+R72:75 Coq.Lists.List <> <> lib
+R93:98 Coq.Strings.String <> <> lib
+R116:118 Coq.micromega.Lra <> <> lib
+R137:154 Coq.FSets.FMapList <> <> lib
+R172:199 Coq.Structures.OrderedTypeEx <> <> lib
+R217:243 Coq.Classes.RelationClasses <> <> lib
+def 336:338 <> Rnn
+R350:350 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R352:354 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R356:358 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R366:366 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R355:355 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 351:351 <> x:1
+R359:361 Coq.Reals.Rdefinitions <> Rle def
+R365:365 Oracle <> x:1 var
+def 381:384 <> Rpos
+R396:396 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R398:400 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R402:404 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R410:410 Coq.Init.Specif <> ::type_scope:'{'_x_':'_x_'|'_x_'}' not
+R401:401 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 397:397 <> x:2
+R406:408 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R409:409 Oracle <> x:2 var
+def 425:430 <> mk_Rnn
+R437:437 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 433:433 <> x:3
+R453:455 Coq.Reals.Rdefinitions <> Rle def
+R459:459 Oracle <> x:3 var
+binder 441:449 <> knowledge:4
+R465:469 Coq.Init.Specif <> exist constr
+R492:500 Oracle <> knowledge:4 var
+R490:490 Oracle <> x:3 var
+binder 476:476 <> x:5
+R481:483 Coq.Reals.Rdefinitions <> Rle def
+R487:487 Oracle <> x:5 var
+def 512:516 <> R0_nn
+R520:522 Coq.Reals.Rdefinitions <> Rle def
+R526:527 Coq.Reals.Rdefinitions RbaseSymbolsImpl R0 defax
+R546:548 Coq.Reals.Rdefinitions <> Rle def
+def 592:595 <> Rnn0
+R599:601 Oracle <> Rnn def
+R606:611 Oracle <> mk_Rnn def
+R613:614 Coq.Reals.Rdefinitions RbaseSymbolsImpl R0 defax
+R616:620 Oracle <> R0_nn ex
+def 635:636 <> R_
+R644:646 Oracle <> Rnn def
+binder 639:640 <> nr:6
+R651:651 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R658:666 Coq.Init.Specif <> proj1_sig def
+R668:669 Oracle <> nr:6 var
+def 684:687 <> Rleb
+R696:696 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 690:690 <> x:7
+binder 692:692 <> y:8
+R701:704 Coq.Init.Datatypes <> bool ind
+R717:723 Coq.Reals.RIneq <> Rle_dec thm
+R725:725 Oracle <> x:7 var
+R727:727 Oracle <> y:8 var
+R738:741 Coq.Init.Specif <> left constr
+R748:751 Coq.Init.Datatypes <> true constr
+R757:761 Coq.Init.Specif <> right constr
+R768:772 Coq.Init.Datatypes <> false constr
+def 793:796 <> Rltb
+R805:805 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 799:799 <> x:9
+binder 801:801 <> y:10
+R810:813 Coq.Init.Datatypes <> bool ind
+R826:832 Coq.Reals.RIneq <> Rlt_dec thm
+R834:834 Oracle <> x:9 var
+R836:836 Oracle <> y:10 var
+R847:850 Coq.Init.Specif <> left constr
+R858:861 Coq.Init.Datatypes <> true constr
+R867:871 Coq.Init.Specif <> right constr
+R878:882 Coq.Init.Datatypes <> false constr
+def 903:906 <> Rgeb
+R915:915 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 909:909 <> x:11
+binder 911:911 <> y:12
+R920:923 Coq.Init.Datatypes <> bool ind
+R930:933 Oracle <> Rleb def
+R935:935 Oracle <> y:12 var
+R937:937 Oracle <> x:11 var
+def 952:955 <> Rgtb
+R964:964 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 958:958 <> x:13
+binder 960:960 <> y:14
+R969:972 Coq.Init.Datatypes <> bool ind
+R979:982 Oracle <> Rltb def
+R984:984 Oracle <> y:14 var
+R986:986 Oracle <> x:13 var
+R1005:1008 Oracle <> Rleb def
+not 996:996 <> :::x_'<=b'_x
+R1040:1043 Oracle <> Rltb def
+not 1031:1031 <> :::x_'<b'_x
+R1075:1078 Oracle <> Rgeb def
+not 1066:1066 <> :::x_'>=b'_x
+R1110:1113 Oracle <> Rgtb def
+not 1101:1101 <> :::x_'>b'_x
+def 1159:1162 <> User
+R1174:1176 Coq.Init.Datatypes <> nat ind
+ax 1189:1193 <> Users
+R1197:1200 Coq.Init.Datatypes <> list ind
+R1202:1205 Oracle <> User def
+ax 1214:1224 <> Users_NoDup
+R1228:1232 Coq.Lists.List <> NoDup ind
+R1234:1238 Oracle <> Users defax
+def 1274:1280 <> UserSet
+R1285:1288 Coq.Init.Datatypes <> list ind
+R1290:1293 Oracle <> User def
+def 1308:1315 <> mem_user
+R1322:1325 Oracle <> User def
+binder 1318:1318 <> u:17
+R1333:1339 Oracle <> UserSet def
+binder 1329:1329 <> s:18
+R1344:1347 Coq.Init.Datatypes <> bool ind
+R1354:1360 Coq.Lists.List <> existsb def
+R1385:1385 Oracle <> s:18 var
+binder 1367:1367 <> x:19
+R1372:1378 Coq.Arith.PeanoNat Nat eqb def
+R1380:1380 Oracle <> x:19 var
+R1382:1382 Oracle <> u:17 var
+prf 1395:1405 <> mem_user_In
+R1423:1426 Oracle <> User def
+binder 1419:1419 <> u:20
+R1434:1440 Oracle <> UserSet def
+binder 1430:1430 <> s:21
+R1467:1471 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1460:1462 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1448:1455 Oracle <> mem_user def
+R1457:1457 Oracle <> u:20 var
+R1459:1459 Oracle <> s:21 var
+R1463:1466 Coq.Init.Datatypes <> true constr
+R1472:1473 Coq.Lists.List <> In def
+R1477:1477 Oracle <> s:21 var
+R1475:1475 Oracle <> u:20 var
+R1496:1503 Oracle <> mem_user def
+R1526:1539 Coq.Lists.List <> existsb_exists thm
+R1526:1539 Coq.Lists.List <> existsb_exists thm
+R1526:1539 Coq.Lists.List <> existsb_exists thm
+R1580:1601 Coq.Arith.EqNat <> beq_nat_true_stt def
+R1580:1601 Coq.Arith.EqNat <> beq_nat_true_stt def
+R1687:1698 Coq.Arith.PeanoNat Nat eqb_refl thm
+R1687:1698 Coq.Arith.PeanoNat Nat eqb_refl thm
+prf 1713:1732 <> negb_mem_user_not_In
+R1750:1753 Oracle <> User def
+binder 1746:1746 <> u:22
+R1761:1767 Oracle <> UserSet def
+binder 1757:1757 <> s:23
+R1795:1799 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1787:1789 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1775:1782 Oracle <> mem_user def
+R1784:1784 Oracle <> u:22 var
+R1786:1786 Oracle <> s:23 var
+R1790:1794 Coq.Init.Datatypes <> false constr
+R1800:1802 Coq.Init.Logic <> not def
+R1805:1806 Coq.Lists.List <> In def
+R1810:1810 Oracle <> s:23 var
+R1808:1808 Oracle <> u:22 var
+R1851:1853 Coq.Init.Logic <> not def
+R1878:1888 Oracle <> mem_user_In thm
+R1878:1888 Oracle <> mem_user_In thm
+R1969:1976 Oracle <> mem_user def
+R1969:1976 Oracle <> mem_user def
+R2006:2016 Oracle <> mem_user_In thm
+R2006:2016 Oracle <> mem_user_In thm
+R2041:2043 Coq.Init.Logic <> not def
+def 2153:2161 <> timestamp
+R2173:2173 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+def 2228:2233 <> weight
+R2245:2245 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+def 2260:2264 <> value
+R2276:2276 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+def 2291:2297 <> balance
+R2309:2309 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+def 2324:2330 <> history
+R2342:2345 Coq.Init.Datatypes <> list ind
+R2365:2367 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R2357:2359 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R2348:2356 Oracle <> timestamp def
+R2360:2364 Oracle <> value def
+R2368:2372 Oracle <> value def
+ind 2461:2469 <> operation
+constr 2483:2489 <> Deposit
+constr 2534:2543 <> Withdrawal
+constr 2588:2597 <> Submission
+constr 2640:2646 <> Reading
+constr 2677:2689 <> VoteBlacklist
+constr 2722:2734 <> VoteWhitelist
+constr 2767:2776 <> WeightSync
+constr 2807:2819 <> RewardFunding
+constr 2864:2869 <> NoneOp
+R2496:2499 Oracle <> User def
+binder 2492:2492 <> u:26
+R2507:2513 Oracle <> balance def
+binder 2503:2503 <> a:27
+R2521:2529 Oracle <> timestamp def
+binder 2517:2517 <> t:28
+R2550:2553 Oracle <> User def
+binder 2546:2546 <> u:29
+R2561:2567 Oracle <> balance def
+binder 2557:2557 <> a:30
+R2575:2583 Oracle <> timestamp def
+binder 2571:2571 <> t:31
+R2604:2607 Oracle <> User def
+binder 2600:2600 <> u:32
+R2615:2619 Oracle <> value def
+binder 2611:2611 <> v:33
+R2627:2635 Oracle <> timestamp def
+binder 2623:2623 <> t:34
+R2653:2656 Oracle <> User def
+binder 2649:2649 <> u:35
+R2664:2672 Oracle <> timestamp def
+binder 2660:2660 <> t:36
+R2698:2701 Oracle <> User def
+binder 2692:2692 <> u:37
+binder 2694:2694 <> x:38
+R2709:2717 Oracle <> timestamp def
+binder 2705:2705 <> t:39
+R2743:2746 Oracle <> User def
+binder 2737:2737 <> u:40
+binder 2739:2739 <> x:41
+R2754:2762 Oracle <> timestamp def
+binder 2750:2750 <> t:42
+R2783:2786 Oracle <> User def
+binder 2779:2779 <> u:43
+R2794:2802 Oracle <> timestamp def
+binder 2790:2790 <> t:44
+R2826:2829 Oracle <> User def
+binder 2822:2822 <> u:45
+R2837:2843 Oracle <> balance def
+binder 2833:2833 <> a:46
+R2851:2859 Oracle <> timestamp def
+binder 2847:2847 <> t:47
+R2876:2884 Oracle <> timestamp def
+binder 2872:2872 <> t:48
+scheme 2461:2469 <> operation_rect
+scheme 2461:2469 <> operation_ind
+scheme 2461:2469 <> operation_rec
+scheme 2461:2469 <> operation_sind
+def 2900:2904 <> Trace
+R2916:2919 Coq.Init.Datatypes <> list ind
+R2921:2929 Oracle <> operation ind
+R2966:2974 Coq.Structures.OrderedTypeEx Nat_as_OT <> modtype
+mod 2956:2961 <> UserOT
+R2996:3008 Coq.FSets.FMapList Make <> modtype
+R3010:3015 Oracle UserOT <> modtype
+mod 2985:2991 <> UserMap
+def 3076:3079 <> getR
+R3086:3089 Oracle <> User def
+binder 3082:3082 <> u:49
+R3097:3105 Oracle <> t def
+R3107:3107 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3093:3093 <> m:50
+R3112:3112 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R3125:3136 Oracle <> find def
+R3140:3140 Oracle <> m:50 var
+R3138:3138 Oracle <> u:49 var
+R3151:3154 Coq.Init.Datatypes <> Some constr
+R3167:3170 Coq.Init.Datatypes <> None constr
+def 3196:3202 <> getBool
+R3209:3212 Oracle <> User def
+binder 3205:3205 <> u:51
+R3220:3228 Oracle <> t def
+R3230:3233 Coq.Init.Datatypes <> bool ind
+binder 3216:3216 <> m:52
+R3238:3241 Coq.Init.Datatypes <> bool ind
+R3254:3265 Oracle <> find def
+R3269:3269 Oracle <> m:52 var
+R3267:3267 Oracle <> u:51 var
+R3280:3283 Coq.Init.Datatypes <> Some constr
+R3296:3299 Coq.Init.Datatypes <> None constr
+R3304:3308 Coq.Init.Datatypes <> false constr
+def 3329:3332 <> setR
+R3339:3342 Oracle <> User def
+binder 3335:3335 <> u:53
+R3350:3350 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3346:3346 <> v:54
+R3358:3366 Oracle <> t def
+R3368:3368 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3354:3354 <> m:55
+R3373:3381 Oracle <> t def
+R3383:3383 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R3390:3400 Oracle <> add def
+R3406:3406 Oracle <> m:55 var
+R3404:3404 Oracle <> v:54 var
+R3402:3402 Oracle <> u:53 var
+def 3421:3427 <> setBool
+R3434:3437 Oracle <> User def
+binder 3430:3430 <> u:56
+R3445:3448 Coq.Init.Datatypes <> bool ind
+binder 3441:3441 <> v:57
+R3456:3464 Oracle <> t def
+R3466:3469 Coq.Init.Datatypes <> bool ind
+binder 3452:3452 <> m:58
+R3474:3482 Oracle <> t def
+R3484:3487 Coq.Init.Datatypes <> bool ind
+R3494:3504 Oracle <> add def
+R3510:3510 Oracle <> m:58 var
+R3508:3508 Oracle <> v:57 var
+R3506:3506 Oracle <> u:56 var
+def 3525:3528 <> addR
+R3535:3538 Oracle <> User def
+binder 3531:3531 <> u:59
+R3547:3547 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3542:3543 <> dv:60
+R3555:3563 Oracle <> t def
+R3565:3565 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3551:3551 <> m:61
+R3570:3578 Oracle <> t def
+R3580:3580 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R3587:3590 Oracle <> setR def
+R3592:3592 Oracle <> u:59 var
+R3603:3605 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R3595:3598 Oracle <> getR def
+R3600:3600 Oracle <> u:59 var
+R3602:3602 Oracle <> m:61 var
+R3606:3607 Oracle <> dv:60 var
+R3610:3610 Oracle <> m:61 var
+R3664:3678 Coq.Structures.OrderedTypeEx PairOrderedType <> modtype
+R3680:3685 Oracle UserOT <> modtype
+R3687:3692 Oracle UserOT <> modtype
+mod 3650:3659 <> UserPairOT
+R3717:3729 Coq.FSets.FMapList Make <> modtype
+R3731:3740 Oracle UserPairOT <> modtype
+mod 3702:3712 <> UserPairMap
+def 3756:3760 <> getR2
+R3769:3772 Oracle <> User def
+binder 3763:3763 <> u:62
+binder 3765:3765 <> v:63
+R3780:3792 Oracle <> t def
+R3794:3794 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3776:3776 <> m:64
+R3799:3799 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R3812:3827 Oracle <> find def
+R3836:3836 Oracle <> m:64 var
+R3829:3829 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3831:3832 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3834:3834 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3830:3830 Oracle <> u:62 var
+R3833:3833 Oracle <> v:63 var
+R3847:3850 Coq.Init.Datatypes <> Some constr
+R3863:3866 Coq.Init.Datatypes <> None constr
+def 3892:3896 <> setR2
+R3905:3908 Oracle <> User def
+binder 3899:3899 <> u:65
+binder 3901:3901 <> v:66
+R3916:3916 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3912:3912 <> x:67
+R3924:3936 Oracle <> t def
+R3938:3938 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 3920:3920 <> m:68
+R3943:3955 Oracle <> t def
+R3957:3957 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R3964:3978 Oracle <> add def
+R3989:3989 Oracle <> m:68 var
+R3987:3987 Oracle <> x:67 var
+R3980:3980 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3982:3983 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3985:3985 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R3981:3981 Oracle <> u:65 var
+R3984:3984 Oracle <> v:66 var
+def 4004:4008 <> addR2
+R4017:4020 Oracle <> User def
+binder 4011:4011 <> u:69
+binder 4013:4013 <> v:70
+R4029:4029 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 4024:4025 <> dx:71
+R4037:4049 Oracle <> t def
+R4051:4051 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 4033:4033 <> m:72
+R4056:4068 Oracle <> t def
+R4070:4070 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R4077:4081 Oracle <> setR2 def
+R4083:4083 Oracle <> u:69 var
+R4085:4085 Oracle <> v:70 var
+R4099:4101 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R4088:4092 Oracle <> getR2 def
+R4094:4094 Oracle <> u:69 var
+R4096:4096 Oracle <> v:70 var
+R4098:4098 Oracle <> m:72 var
+R4102:4103 Oracle <> dx:71 var
+R4106:4106 Oracle <> m:72 var
+def 4148:4157 <> getUserSet
+R4164:4167 Oracle <> User def
+binder 4160:4160 <> u:73
+R4175:4183 Oracle <> t def
+R4185:4191 Oracle <> UserSet def
+binder 4171:4171 <> m:74
+R4196:4202 Oracle <> UserSet def
+R4215:4226 Oracle <> find def
+R4230:4230 Oracle <> m:74 var
+R4228:4228 Oracle <> u:73 var
+R4241:4244 Coq.Init.Datatypes <> Some constr
+R4257:4260 Coq.Init.Datatypes <> None constr
+R4265:4267 Coq.Init.Datatypes <> nil constr
+def 4288:4297 <> setUserSet
+R4304:4307 Oracle <> User def
+binder 4300:4300 <> u:75
+R4315:4321 Oracle <> UserSet def
+binder 4311:4311 <> s:76
+R4329:4337 Oracle <> t def
+R4339:4345 Oracle <> UserSet def
+binder 4325:4325 <> m:77
+R4352:4360 Oracle <> t def
+R4362:4368 Oracle <> UserSet def
+R4375:4385 Oracle <> add def
+R4391:4391 Oracle <> m:77 var
+R4389:4389 Oracle <> s:76 var
+R4387:4387 Oracle <> u:75 var
+def 4406:4412 <> addUser
+R4419:4422 Oracle <> User def
+binder 4415:4415 <> x:78
+R4430:4436 Oracle <> UserSet def
+binder 4426:4426 <> s:79
+R4441:4447 Oracle <> UserSet def
+R4455:4458 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4454:4454 Oracle <> x:78 var
+R4459:4459 Oracle <> s:79 var
+ax 4495:4495 <> h
+R4499:4502 Oracle <> Rpos def
+ax 4560:4560 <> q
+R4564:4564 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+ax 4622:4630 <> Delta_dep
+R4634:4642 Oracle <> timestamp def
+ax 4691:4698 <> Delta_wd
+R4702:4710 Oracle <> timestamp def
+ax 4760:4764 <> alpha
+R4768:4768 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+rec 4863:4877 <> GovernanceState
+proj 4888:4888 <> B
+proj 4967:4973 <> V_black
+proj 5041:5047 <> V_white
+proj 5115:5121 <> M_black
+proj 5202:5208 <> M_white
+proj 5289:5295 <> W_black
+proj 5369:5375 <> W_white
+R4892:4900 Oracle <> t def
+R4902:4905 Coq.Init.Datatypes <> bool ind
+R4977:4985 Oracle <> t def
+R4987:4992 Oracle <> weight def
+R5051:5059 Oracle <> t def
+R5061:5066 Oracle <> weight def
+R5125:5133 Oracle <> t def
+R5135:5141 Oracle <> UserSet def
+R5212:5220 Oracle <> t def
+R5222:5228 Oracle <> UserSet def
+R5299:5311 Oracle <> t def
+R5313:5318 Oracle <> weight def
+R5379:5391 Oracle <> t def
+R5393:5398 Oracle <> weight def
+rec 5483:5493 <> OracleState
+proj 5504:5506 <> L_l
+proj 5580:5582 <> L_f
+proj 5658:5662 <> T_dep
+proj 5735:5738 <> T_op
+proj 5814:5819 <> P_user
+proj 5897:5902 <> W_user
+proj 5974:5979 <> T_user
+proj 6049:6052 <> pbar
+proj 6118:6123 <> ptilde
+proj 6186:6186 <> Q
+proj 6255:6255 <> P
+proj 6327:6331 <> t_sub
+proj 6398:6403 <> t_last
+proj 6472:6476 <> L_tot
+proj 6551:6551 <> G
+R5513:5521 Oracle <> t def
+R5523:5529 Oracle <> balance def
+R5589:5597 Oracle <> t def
+R5599:5605 Oracle <> balance def
+R5667:5675 Oracle <> t def
+R5677:5685 Oracle <> timestamp def
+R5744:5752 Oracle <> t def
+R5754:5762 Oracle <> timestamp def
+R5823:5831 Oracle <> t def
+R5833:5837 Oracle <> value def
+R5906:5914 Oracle <> t def
+R5916:5921 Oracle <> weight def
+R5983:5991 Oracle <> t def
+R5993:6001 Oracle <> timestamp def
+R6058:6062 Oracle <> value def
+R6127:6131 Oracle <> value def
+R6195:6200 Oracle <> weight def
+R6264:6270 Oracle <> history def
+R6336:6344 Oracle <> timestamp def
+R6407:6415 Oracle <> timestamp def
+R6481:6487 Oracle <> balance def
+R6560:6574 Oracle <> GovernanceState rec
+rec 6640:6644 <> State
+proj 6655:6655 <> V
+proj 6713:6720 <> B_user_w
+proj 6797:6804 <> B_user_r
+proj 6881:6890 <> B_oracle_w
+proj 6957:6966 <> B_oracle_r
+proj 7033:7037 <> trace
+R6659:6669 Oracle <> OracleState rec
+R6724:6732 Oracle <> t def
+R6734:6740 Oracle <> balance def
+R6808:6816 Oracle <> t def
+R6818:6824 Oracle <> balance def
+R6894:6900 Oracle <> balance def
+R6970:6976 Oracle <> balance def
+R7041:7045 Oracle <> Trace def
+def 7065:7083 <> lift_oracle_state_f
+R7102:7105 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7091:7101 Oracle <> OracleState rec
+R7106:7116 Oracle <> OracleState rec
+binder 7087:7087 <> f:116
+R7125:7129 Oracle <> State rec
+binder 7120:7121 <> st:117
+R7134:7138 Oracle <> State rec
+R7148:7148 Oracle <> V proj
+R7148:7148 Oracle <> V proj
+R7148:7148 Oracle <> V proj
+R7167:7174 Oracle <> B_user_w proj
+R7167:7174 Oracle <> B_user_w proj
+R7196:7203 Oracle <> B_user_r proj
+R7196:7203 Oracle <> B_user_r proj
+R7225:7234 Oracle <> B_oracle_w proj
+R7225:7234 Oracle <> B_oracle_w proj
+R7258:7267 Oracle <> B_oracle_r proj
+R7258:7267 Oracle <> B_oracle_r proj
+R7291:7295 Oracle <> trace proj
+R7291:7295 Oracle <> trace proj
+R7153:7153 Oracle <> f:116 var
+R7156:7156 Oracle <> V proj
+R7158:7159 Oracle <> st:117 var
+R7179:7186 Oracle <> B_user_w proj
+R7188:7189 Oracle <> st:117 var
+R7208:7215 Oracle <> B_user_r proj
+R7217:7218 Oracle <> st:117 var
+R7239:7248 Oracle <> B_oracle_w proj
+R7250:7251 Oracle <> st:117 var
+R7272:7281 Oracle <> B_oracle_r proj
+R7283:7284 Oracle <> st:117 var
+R7300:7304 Oracle <> trace proj
+R7306:7307 Oracle <> st:117 var
+def 7396:7400 <> decay
+R7411:7411 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 7403:7407 <> Delta:118
+R7416:7416 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R7423:7428 Coq.Reals.Rpower <> Rpower def
+R7433:7433 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R7444:7448 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R7460:7460 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R7436:7438 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R7439:7443 Oracle <> Delta:118 var
+R7449:7457 Coq.Init.Specif <> proj1_sig def
+R7459:7459 Oracle <> h defax
+prf 7471:7482 <> exp_neg_lt_1
+binder 7495:7495 <> x:119
+R7503:7506 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7499:7501 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7498:7498 Oracle <> x:119 var
+R7512:7514 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7507:7509 Coq.Reals.Rtrigo_def <> exp def
+R7511:7511 Oracle <> x:119 var
+R7559:7561 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7554:7556 Coq.Reals.Rtrigo_def <> exp def
+R7562:7564 Coq.Reals.Rtrigo_def <> exp def
+R7559:7561 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7554:7556 Coq.Reals.Rtrigo_def <> exp def
+R7562:7564 Coq.Reals.Rtrigo_def <> exp def
+R7580:7593 Coq.Reals.Rpower <> exp_increasing thm
+R7580:7593 Coq.Reals.Rpower <> exp_increasing thm
+R7618:7622 Coq.Reals.Rtrigo_def <> exp_0 thm
+R7618:7622 Coq.Reals.Rtrigo_def <> exp_0 thm
+R7618:7622 Coq.Reals.Rtrigo_def <> exp_0 thm
+prf 7653:7664 <> ln_gt_1_gt_0
+R7681:7681 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 7677:7677 <> x:120
+R7689:7692 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7685:7687 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7688:7688 Oracle <> x:120 var
+R7694:7696 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7697:7698 Coq.Reals.Rpower <> ln def
+R7700:7700 Oracle <> x:120 var
+R7734:7736 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7730:7731 Coq.Reals.Rpower <> ln def
+R7737:7738 Coq.Reals.Rpower <> ln def
+R7734:7736 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7730:7731 Coq.Reals.Rpower <> ln def
+R7737:7738 Coq.Reals.Rpower <> ln def
+R7758:7770 Coq.Reals.Rpower <> ln_increasing thm
+R7758:7770 Coq.Reals.Rpower <> ln_increasing thm
+R7798:7801 Coq.Reals.Rpower <> ln_1 thm
+R7798:7801 Coq.Reals.Rpower <> ln_1 thm
+R7798:7801 Coq.Reals.Rpower <> ln_1 thm
+prf 7834:7842 <> decay_pos
+binder 7855:7859 <> Delta:121
+R7867:7869 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R7870:7874 Oracle <> decay def
+R7876:7880 Oracle <> Delta:121 var
+R7899:7903 Oracle <> decay def
+R7915:7920 Coq.Reals.Rpower <> Rpower def
+R7941:7947 Coq.Reals.Exp_prop <> exp_pos thm
+R7941:7947 Coq.Reals.Exp_prop <> exp_pos thm
+prf 7962:7978 <> decay_between_0_1
+binder 7991:7995 <> Delta:122
+R8011:8018 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8003:8005 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R8006:8010 Oracle <> Delta:122 var
+R8020:8022 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x_'<'_x not
+R8034:8036 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x_'<'_x not
+R8023:8027 Oracle <> decay def
+R8029:8033 Oracle <> Delta:122 var
+R8023:8027 Oracle <> decay def
+R8029:8033 Oracle <> Delta:122 var
+R8066:8070 Oracle <> decay def
+R8119:8124 Coq.Reals.Rpower <> Rpower def
+R8137:8143 Coq.Reals.Exp_prop <> exp_pos thm
+R8137:8143 Coq.Reals.Exp_prop <> exp_pos thm
+R8183:8188 Coq.Reals.Rpower <> Rpower def
+R8204:8204 Oracle <> h defax
+R8228:8239 Oracle <> exp_neg_lt_1 thm
+R8228:8239 Oracle <> exp_neg_lt_1 thm
+R8255:8257 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R8255:8257 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R8285:8296 Oracle <> ln_gt_1_gt_0 thm
+R8285:8296 Oracle <> ln_gt_1_gt_0 thm
+R8317:8324 Coq.Reals.RIneq <> Rdiv_def thm
+R8317:8324 Coq.Reals.RIneq <> Rdiv_def thm
+R8317:8324 Coq.Reals.RIneq <> Rdiv_def thm
+R8343:8350 Coq.Reals.RIneq <> Rinv_pos thm
+R8343:8350 Coq.Reals.RIneq <> Rinv_pos thm
+R8368:8380 Coq.Reals.RIneq <> Rmult_neg_pos thm
+R8368:8380 Coq.Reals.RIneq <> Rmult_neg_pos thm
+R8396:8408 Coq.Reals.RIneq <> Rmult_neg_pos thm
+R8396:8408 Coq.Reals.RIneq <> Rmult_neg_pos thm
+def 8481:8489 <> W_decayed
+R8497:8507 Oracle <> OracleState rec
+binder 8492:8493 <> st:123
+R8515:8518 Oracle <> User def
+binder 8511:8511 <> u:124
+R8526:8534 Oracle <> timestamp def
+binder 8522:8522 <> t:125
+R8539:8539 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R8546:8546 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R8565:8568 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R8547:8550 Oracle <> getR def
+R8552:8552 Oracle <> u:124 var
+R8555:8560 Oracle <> W_user proj
+R8562:8563 Oracle <> st:123 var
+R8569:8573 Oracle <> decay def
+R8577:8581 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R8600:8601 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R8576:8576 Oracle <> t:125 var
+R8582:8585 Oracle <> getR def
+R8587:8587 Oracle <> u:124 var
+R8590:8595 Oracle <> T_user proj
+R8597:8598 Oracle <> st:123 var
+ax 8617:8635 <> B_user_w_nonneg_hyp
+binder 8646:8646 <> u:126
+binder 8648:8649 <> st:127
+R8670:8673 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R8652:8655 Oracle <> getR def
+R8657:8657 Oracle <> u:126 var
+R8660:8665 Oracle <> W_user proj
+R8667:8668 Oracle <> st:127 var
+prf 8684:8699 <> W_decayed_nonneg
+binder 8712:8712 <> u:129
+binder 8714:8715 <> st:130
+binder 8717:8717 <> t:131
+R8725:8728 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R8729:8737 Oracle <> W_decayed def
+R8739:8740 Oracle <> st:130 var
+R8742:8742 Oracle <> u:129 var
+R8744:8744 Oracle <> t:131 var
+R8774:8782 Oracle <> W_decayed def
+R8794:8798 Oracle <> decay def
+R8810:8815 Coq.Reals.Rpower <> Rpower def
+R8827:8829 Coq.Reals.Rdefinitions <> Rge def
+R8846:8864 Oracle <> B_user_w_nonneg_hyp prfax
+R8846:8864 Oracle <> B_user_w_nonneg_hyp prfax
+R8888:8890 Coq.Reals.Rdefinitions <> Rge def
+R8943:8959 Coq.Reals.RIneq <> Rmult_lt_0_compat thm
+R8943:8959 Coq.Reals.RIneq <> Rmult_lt_0_compat thm
+R8978:8984 Coq.Reals.Exp_prop <> exp_pos thm
+R8978:8984 Coq.Reals.Exp_prop <> exp_pos thm
+def 9032:9040 <> Q_decayed
+R9047:9055 Oracle <> timestamp def
+binder 9043:9043 <> t:132
+R9064:9074 Oracle <> OracleState rec
+binder 9059:9060 <> st:133
+R9079:9079 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R9086:9086 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R9091:9094 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R9087:9087 Oracle <> Q proj
+R9089:9090 Oracle <> st:133 var
+R9095:9099 Oracle <> decay def
+R9103:9105 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R9102:9102 Oracle <> t:132 var
+R9106:9110 Oracle <> t_sub proj
+R9112:9113 Oracle <> st:133 var
+def 9129:9140 <> pbar_decayed
+R9148:9158 Oracle <> OracleState rec
+binder 9143:9144 <> st:134
+R9166:9174 Oracle <> timestamp def
+binder 9162:9162 <> t:135
+R9179:9179 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R9193:9195 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R9186:9189 Oracle <> pbar proj
+R9191:9192 Oracle <> st:134 var
+R9196:9200 Oracle <> decay def
+R9204:9206 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R9203:9203 Oracle <> t:135 var
+R9207:9211 Oracle <> t_sub proj
+R9213:9214 Oracle <> st:134 var
+def 9272:9281 <> sum_list_R
+R9288:9291 Coq.Init.Datatypes <> list ind
+R9293:9293 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 9284:9284 <> l:136
+R9298:9298 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R9305:9314 Coq.Lists.List <> fold_right def
+R9324:9324 Oracle <> l:136 var
+R9316:9320 Coq.Reals.Rdefinitions RbaseSymbolsImpl Rplus defax
+def 9339:9340 <> P_
+R9348:9358 Oracle <> OracleState rec
+binder 9343:9344 <> st:137
+R9366:9374 Oracle <> timestamp def
+binder 9362:9362 <> t:138
+R9379:9379 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R9386:9386 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R9467:9475 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R9528:9528 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R9387:9396 Oracle <> sum_list_R def
+R9399:9401 Coq.Lists.List <> map def
+R9461:9465 Oracle <> Users defax
+binder 9408:9408 <> x:139
+R9413:9417 Coq.Reals.Rdefinitions RbaseSymbolsImpl Rmult defax
+R9420:9423 Oracle <> getR def
+R9425:9425 Oracle <> x:139 var
+R9428:9433 Oracle <> P_user proj
+R9435:9436 Oracle <> st:137 var
+R9441:9449 Oracle <> W_decayed def
+R9451:9452 Oracle <> st:137 var
+R9454:9454 Oracle <> x:139 var
+R9456:9456 Oracle <> t:138 var
+R9476:9485 Oracle <> sum_list_R def
+R9488:9490 Coq.Lists.List <> map def
+R9522:9526 Oracle <> Users defax
+binder 9497:9497 <> x:140
+R9503:9511 Oracle <> W_decayed def
+R9513:9514 Oracle <> st:137 var
+R9516:9516 Oracle <> x:140 var
+R9518:9518 Oracle <> t:138 var
+def 9588:9593 <> Unlock
+R9601:9611 Oracle <> OracleState rec
+binder 9596:9597 <> st:141
+R9619:9622 Oracle <> User def
+binder 9615:9615 <> u:142
+R9630:9638 Oracle <> timestamp def
+binder 9626:9626 <> t:143
+R9643:9653 Oracle <> OracleState rec
+R9672:9675 Oracle <> getR def
+R9677:9677 Oracle <> u:142 var
+R9680:9684 Oracle <> T_dep proj
+R9686:9687 Oracle <> st:141 var
+binder 9664:9667 <> tdep:144
+R9707:9710 Oracle <> getR def
+R9712:9712 Oracle <> u:142 var
+R9715:9717 Oracle <> L_l proj
+R9719:9720 Oracle <> st:141 var
+binder 9699:9700 <> ll:145
+R9740:9743 Oracle <> getR def
+R9745:9745 Oracle <> u:142 var
+R9748:9750 Oracle <> L_f proj
+R9752:9753 Oracle <> st:141 var
+binder 9732:9733 <> lf:146
+R9764:9767 Coq.Init.Datatypes <> andb def
+R9799:9802 Oracle <> :::x_'>b'_x not
+R9797:9798 Oracle <> ll:145 var
+R9771:9776 Oracle <> :::x_'>=b'_x not
+R9793:9793 Oracle <> :::x_'>=b'_x not
+R9770:9770 Oracle <> t:143 var
+R9781:9783 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R9777:9780 Oracle <> tdep:144 var
+R9784:9792 Oracle <> Delta_dep defax
+R10288:10289 Oracle <> st:141 var
+R9829:9832 Oracle <> setR def
+R9834:9834 Oracle <> u:142 var
+R9839:9841 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R9837:9838 Oracle <> lf:146 var
+R9842:9843 Oracle <> ll:145 var
+R9847:9849 Oracle <> L_f proj
+R9851:9852 Oracle <> st:141 var
+binder 9821:9824 <> L_f':147
+R9874:9877 Oracle <> setR def
+R9879:9879 Oracle <> u:142 var
+R9884:9886 Oracle <> L_l proj
+R9888:9889 Oracle <> st:141 var
+binder 9866:9869 <> L_l':148
+R9908:9910 Oracle <> L_l proj
+R9908:9910 Oracle <> L_l proj
+R9908:9910 Oracle <> L_l proj
+R9930:9932 Oracle <> L_f proj
+R9930:9932 Oracle <> L_f proj
+R9952:9956 Oracle <> T_dep proj
+R9952:9956 Oracle <> T_dep proj
+R9978:9981 Oracle <> T_op proj
+R9978:9981 Oracle <> T_op proj
+R10003:10008 Oracle <> P_user proj
+R10003:10008 Oracle <> P_user proj
+R10030:10035 Oracle <> W_user proj
+R10030:10035 Oracle <> W_user proj
+R10057:10062 Oracle <> T_user proj
+R10057:10062 Oracle <> T_user proj
+R10084:10087 Oracle <> pbar proj
+R10084:10087 Oracle <> pbar proj
+R10109:10114 Oracle <> ptilde proj
+R10109:10114 Oracle <> ptilde proj
+R10136:10136 Oracle <> Q proj
+R10136:10136 Oracle <> Q proj
+R10158:10158 Oracle <> P proj
+R10158:10158 Oracle <> P proj
+R10180:10184 Oracle <> t_sub proj
+R10180:10184 Oracle <> t_sub proj
+R10206:10211 Oracle <> t_last proj
+R10206:10211 Oracle <> t_last proj
+R10233:10237 Oracle <> L_tot proj
+R10233:10237 Oracle <> L_tot proj
+R10259:10259 Oracle <> G proj
+R10259:10259 Oracle <> G proj
+R9918:9921 Oracle <> L_l':148 var
+R9940:9943 Oracle <> L_f':147 var
+R9962:9966 Oracle <> T_dep proj
+R9968:9969 Oracle <> st:141 var
+R9988:9991 Oracle <> T_op proj
+R9993:9994 Oracle <> st:141 var
+R10013:10018 Oracle <> P_user proj
+R10020:10021 Oracle <> st:141 var
+R10040:10045 Oracle <> W_user proj
+R10047:10048 Oracle <> st:141 var
+R10067:10072 Oracle <> T_user proj
+R10074:10075 Oracle <> st:141 var
+R10094:10097 Oracle <> pbar proj
+R10099:10100 Oracle <> st:141 var
+R10119:10124 Oracle <> ptilde proj
+R10126:10127 Oracle <> st:141 var
+R10146:10146 Oracle <> Q proj
+R10148:10149 Oracle <> st:141 var
+R10168:10168 Oracle <> P proj
+R10170:10171 Oracle <> st:141 var
+R10190:10194 Oracle <> t_sub proj
+R10196:10197 Oracle <> st:141 var
+R10216:10221 Oracle <> t_last proj
+R10223:10224 Oracle <> st:141 var
+R10243:10247 Oracle <> L_tot proj
+R10249:10250 Oracle <> st:141 var
+R10269:10269 Oracle <> G proj
+R10271:10272 Oracle <> st:141 var
+def 10304:10312 <> Recompute
+R10319:10322 Oracle <> User def
+binder 10315:10315 <> x:149
+R10331:10341 Oracle <> OracleState rec
+binder 10326:10327 <> st:150
+R10346:10356 Oracle <> OracleState rec
+R10373:10373 Oracle <> G proj
+R10375:10376 Oracle <> st:150 var
+binder 10367:10368 <> gx:151
+R10399:10402 Oracle <> getR def
+R10404:10404 Oracle <> x:149 var
+R10407:10413 Oracle <> V_black proj
+R10415:10416 Oracle <> gx:151 var
+binder 10387:10394 <> vx_black:152
+R10440:10443 Oracle <> getR def
+R10445:10445 Oracle <> x:149 var
+R10448:10454 Oracle <> V_white proj
+R10456:10457 Oracle <> gx:151 var
+binder 10428:10435 <> vx_white:153
+R10487:10487 Oracle <> :::x_'>b'_x not
+R10507:10516 Oracle <> :::x_'>b'_x not
+R10555:10555 Oracle <> :::x_'>b'_x not
+R10496:10498 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R10488:10495 Oracle <> vx_black:152 var
+R10499:10506 Oracle <> vx_white:153 var
+R10531:10534 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R10554:10554 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R10518:10521 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R10530:10530 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R10517:10517 Oracle <> q defax
+R10522:10526 Oracle <> L_tot proj
+R10528:10529 Oracle <> st:150 var
+R10543:10545 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R10535:10542 Oracle <> vx_black:152 var
+R10546:10553 Oracle <> vx_white:153 var
+R10475:10478 Coq.Init.Datatypes <> bool ind
+binder 10469:10471 <> bx':154
+R10605:10605 Oracle <> B proj
+R10605:10605 Oracle <> B proj
+R10605:10605 Oracle <> B proj
+R10644:10650 Oracle <> V_black proj
+R10644:10650 Oracle <> V_black proj
+R10673:10679 Oracle <> V_white proj
+R10673:10679 Oracle <> V_white proj
+R10702:10708 Oracle <> M_black proj
+R10702:10708 Oracle <> M_black proj
+R10731:10737 Oracle <> M_white proj
+R10731:10737 Oracle <> M_white proj
+R10760:10766 Oracle <> W_black proj
+R10760:10766 Oracle <> W_black proj
+R10789:10795 Oracle <> W_white proj
+R10789:10795 Oracle <> W_white proj
+R10616:10622 Oracle <> setBool def
+R10624:10624 Oracle <> x:149 var
+R10626:10628 Oracle <> bx':154 var
+R10631:10631 Oracle <> B proj
+R10633:10634 Oracle <> gx:151 var
+R10655:10661 Oracle <> V_black proj
+R10663:10664 Oracle <> gx:151 var
+R10684:10690 Oracle <> V_white proj
+R10692:10693 Oracle <> gx:151 var
+R10713:10719 Oracle <> M_black proj
+R10721:10722 Oracle <> gx:151 var
+R10742:10748 Oracle <> M_white proj
+R10750:10751 Oracle <> gx:151 var
+R10771:10777 Oracle <> W_black proj
+R10779:10780 Oracle <> gx:151 var
+R10800:10806 Oracle <> W_white proj
+R10808:10809 Oracle <> gx:151 var
+R10573:10587 Oracle <> GovernanceState rec
+binder 10568:10569 <> G':155
+R10832:10834 Oracle <> L_l proj
+R10832:10834 Oracle <> L_l proj
+R10832:10834 Oracle <> L_l proj
+R10854:10856 Oracle <> L_f proj
+R10854:10856 Oracle <> L_f proj
+R10876:10880 Oracle <> T_dep proj
+R10876:10880 Oracle <> T_dep proj
+R10900:10903 Oracle <> T_op proj
+R10900:10903 Oracle <> T_op proj
+R10923:10928 Oracle <> P_user proj
+R10923:10928 Oracle <> P_user proj
+R10948:10953 Oracle <> W_user proj
+R10948:10953 Oracle <> W_user proj
+R10973:10978 Oracle <> T_user proj
+R10973:10978 Oracle <> T_user proj
+R10998:11001 Oracle <> pbar proj
+R10998:11001 Oracle <> pbar proj
+R11021:11026 Oracle <> ptilde proj
+R11021:11026 Oracle <> ptilde proj
+R11046:11046 Oracle <> Q proj
+R11046:11046 Oracle <> Q proj
+R11066:11066 Oracle <> P proj
+R11066:11066 Oracle <> P proj
+R11086:11090 Oracle <> t_sub proj
+R11086:11090 Oracle <> t_sub proj
+R11110:11115 Oracle <> t_last proj
+R11110:11115 Oracle <> t_last proj
+R11135:11139 Oracle <> L_tot proj
+R11135:11139 Oracle <> L_tot proj
+R11159:11159 Oracle <> G proj
+R11159:11159 Oracle <> G proj
+R10842:10844 Oracle <> L_l proj
+R10846:10847 Oracle <> st:150 var
+R10864:10866 Oracle <> L_f proj
+R10868:10869 Oracle <> st:150 var
+R10886:10890 Oracle <> T_dep proj
+R10892:10893 Oracle <> st:150 var
+R10910:10913 Oracle <> T_op proj
+R10915:10916 Oracle <> st:150 var
+R10933:10938 Oracle <> P_user proj
+R10940:10941 Oracle <> st:150 var
+R10958:10963 Oracle <> W_user proj
+R10965:10966 Oracle <> st:150 var
+R10983:10988 Oracle <> T_user proj
+R10990:10991 Oracle <> st:150 var
+R11008:11011 Oracle <> pbar proj
+R11013:11014 Oracle <> st:150 var
+R11031:11036 Oracle <> ptilde proj
+R11038:11039 Oracle <> st:150 var
+R11056:11056 Oracle <> Q proj
+R11058:11059 Oracle <> st:150 var
+R11076:11076 Oracle <> P proj
+R11078:11079 Oracle <> st:150 var
+R11096:11100 Oracle <> t_sub proj
+R11102:11103 Oracle <> st:150 var
+R11120:11125 Oracle <> t_last proj
+R11127:11128 Oracle <> st:150 var
+R11145:11149 Oracle <> L_tot proj
+R11151:11152 Oracle <> st:150 var
+R11169:11170 Oracle <> G':155 var
+def 11190:11208 <> reweight_black_step
+R11215:11218 Oracle <> User def
+binder 11211:11211 <> u:156
+R11226:11231 Oracle <> weight def
+binder 11222:11222 <> w:157
+R11239:11242 Oracle <> User def
+binder 11235:11235 <> x:158
+R11251:11261 Oracle <> OracleState rec
+binder 11246:11247 <> st:159
+R11268:11278 Oracle <> OracleState rec
+R11295:11295 Oracle <> G proj
+R11297:11298 Oracle <> st:159 var
+binder 11289:11290 <> gx:160
+R11316:11320 Oracle <> getR2 def
+R11322:11322 Oracle <> x:158 var
+R11324:11324 Oracle <> u:156 var
+R11327:11333 Oracle <> W_black proj
+R11335:11336 Oracle <> gx:160 var
+binder 11309:11311 <> old:161
+R11355:11358 Oracle <> setR def
+R11360:11360 Oracle <> x:158 var
+R11388:11390 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R11382:11384 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R11363:11366 Oracle <> getR def
+R11368:11368 Oracle <> x:158 var
+R11371:11377 Oracle <> V_black proj
+R11379:11380 Oracle <> gx:160 var
+R11385:11387 Oracle <> old:161 var
+R11391:11391 Oracle <> w:157 var
+R11395:11401 Oracle <> V_black proj
+R11403:11404 Oracle <> gx:160 var
+binder 11348:11350 <> Vb':162
+R11423:11427 Oracle <> setR2 def
+R11429:11429 Oracle <> x:158 var
+R11431:11431 Oracle <> u:156 var
+R11433:11433 Oracle <> w:157 var
+R11436:11442 Oracle <> W_black proj
+R11444:11445 Oracle <> gx:160 var
+binder 11416:11418 <> Wb':163
+R11481:11481 Oracle <> B proj
+R11481:11481 Oracle <> B proj
+R11481:11481 Oracle <> B proj
+R11512:11518 Oracle <> V_black proj
+R11512:11518 Oracle <> V_black proj
+R11542:11548 Oracle <> V_white proj
+R11542:11548 Oracle <> V_white proj
+R11579:11585 Oracle <> M_black proj
+R11579:11585 Oracle <> M_black proj
+R11616:11622 Oracle <> M_white proj
+R11616:11622 Oracle <> M_white proj
+R11653:11659 Oracle <> W_black proj
+R11653:11659 Oracle <> W_black proj
+R11683:11689 Oracle <> W_white proj
+R11683:11689 Oracle <> W_white proj
+R11492:11492 Oracle <> B proj
+R11494:11495 Oracle <> gx:160 var
+R11523:11525 Oracle <> Vb':162 var
+R11553:11559 Oracle <> V_white proj
+R11561:11562 Oracle <> gx:160 var
+R11590:11596 Oracle <> M_black proj
+R11598:11599 Oracle <> gx:160 var
+R11627:11633 Oracle <> M_white proj
+R11635:11636 Oracle <> gx:160 var
+R11664:11666 Oracle <> Wb':163 var
+R11694:11700 Oracle <> W_white proj
+R11702:11703 Oracle <> gx:160 var
+binder 11457:11458 <> G':164
+R11753:11755 Oracle <> L_l proj
+R11753:11755 Oracle <> L_l proj
+R11753:11755 Oracle <> L_l proj
+R11782:11784 Oracle <> L_f proj
+R11782:11784 Oracle <> L_f proj
+R11811:11815 Oracle <> T_dep proj
+R11811:11815 Oracle <> T_dep proj
+R11844:11847 Oracle <> T_op proj
+R11844:11847 Oracle <> T_op proj
+R11875:11880 Oracle <> P_user proj
+R11875:11880 Oracle <> P_user proj
+R11910:11915 Oracle <> W_user proj
+R11910:11915 Oracle <> W_user proj
+R11945:11950 Oracle <> T_user proj
+R11945:11950 Oracle <> T_user proj
+R11980:11983 Oracle <> pbar proj
+R11980:11983 Oracle <> pbar proj
+R12011:12016 Oracle <> ptilde proj
+R12011:12016 Oracle <> ptilde proj
+R12046:12046 Oracle <> Q proj
+R12046:12046 Oracle <> Q proj
+R12071:12071 Oracle <> P proj
+R12071:12071 Oracle <> P proj
+R12096:12100 Oracle <> t_sub proj
+R12096:12100 Oracle <> t_sub proj
+R12129:12134 Oracle <> t_last proj
+R12129:12134 Oracle <> t_last proj
+R12164:12168 Oracle <> L_tot proj
+R12164:12168 Oracle <> L_tot proj
+R12197:12197 Oracle <> G proj
+R12197:12197 Oracle <> G proj
+R11760:11762 Oracle <> L_l proj
+R11764:11765 Oracle <> st:159 var
+R11789:11791 Oracle <> L_f proj
+R11793:11794 Oracle <> st:159 var
+R11820:11824 Oracle <> T_dep proj
+R11826:11827 Oracle <> st:159 var
+R11852:11855 Oracle <> T_op proj
+R11857:11858 Oracle <> st:159 var
+R11885:11890 Oracle <> P_user proj
+R11892:11893 Oracle <> st:159 var
+R11920:11925 Oracle <> W_user proj
+R11927:11928 Oracle <> st:159 var
+R11955:11960 Oracle <> T_user proj
+R11962:11963 Oracle <> st:159 var
+R11988:11991 Oracle <> pbar proj
+R11993:11994 Oracle <> st:159 var
+R12021:12026 Oracle <> ptilde proj
+R12028:12029 Oracle <> st:159 var
+R12051:12051 Oracle <> Q proj
+R12053:12054 Oracle <> st:159 var
+R12076:12076 Oracle <> P proj
+R12078:12079 Oracle <> st:159 var
+R12105:12109 Oracle <> t_sub proj
+R12111:12112 Oracle <> st:159 var
+R12139:12144 Oracle <> t_last proj
+R12146:12147 Oracle <> st:159 var
+R12173:12177 Oracle <> L_tot proj
+R12179:12180 Oracle <> st:159 var
+R12202:12203 Oracle <> G':164 var
+binder 11729:11731 <> st':165
+R12225:12233 Oracle <> Recompute def
+R12235:12235 Oracle <> x:158 var
+R12237:12239 Oracle <> st':165 var
+def 12254:12272 <> reweight_white_step
+R12279:12282 Oracle <> User def
+binder 12275:12275 <> u:166
+R12290:12295 Oracle <> weight def
+binder 12286:12286 <> w:167
+R12303:12306 Oracle <> User def
+binder 12299:12299 <> x:168
+R12315:12325 Oracle <> OracleState rec
+binder 12310:12311 <> st:169
+R12332:12342 Oracle <> OracleState rec
+R12359:12359 Oracle <> G proj
+R12361:12362 Oracle <> st:169 var
+binder 12353:12354 <> gx:170
+R12380:12384 Oracle <> getR2 def
+R12386:12386 Oracle <> x:168 var
+R12388:12388 Oracle <> u:166 var
+R12391:12397 Oracle <> W_white proj
+R12399:12400 Oracle <> gx:170 var
+binder 12373:12375 <> old:171
+R12419:12422 Oracle <> setR def
+R12424:12424 Oracle <> x:168 var
+R12452:12454 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R12446:12448 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R12427:12430 Oracle <> getR def
+R12432:12432 Oracle <> x:168 var
+R12435:12441 Oracle <> V_white proj
+R12443:12444 Oracle <> gx:170 var
+R12449:12451 Oracle <> old:171 var
+R12455:12455 Oracle <> w:167 var
+R12459:12465 Oracle <> V_white proj
+R12467:12468 Oracle <> gx:170 var
+binder 12412:12414 <> Vw':172
+R12487:12491 Oracle <> setR2 def
+R12493:12493 Oracle <> x:168 var
+R12495:12495 Oracle <> u:166 var
+R12497:12497 Oracle <> w:167 var
+R12500:12506 Oracle <> W_white proj
+R12508:12509 Oracle <> gx:170 var
+binder 12480:12482 <> Ww':173
+R12545:12545 Oracle <> B proj
+R12545:12545 Oracle <> B proj
+R12545:12545 Oracle <> B proj
+R12576:12582 Oracle <> V_black proj
+R12576:12582 Oracle <> V_black proj
+R12613:12619 Oracle <> V_white proj
+R12613:12619 Oracle <> V_white proj
+R12643:12649 Oracle <> M_black proj
+R12643:12649 Oracle <> M_black proj
+R12680:12686 Oracle <> M_white proj
+R12680:12686 Oracle <> M_white proj
+R12717:12723 Oracle <> W_black proj
+R12717:12723 Oracle <> W_black proj
+R12754:12760 Oracle <> W_white proj
+R12754:12760 Oracle <> W_white proj
+R12556:12556 Oracle <> B proj
+R12558:12559 Oracle <> gx:170 var
+R12587:12593 Oracle <> V_black proj
+R12595:12596 Oracle <> gx:170 var
+R12624:12626 Oracle <> Vw':172 var
+R12654:12660 Oracle <> M_black proj
+R12662:12663 Oracle <> gx:170 var
+R12691:12697 Oracle <> M_white proj
+R12699:12700 Oracle <> gx:170 var
+R12728:12734 Oracle <> W_black proj
+R12736:12737 Oracle <> gx:170 var
+R12765:12767 Oracle <> Ww':173 var
+binder 12521:12522 <> G':174
+R12819:12821 Oracle <> L_l proj
+R12819:12821 Oracle <> L_l proj
+R12819:12821 Oracle <> L_l proj
+R12848:12850 Oracle <> L_f proj
+R12848:12850 Oracle <> L_f proj
+R12877:12881 Oracle <> T_dep proj
+R12877:12881 Oracle <> T_dep proj
+R12910:12913 Oracle <> T_op proj
+R12910:12913 Oracle <> T_op proj
+R12941:12946 Oracle <> P_user proj
+R12941:12946 Oracle <> P_user proj
+R12976:12981 Oracle <> W_user proj
+R12976:12981 Oracle <> W_user proj
+R13011:13016 Oracle <> T_user proj
+R13011:13016 Oracle <> T_user proj
+R13046:13049 Oracle <> pbar proj
+R13046:13049 Oracle <> pbar proj
+R13077:13082 Oracle <> ptilde proj
+R13077:13082 Oracle <> ptilde proj
+R13112:13112 Oracle <> Q proj
+R13112:13112 Oracle <> Q proj
+R13137:13137 Oracle <> P proj
+R13137:13137 Oracle <> P proj
+R13162:13166 Oracle <> t_sub proj
+R13162:13166 Oracle <> t_sub proj
+R13195:13200 Oracle <> t_last proj
+R13195:13200 Oracle <> t_last proj
+R13230:13234 Oracle <> L_tot proj
+R13230:13234 Oracle <> L_tot proj
+R13263:13263 Oracle <> G proj
+R13263:13263 Oracle <> G proj
+R12826:12828 Oracle <> L_l proj
+R12830:12831 Oracle <> st:169 var
+R12855:12857 Oracle <> L_f proj
+R12859:12860 Oracle <> st:169 var
+R12886:12890 Oracle <> T_dep proj
+R12892:12893 Oracle <> st:169 var
+R12918:12921 Oracle <> T_op proj
+R12923:12924 Oracle <> st:169 var
+R12951:12956 Oracle <> P_user proj
+R12958:12959 Oracle <> st:169 var
+R12986:12991 Oracle <> W_user proj
+R12993:12994 Oracle <> st:169 var
+R13021:13026 Oracle <> T_user proj
+R13028:13029 Oracle <> st:169 var
+R13054:13057 Oracle <> pbar proj
+R13059:13060 Oracle <> st:169 var
+R13087:13092 Oracle <> ptilde proj
+R13094:13095 Oracle <> st:169 var
+R13117:13117 Oracle <> Q proj
+R13119:13120 Oracle <> st:169 var
+R13142:13142 Oracle <> P proj
+R13144:13145 Oracle <> st:169 var
+R13171:13175 Oracle <> t_sub proj
+R13177:13178 Oracle <> st:169 var
+R13205:13210 Oracle <> t_last proj
+R13212:13213 Oracle <> st:169 var
+R13239:13243 Oracle <> L_tot proj
+R13245:13246 Oracle <> st:169 var
+R13268:13269 Oracle <> G':174 var
+binder 12795:12797 <> st':175
+R13293:13301 Oracle <> Recompute def
+R13303:13303 Oracle <> x:168 var
+R13305:13306 Oracle <> st:169 var
+def 13321:13328 <> Reweight
+R13335:13338 Oracle <> User def
+binder 13331:13331 <> u:176
+R13346:13351 Oracle <> weight def
+binder 13342:13342 <> w:177
+R13360:13370 Oracle <> OracleState rec
+binder 13355:13356 <> st:178
+R13375:13385 Oracle <> OracleState rec
+R13402:13402 Oracle <> G proj
+R13404:13405 Oracle <> st:178 var
+binder 13396:13397 <> gx:179
+R13432:13441 Oracle <> getUserSet def
+R13443:13443 Oracle <> u:176 var
+R13446:13452 Oracle <> M_black proj
+R13454:13455 Oracle <> gx:179 var
+binder 13416:13427 <> blacklisteds:180
+R13483:13492 Oracle <> getUserSet def
+R13494:13494 Oracle <> u:176 var
+R13497:13503 Oracle <> M_white proj
+R13505:13506 Oracle <> gx:179 var
+binder 13467:13478 <> whitelisteds:181
+R13525:13533 Coq.Lists.List <> fold_left def
+R13593:13594 Oracle <> st:178 var
+R13580:13591 Oracle <> blacklisteds:180 var
+binder 13540:13542 <> acc:182
+binder 13544:13544 <> x:183
+R13549:13567 Oracle <> reweight_black_step def
+R13569:13569 Oracle <> u:176 var
+R13571:13571 Oracle <> w:177 var
+R13573:13573 Oracle <> x:183 var
+R13575:13577 Oracle <> acc:182 var
+binder 13518:13520 <> st1:184
+R13612:13620 Coq.Lists.List <> fold_left def
+R13680:13682 Oracle <> st1:184 var
+R13667:13678 Oracle <> whitelisteds:181 var
+binder 13627:13629 <> acc:185
+binder 13631:13631 <> x:186
+R13636:13654 Oracle <> reweight_white_step def
+R13656:13656 Oracle <> u:176 var
+R13658:13658 Oracle <> w:177 var
+R13660:13660 Oracle <> x:186 var
+R13662:13664 Oracle <> acc:185 var
+binder 13605:13607 <> st2:187
+R13689:13691 Oracle <> st2:187 var
+def 13815:13827 <> token_deposit
+R13834:13837 Oracle <> User def
+binder 13830:13830 <> u:188
+R13845:13851 Oracle <> balance def
+binder 13841:13841 <> a:189
+R13859:13867 Oracle <> timestamp def
+binder 13855:13855 <> t:190
+R13876:13880 Oracle <> State rec
+binder 13871:13872 <> st:191
+R13885:13889 Oracle <> State rec
+R13901:13905 Oracle <> :::x_'<=b'_x not
+R13900:13900 Oracle <> a:189 var
+R13943:13943 Oracle <> V proj
+R13945:13946 Oracle <> st:191 var
+binder 13936:13937 <> V0:192
+R13966:13971 Oracle <> Unlock def
+R13973:13974 Oracle <> V0:192 var
+R13976:13976 Oracle <> u:188 var
+R13978:13978 Oracle <> t:190 var
+binder 13959:13960 <> V1:193
+R14002:14005 Oracle <> addR def
+R14007:14007 Oracle <> u:188 var
+R14009:14009 Oracle <> a:189 var
+R14012:14014 Oracle <> L_l proj
+R14016:14017 Oracle <> V1:193 var
+binder 13992:13995 <> L_l':194
+R14041:14044 Oracle <> setR def
+R14046:14046 Oracle <> u:188 var
+R14048:14048 Oracle <> t:190 var
+R14051:14055 Oracle <> T_dep proj
+R14057:14058 Oracle <> V1:193 var
+binder 14031:14036 <> T_dep':195
+R14082:14085 Oracle <> setR def
+R14087:14087 Oracle <> u:188 var
+R14089:14089 Oracle <> t:190 var
+R14092:14095 Oracle <> T_op proj
+R14097:14098 Oracle <> V1:193 var
+binder 14072:14076 <> T_op':196
+R14128:14131 Oracle <> addR def
+R14133:14133 Oracle <> u:188 var
+R14136:14136 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R14137:14137 Oracle <> a:189 var
+R14141:14148 Oracle <> B_user_w proj
+R14150:14151 Oracle <> st:191 var
+binder 14113:14121 <> B_user_w':197
+R14194:14196 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R14181:14190 Oracle <> B_oracle_w proj
+R14192:14193 Oracle <> st:191 var
+R14197:14197 Oracle <> a:189 var
+binder 14165:14175 <> B_oracle_w':198
+R14249:14251 Oracle <> L_l proj
+R14249:14251 Oracle <> L_l proj
+R14249:14251 Oracle <> L_l proj
+R14273:14275 Oracle <> L_f proj
+R14273:14275 Oracle <> L_f proj
+R14299:14303 Oracle <> T_dep proj
+R14299:14303 Oracle <> T_dep proj
+R14325:14328 Oracle <> T_op proj
+R14325:14328 Oracle <> T_op proj
+R14350:14355 Oracle <> P_user proj
+R14350:14355 Oracle <> P_user proj
+R14379:14384 Oracle <> W_user proj
+R14379:14384 Oracle <> W_user proj
+R14408:14413 Oracle <> T_user proj
+R14408:14413 Oracle <> T_user proj
+R14437:14440 Oracle <> pbar proj
+R14437:14440 Oracle <> pbar proj
+R14464:14469 Oracle <> ptilde proj
+R14464:14469 Oracle <> ptilde proj
+R14493:14493 Oracle <> Q proj
+R14493:14493 Oracle <> Q proj
+R14517:14517 Oracle <> P proj
+R14517:14517 Oracle <> P proj
+R14541:14545 Oracle <> t_sub proj
+R14541:14545 Oracle <> t_sub proj
+R14569:14574 Oracle <> t_last proj
+R14569:14574 Oracle <> t_last proj
+R14590:14594 Oracle <> L_tot proj
+R14590:14594 Oracle <> L_tot proj
+R14624:14624 Oracle <> G proj
+R14624:14624 Oracle <> G proj
+R14259:14262 Oracle <> L_l':194 var
+R14283:14285 Oracle <> L_f proj
+R14287:14288 Oracle <> V1:193 var
+R14309:14314 Oracle <> T_dep':195 var
+R14335:14339 Oracle <> T_op':196 var
+R14360:14365 Oracle <> P_user proj
+R14367:14368 Oracle <> V1:193 var
+R14389:14394 Oracle <> W_user proj
+R14396:14397 Oracle <> V1:193 var
+R14418:14423 Oracle <> T_user proj
+R14425:14426 Oracle <> V1:193 var
+R14447:14450 Oracle <> pbar proj
+R14452:14453 Oracle <> V1:193 var
+R14474:14479 Oracle <> ptilde proj
+R14481:14482 Oracle <> V1:193 var
+R14503:14503 Oracle <> Q proj
+R14505:14506 Oracle <> V1:193 var
+R14527:14527 Oracle <> P proj
+R14529:14530 Oracle <> V1:193 var
+R14551:14555 Oracle <> t_sub proj
+R14557:14558 Oracle <> V1:193 var
+R14579:14579 Oracle <> t:190 var
+R14609:14611 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R14601:14605 Oracle <> L_tot proj
+R14607:14608 Oracle <> V1:193 var
+R14612:14612 Oracle <> a:189 var
+R14634:14634 Oracle <> G proj
+R14636:14637 Oracle <> V1:193 var
+R14217:14227 Oracle <> OracleState rec
+binder 14212:14213 <> V2:199
+R14669:14669 Oracle <> V proj
+R14669:14669 Oracle <> V proj
+R14669:14669 Oracle <> V proj
+R14684:14691 Oracle <> B_user_w proj
+R14684:14691 Oracle <> B_user_w proj
+R14713:14720 Oracle <> B_user_r proj
+R14713:14720 Oracle <> B_user_r proj
+R14744:14753 Oracle <> B_oracle_w proj
+R14744:14753 Oracle <> B_oracle_w proj
+R14777:14786 Oracle <> B_oracle_r proj
+R14777:14786 Oracle <> B_oracle_r proj
+R14812:14816 Oracle <> trace proj
+R14812:14816 Oracle <> trace proj
+R14674:14675 Oracle <> V2:199 var
+R14696:14704 Oracle <> B_user_w':197 var
+R14725:14732 Oracle <> B_user_r proj
+R14734:14735 Oracle <> st:191 var
+R14758:14768 Oracle <> B_oracle_w':198 var
+R14791:14800 Oracle <> B_oracle_r proj
+R14802:14803 Oracle <> st:191 var
+R14821:14825 Oracle <> trace proj
+R14827:14828 Oracle <> st:191 var
+R13918:13919 Oracle <> st:191 var
+def 14988:15003 <> token_withdrawal
+R15010:15013 Oracle <> User def
+binder 15006:15006 <> u:200
+R15021:15027 Oracle <> balance def
+binder 15017:15017 <> a:201
+R15035:15043 Oracle <> timestamp def
+binder 15031:15031 <> t:202
+R15052:15056 Oracle <> State rec
+binder 15047:15048 <> st:203
+R15061:15065 Oracle <> State rec
+R15086:15089 Oracle <> :::x_'>b'_x not
+R15085:15085 Oracle <> a:201 var
+binder 15076:15080 <> cond1:204
+R15129:15133 Oracle <> :::x_'>=b'_x not
+R15110:15113 Oracle <> getR def
+R15115:15115 Oracle <> u:200 var
+R15118:15120 Oracle <> L_f proj
+R15123:15123 Oracle <> V proj
+R15125:15126 Oracle <> st:203 var
+R15134:15134 Oracle <> a:201 var
+binder 15101:15105 <> cond2:205
+R15185:15189 Oracle <> :::x_'<=b'_x not
+R15174:15176 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R15154:15157 Oracle <> getR def
+R15159:15159 Oracle <> u:200 var
+R15162:15165 Oracle <> T_op proj
+R15168:15168 Oracle <> V proj
+R15170:15171 Oracle <> st:203 var
+R15177:15184 Oracle <> Delta_wd defax
+R15190:15190 Oracle <> t:202 var
+binder 15145:15149 <> cond3:206
+R15200:15203 Coq.Init.Datatypes <> negb def
+R15207:15210 Coq.Init.Datatypes <> andb def
+R15219:15222 Coq.Init.Datatypes <> andb def
+R15230:15234 Oracle <> cond3:206 var
+R15224:15228 Oracle <> cond2:205 var
+R15212:15216 Oracle <> cond1:204 var
+R15272:15272 Oracle <> V proj
+R15274:15275 Oracle <> st:203 var
+binder 15266:15267 <> v0:207
+R15329:15332 Oracle <> addR def
+R15334:15334 Oracle <> u:200 var
+R15337:15337 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R15338:15338 Oracle <> a:201 var
+R15342:15344 Oracle <> L_f proj
+R15346:15347 Oracle <> v0:207 var
+binder 15320:15323 <> L_f':208
+R15370:15373 Oracle <> setR def
+R15375:15375 Oracle <> u:200 var
+R15377:15377 Oracle <> t:202 var
+R15380:15383 Oracle <> T_op proj
+R15385:15386 Oracle <> v0:207 var
+binder 15361:15365 <> T_op':209
+R15437:15439 Oracle <> L_l proj
+R15437:15439 Oracle <> L_l proj
+R15437:15439 Oracle <> L_l proj
+R15463:15465 Oracle <> L_f proj
+R15463:15465 Oracle <> L_f proj
+R15487:15491 Oracle <> T_dep proj
+R15487:15491 Oracle <> T_dep proj
+R15515:15518 Oracle <> T_op proj
+R15515:15518 Oracle <> T_op proj
+R15540:15545 Oracle <> P_user proj
+R15540:15545 Oracle <> P_user proj
+R15569:15574 Oracle <> W_user proj
+R15569:15574 Oracle <> W_user proj
+R15598:15603 Oracle <> T_user proj
+R15598:15603 Oracle <> T_user proj
+R15627:15630 Oracle <> pbar proj
+R15627:15630 Oracle <> pbar proj
+R15654:15659 Oracle <> ptilde proj
+R15654:15659 Oracle <> ptilde proj
+R15683:15683 Oracle <> Q proj
+R15683:15683 Oracle <> Q proj
+R15707:15707 Oracle <> P proj
+R15707:15707 Oracle <> P proj
+R15731:15735 Oracle <> t_sub proj
+R15731:15735 Oracle <> t_sub proj
+R15759:15764 Oracle <> t_last proj
+R15759:15764 Oracle <> t_last proj
+R15780:15784 Oracle <> L_tot proj
+R15780:15784 Oracle <> L_tot proj
+R15814:15814 Oracle <> G proj
+R15814:15814 Oracle <> G proj
+R15447:15449 Oracle <> L_l proj
+R15451:15452 Oracle <> v0:207 var
+R15473:15476 Oracle <> L_f':208 var
+R15497:15501 Oracle <> T_dep proj
+R15503:15504 Oracle <> v0:207 var
+R15525:15529 Oracle <> T_op':209 var
+R15550:15555 Oracle <> P_user proj
+R15557:15558 Oracle <> v0:207 var
+R15579:15584 Oracle <> W_user proj
+R15586:15587 Oracle <> v0:207 var
+R15608:15613 Oracle <> T_user proj
+R15615:15616 Oracle <> v0:207 var
+R15637:15640 Oracle <> pbar proj
+R15642:15643 Oracle <> v0:207 var
+R15664:15669 Oracle <> ptilde proj
+R15671:15672 Oracle <> v0:207 var
+R15693:15693 Oracle <> Q proj
+R15695:15696 Oracle <> v0:207 var
+R15717:15717 Oracle <> P proj
+R15719:15720 Oracle <> v0:207 var
+R15741:15745 Oracle <> t_sub proj
+R15747:15748 Oracle <> v0:207 var
+R15769:15769 Oracle <> t:202 var
+R15799:15801 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R15791:15795 Oracle <> L_tot proj
+R15797:15798 Oracle <> v0:207 var
+R15802:15802 Oracle <> a:201 var
+R15824:15824 Oracle <> G proj
+R15826:15827 Oracle <> v0:207 var
+R15405:15415 Oracle <> OracleState rec
+binder 15400:15401 <> v1:210
+R15895:15898 Oracle <> addR def
+R15900:15900 Oracle <> u:200 var
+R15902:15902 Oracle <> a:201 var
+R15905:15912 Oracle <> B_user_w proj
+R15914:15915 Oracle <> st:203 var
+binder 15880:15888 <> B_user_w':211
+R15958:15960 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R15945:15954 Oracle <> B_oracle_w proj
+R15956:15957 Oracle <> st:203 var
+R15961:15961 Oracle <> a:201 var
+binder 15929:15939 <> B_oracle_w':212
+R15981:15981 Oracle <> V proj
+R15981:15981 Oracle <> V proj
+R15981:15981 Oracle <> V proj
+R15996:16003 Oracle <> B_user_w proj
+R15996:16003 Oracle <> B_user_w proj
+R16025:16032 Oracle <> B_user_r proj
+R16025:16032 Oracle <> B_user_r proj
+R16056:16065 Oracle <> B_oracle_w proj
+R16056:16065 Oracle <> B_oracle_w proj
+R16089:16098 Oracle <> B_oracle_r proj
+R16089:16098 Oracle <> B_oracle_r proj
+R16124:16128 Oracle <> trace proj
+R16124:16128 Oracle <> trace proj
+R15986:15987 Oracle <> v1:210 var
+R16008:16016 Oracle <> B_user_w':211 var
+R16037:16044 Oracle <> B_user_r proj
+R16046:16047 Oracle <> st:203 var
+R16070:16080 Oracle <> B_oracle_w':212 var
+R16103:16112 Oracle <> B_oracle_r proj
+R16114:16115 Oracle <> st:203 var
+R16133:16137 Oracle <> trace proj
+R16139:16140 Oracle <> st:203 var
+R15248:15249 Oracle <> st:203 var
+def 16233:16233 <> w
+R16240:16243 Oracle <> User def
+binder 16236:16236 <> u:213
+R16252:16262 Oracle <> OracleState rec
+binder 16247:16248 <> st:214
+R16268:16271 Oracle <> getR def
+R16273:16273 Oracle <> u:213 var
+R16276:16278 Oracle <> L_f proj
+R16280:16281 Oracle <> st:214 var
+def 16296:16297 <> pu
+R16304:16307 Oracle <> User def
+binder 16300:16300 <> u:215
+R16316:16326 Oracle <> OracleState rec
+binder 16311:16312 <> st:216
+R16332:16335 Oracle <> getR def
+R16337:16337 Oracle <> u:215 var
+R16340:16345 Oracle <> P_user proj
+R16347:16348 Oracle <> st:216 var
+def 16363:16364 <> wu
+R16371:16374 Oracle <> User def
+binder 16367:16367 <> u:217
+R16383:16393 Oracle <> OracleState rec
+binder 16378:16379 <> st:218
+R16399:16402 Oracle <> getR def
+R16404:16404 Oracle <> u:217 var
+R16407:16412 Oracle <> W_user proj
+R16414:16415 Oracle <> st:218 var
+def 16430:16431 <> tu
+R16438:16441 Oracle <> User def
+binder 16434:16434 <> u:219
+R16450:16460 Oracle <> OracleState rec
+binder 16445:16446 <> st:220
+R16466:16469 Oracle <> getR def
+R16471:16471 Oracle <> u:219 var
+R16474:16479 Oracle <> T_user proj
+R16481:16482 Oracle <> st:220 var
+def 16564:16565 <> Q'
+R16572:16575 Oracle <> User def
+binder 16568:16568 <> u:221
+R16583:16591 Oracle <> timestamp def
+binder 16579:16579 <> t:222
+R16600:16610 Oracle <> OracleState rec
+binder 16595:16596 <> st:223
+R16615:16615 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R16698:16701 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R16708:16708 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R16622:16622 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16672:16676 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16697:16697 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16623:16623 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16628:16631 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16624:16624 Oracle <> Q proj
+R16626:16627 Oracle <> st:223 var
+R16632:16632 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16640:16644 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16671:16671 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16633:16634 Oracle <> wu def
+R16636:16636 Oracle <> u:221 var
+R16638:16639 Oracle <> st:223 var
+R16645:16649 Oracle <> decay def
+R16660:16662 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16652:16656 Oracle <> t_sub proj
+R16658:16659 Oracle <> st:223 var
+R16663:16664 Oracle <> tu def
+R16666:16666 Oracle <> u:221 var
+R16668:16669 Oracle <> st:223 var
+R16677:16681 Oracle <> decay def
+R16685:16687 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16684:16684 Oracle <> t:222 var
+R16688:16692 Oracle <> t_sub proj
+R16694:16695 Oracle <> st:223 var
+R16702:16702 Oracle <> w def
+R16704:16704 Oracle <> u:221 var
+R16706:16707 Oracle <> st:223 var
+def 16723:16727 <> pbar'
+R16734:16737 Oracle <> User def
+binder 16730:16730 <> u:224
+R16745:16749 Oracle <> value def
+binder 16741:16741 <> v:225
+R16757:16765 Oracle <> timestamp def
+binder 16753:16753 <> t:226
+R16774:16784 Oracle <> OracleState rec
+binder 16769:16770 <> st:227
+R16789:16793 Oracle <> value def
+R16800:16800 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R16929:16933 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R16943:16943 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R16801:16801 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R16911:16915 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R16928:16928 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R16802:16802 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16881:16889 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16910:16910 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16803:16803 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16822:16827 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16880:16880 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16804:16804 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16812:16816 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16821:16821 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16805:16808 Oracle <> pbar proj
+R16810:16811 Oracle <> st:227 var
+R16817:16817 Oracle <> Q proj
+R16819:16820 Oracle <> st:227 var
+R16849:16852 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16879:16879 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16828:16828 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16836:16840 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16848:16848 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16829:16830 Oracle <> pu def
+R16832:16832 Oracle <> u:224 var
+R16834:16835 Oracle <> st:227 var
+R16841:16842 Oracle <> wu def
+R16844:16844 Oracle <> u:224 var
+R16846:16847 Oracle <> st:227 var
+R16853:16857 Oracle <> decay def
+R16868:16870 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16860:16864 Oracle <> t_sub proj
+R16866:16867 Oracle <> st:227 var
+R16871:16872 Oracle <> tu def
+R16874:16874 Oracle <> u:224 var
+R16876:16877 Oracle <> st:227 var
+R16890:16894 Oracle <> decay def
+R16898:16900 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R16897:16897 Oracle <> t:226 var
+R16901:16905 Oracle <> t_sub proj
+R16907:16908 Oracle <> st:227 var
+R16917:16920 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16927:16927 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R16916:16916 Oracle <> v:225 var
+R16921:16921 Oracle <> w def
+R16923:16923 Oracle <> u:224 var
+R16925:16926 Oracle <> st:227 var
+R16934:16935 Oracle <> Q' def
+R16937:16937 Oracle <> u:224 var
+R16939:16939 Oracle <> t:226 var
+R16941:16942 Oracle <> st:227 var
+def 16958:16970 <> reward_payout
+R16977:16980 Oracle <> User def
+binder 16973:16973 <> u:228
+R16988:16996 Oracle <> timestamp def
+binder 16984:16984 <> t:229
+R17005:17009 Oracle <> State rec
+binder 17000:17001 <> st:230
+R17014:17014 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R17079:17082 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R17110:17110 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R17044:17047 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R17078:17078 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R17026:17029 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R17043:17043 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R17021:17025 Oracle <> alpha defax
+R17030:17039 Oracle <> B_oracle_r proj
+R17041:17042 Oracle <> st:230 var
+R17048:17048 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R17059:17063 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R17077:17077 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R17049:17049 Oracle <> w def
+R17051:17051 Oracle <> u:228 var
+R17054:17054 Oracle <> V proj
+R17056:17057 Oracle <> st:230 var
+R17064:17065 Oracle <> Q' def
+R17067:17067 Oracle <> u:228 var
+R17069:17069 Oracle <> t:229 var
+R17072:17072 Oracle <> V proj
+R17074:17075 Oracle <> st:230 var
+R17084:17086 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R17087:17091 Oracle <> decay def
+R17095:17097 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R17094:17094 Oracle <> t:229 var
+R17098:17099 Oracle <> tu def
+R17101:17101 Oracle <> u:228 var
+R17104:17104 Oracle <> V proj
+R17106:17107 Oracle <> st:230 var
+def 17125:17140 <> value_submission
+R17147:17150 Oracle <> User def
+binder 17143:17143 <> u:231
+R17158:17162 Oracle <> value def
+binder 17154:17154 <> v:232
+R17170:17178 Oracle <> timestamp def
+binder 17166:17166 <> t:233
+R17187:17191 Oracle <> State rec
+binder 17182:17183 <> st:234
+R17196:17200 Oracle <> State rec
+R17217:17217 Oracle <> V proj
+R17219:17220 Oracle <> st:234 var
+binder 17211:17212 <> v0:235
+R17237:17242 Oracle <> Unlock def
+R17244:17245 Oracle <> v0:235 var
+R17247:17247 Oracle <> u:231 var
+R17249:17249 Oracle <> t:233 var
+binder 17231:17232 <> v1:236
+R17303:17303 Oracle <> w def
+R17305:17305 Oracle <> u:231 var
+R17307:17308 Oracle <> v1:236 var
+binder 17295:17296 <> w_:237
+R17327:17327 Oracle <> v:232 var
+binder 17319:17320 <> vR:238
+R17346:17347 Oracle <> Q' def
+R17349:17349 Oracle <> u:231 var
+R17351:17351 Oracle <> t:233 var
+R17353:17354 Oracle <> v1:236 var
+binder 17338:17339 <> Qp:239
+R17374:17378 Oracle <> pbar' def
+R17380:17380 Oracle <> u:231 var
+R17382:17383 Oracle <> vR:238 var
+R17385:17385 Oracle <> t:233 var
+R17387:17388 Oracle <> v1:236 var
+binder 17365:17369 <> pbarp:240
+R17421:17421 Oracle <> V proj
+R17421:17421 Oracle <> V proj
+R17421:17421 Oracle <> V proj
+R17436:17443 Oracle <> B_user_w proj
+R17436:17443 Oracle <> B_user_w proj
+R17467:17474 Oracle <> B_user_r proj
+R17467:17474 Oracle <> B_user_r proj
+R17498:17507 Oracle <> B_oracle_w proj
+R17498:17507 Oracle <> B_oracle_w proj
+R17533:17542 Oracle <> B_oracle_r proj
+R17533:17542 Oracle <> B_oracle_r proj
+R17568:17572 Oracle <> trace proj
+R17568:17572 Oracle <> trace proj
+R17426:17427 Oracle <> v1:236 var
+R17448:17455 Oracle <> B_user_w proj
+R17457:17458 Oracle <> st:234 var
+R17479:17486 Oracle <> B_user_r proj
+R17488:17489 Oracle <> st:234 var
+R17512:17521 Oracle <> B_oracle_w proj
+R17523:17524 Oracle <> st:234 var
+R17547:17556 Oracle <> B_oracle_r proj
+R17558:17559 Oracle <> st:234 var
+R17577:17581 Oracle <> trace proj
+R17583:17584 Oracle <> st:234 var
+R17405:17409 Oracle <> State rec
+binder 17399:17401 <> st1:241
+R17613:17625 Oracle <> reward_payout def
+R17627:17627 Oracle <> u:231 var
+R17629:17629 Oracle <> t:233 var
+R17631:17633 Oracle <> st1:241 var
+binder 17605:17605 <> n:242
+R17698:17701 Oracle <> setR def
+R17703:17703 Oracle <> u:231 var
+R17705:17705 Oracle <> v:232 var
+R17708:17713 Oracle <> P_user proj
+R17715:17716 Oracle <> v1:236 var
+binder 17687:17693 <> P_user':243
+R17739:17742 Oracle <> setR def
+R17744:17744 Oracle <> u:231 var
+R17746:17747 Oracle <> w_:237 var
+R17750:17755 Oracle <> W_user proj
+R17757:17758 Oracle <> v1:236 var
+binder 17728:17734 <> W_user':244
+R17781:17784 Oracle <> setR def
+R17786:17786 Oracle <> u:231 var
+R17788:17788 Oracle <> t:233 var
+R17791:17796 Oracle <> T_user proj
+R17798:17799 Oracle <> v1:236 var
+binder 17770:17776 <> T_user':245
+R17841:17841 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R17846:17851 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R17873:17873 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R17842:17842 Oracle <> P proj
+R17844:17845 Oracle <> v1:236 var
+R17866:17869 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R17852:17852 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17854:17855 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17861:17862 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17865:17865 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17853:17853 Oracle <> t:233 var
+R17856:17860 Oracle <> pbarp:240 var
+R17863:17864 Oracle <> vR:238 var
+R17870:17872 Coq.Init.Datatypes <> nil constr
+binder 17835:17836 <> P':246
+R17943:17945 Oracle <> L_l proj
+R17943:17945 Oracle <> L_l proj
+R17943:17945 Oracle <> L_l proj
+R17967:17969 Oracle <> L_f proj
+R17967:17969 Oracle <> L_f proj
+R17991:17995 Oracle <> T_dep proj
+R17991:17995 Oracle <> T_dep proj
+R18017:18020 Oracle <> T_op proj
+R18017:18020 Oracle <> T_op proj
+R18042:18047 Oracle <> P_user proj
+R18042:18047 Oracle <> P_user proj
+R18067:18072 Oracle <> W_user proj
+R18067:18072 Oracle <> W_user proj
+R18092:18097 Oracle <> T_user proj
+R18092:18097 Oracle <> T_user proj
+R18117:18120 Oracle <> pbar proj
+R18117:18120 Oracle <> pbar proj
+R18140:18145 Oracle <> ptilde proj
+R18140:18145 Oracle <> ptilde proj
+R18160:18160 Oracle <> Q proj
+R18160:18160 Oracle <> Q proj
+R18180:18180 Oracle <> P proj
+R18180:18180 Oracle <> P proj
+R18200:18204 Oracle <> t_sub proj
+R18200:18204 Oracle <> t_sub proj
+R18219:18224 Oracle <> t_last proj
+R18219:18224 Oracle <> t_last proj
+R18238:18242 Oracle <> L_tot proj
+R18238:18242 Oracle <> L_tot proj
+R18264:18264 Oracle <> G proj
+R18264:18264 Oracle <> G proj
+R17953:17955 Oracle <> L_l proj
+R17957:17958 Oracle <> v1:236 var
+R17977:17979 Oracle <> L_f proj
+R17981:17982 Oracle <> v1:236 var
+R18001:18005 Oracle <> T_dep proj
+R18007:18008 Oracle <> v1:236 var
+R18027:18030 Oracle <> T_op proj
+R18032:18033 Oracle <> v1:236 var
+R18052:18058 Oracle <> P_user':243 var
+R18077:18083 Oracle <> W_user':244 var
+R18102:18108 Oracle <> T_user':245 var
+R18127:18131 Oracle <> pbarp:240 var
+R18150:18151 Oracle <> vR:238 var
+R18170:18171 Oracle <> Qp:239 var
+R18190:18191 Oracle <> P':246 var
+R18210:18210 Oracle <> t:233 var
+R18229:18229 Oracle <> t:233 var
+R18248:18252 Oracle <> L_tot proj
+R18254:18255 Oracle <> v1:236 var
+R18274:18274 Oracle <> G proj
+R18276:18277 Oracle <> v1:236 var
+R17915:17925 Oracle <> OracleState rec
+binder 17910:17911 <> v2:247
+R18351:18354 Oracle <> addR def
+R18356:18356 Oracle <> u:231 var
+R18358:18358 Oracle <> n:242 var
+R18361:18368 Oracle <> B_user_r proj
+R18370:18371 Oracle <> st:234 var
+binder 18336:18344 <> B_user_r':248
+R18412:18414 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R18399:18408 Oracle <> B_oracle_r proj
+R18410:18411 Oracle <> st:234 var
+R18415:18415 Oracle <> n:242 var
+binder 18383:18393 <> B_oracle_r':249
+R18431:18431 Oracle <> V proj
+R18431:18431 Oracle <> V proj
+R18431:18431 Oracle <> V proj
+R18444:18451 Oracle <> B_user_w proj
+R18444:18451 Oracle <> B_user_w proj
+R18473:18480 Oracle <> B_user_r proj
+R18473:18480 Oracle <> B_user_r proj
+R18500:18509 Oracle <> B_oracle_w proj
+R18500:18509 Oracle <> B_oracle_w proj
+R18533:18542 Oracle <> B_oracle_r proj
+R18533:18542 Oracle <> B_oracle_r proj
+R18564:18568 Oracle <> trace proj
+R18564:18568 Oracle <> trace proj
+R18436:18437 Oracle <> v2:247 var
+R18456:18463 Oracle <> B_user_w proj
+R18465:18466 Oracle <> st:234 var
+R18485:18493 Oracle <> B_user_r':248 var
+R18514:18523 Oracle <> B_oracle_w proj
+R18525:18526 Oracle <> st:234 var
+R18547:18557 Oracle <> B_oracle_r':249 var
+R18573:18577 Oracle <> trace proj
+R18579:18580 Oracle <> st:234 var
+def 18669:18681 <> isBlacklisted
+R18688:18691 Oracle <> User def
+binder 18684:18684 <> u:250
+R18700:18710 Oracle <> OracleState rec
+binder 18695:18696 <> st:251
+R18715:18718 Coq.Init.Datatypes <> bool ind
+R18725:18731 Oracle <> getBool def
+R18733:18733 Oracle <> u:250 var
+R18736:18736 Oracle <> B proj
+R18739:18739 Oracle <> G proj
+R18741:18742 Oracle <> st:251 var
+def 18805:18817 <> value_reading
+R18824:18827 Oracle <> User def
+binder 18820:18820 <> u:252
+R18835:18843 Oracle <> timestamp def
+binder 18831:18831 <> t:253
+R18852:18862 Oracle <> OracleState rec
+binder 18847:18848 <> st:254
+R18867:18877 Oracle <> OracleState rec
+R18887:18899 Oracle <> isBlacklisted def
+R18901:18901 Oracle <> u:252 var
+R18903:18904 Oracle <> st:254 var
+R18938:18940 Oracle <> L_l proj
+R18938:18940 Oracle <> L_l proj
+R18938:18940 Oracle <> L_l proj
+R18962:18964 Oracle <> L_f proj
+R18962:18964 Oracle <> L_f proj
+R18986:18990 Oracle <> T_dep proj
+R18986:18990 Oracle <> T_dep proj
+R19012:19015 Oracle <> T_op proj
+R19012:19015 Oracle <> T_op proj
+R19037:19042 Oracle <> P_user proj
+R19037:19042 Oracle <> P_user proj
+R19064:19069 Oracle <> W_user proj
+R19064:19069 Oracle <> W_user proj
+R19091:19096 Oracle <> T_user proj
+R19091:19096 Oracle <> T_user proj
+R19118:19121 Oracle <> pbar proj
+R19118:19121 Oracle <> pbar proj
+R19143:19148 Oracle <> ptilde proj
+R19143:19148 Oracle <> ptilde proj
+R19170:19170 Oracle <> Q proj
+R19170:19170 Oracle <> Q proj
+R19192:19192 Oracle <> P proj
+R19192:19192 Oracle <> P proj
+R19214:19218 Oracle <> t_sub proj
+R19214:19218 Oracle <> t_sub proj
+R19241:19246 Oracle <> t_last proj
+R19241:19246 Oracle <> t_last proj
+R19260:19264 Oracle <> L_tot proj
+R19260:19264 Oracle <> L_tot proj
+R19286:19286 Oracle <> G proj
+R19286:19286 Oracle <> G proj
+R18948:18950 Oracle <> L_l proj
+R18952:18953 Oracle <> st:254 var
+R18972:18974 Oracle <> L_f proj
+R18976:18977 Oracle <> st:254 var
+R18996:19000 Oracle <> T_dep proj
+R19002:19003 Oracle <> st:254 var
+R19022:19025 Oracle <> T_op proj
+R19027:19028 Oracle <> st:254 var
+R19047:19052 Oracle <> P_user proj
+R19054:19055 Oracle <> st:254 var
+R19074:19079 Oracle <> W_user proj
+R19081:19082 Oracle <> st:254 var
+R19101:19106 Oracle <> T_user proj
+R19108:19109 Oracle <> st:254 var
+R19128:19131 Oracle <> pbar proj
+R19133:19134 Oracle <> st:254 var
+R19153:19158 Oracle <> ptilde proj
+R19160:19161 Oracle <> st:254 var
+R19180:19180 Oracle <> Q proj
+R19182:19183 Oracle <> st:254 var
+R19202:19202 Oracle <> P proj
+R19204:19205 Oracle <> st:254 var
+R19224:19228 Oracle <> t_sub proj
+R19230:19231 Oracle <> st:254 var
+R19251:19251 Oracle <> t:253 var
+R19270:19274 Oracle <> L_tot proj
+R19276:19277 Oracle <> st:254 var
+R19296:19296 Oracle <> G proj
+R19298:19299 Oracle <> st:254 var
+R18915:18916 Oracle <> st:254 var
+def 19464:19477 <> blacklist_vote
+R19486:19489 Oracle <> User def
+binder 19480:19480 <> u:255
+binder 19482:19482 <> x:256
+R19497:19505 Oracle <> timestamp def
+binder 19493:19493 <> t:257
+R19514:19524 Oracle <> OracleState rec
+binder 19509:19510 <> st:258
+R19529:19539 Oracle <> OracleState rec
+R19559:19562 Coq.Init.Datatypes <> negb def
+R19565:19577 Oracle <> isBlacklisted def
+R19579:19579 Oracle <> u:255 var
+R19581:19582 Oracle <> st:258 var
+binder 19550:19554 <> cond1:259
+R19618:19621 Oracle <> :::x_'>b'_x not
+R19603:19606 Oracle <> getR def
+R19608:19608 Oracle <> u:255 var
+R19611:19613 Oracle <> L_f proj
+R19615:19616 Oracle <> st:258 var
+binder 19594:19598 <> cond2:260
+R19642:19645 Coq.Init.Datatypes <> negb def
+R19648:19655 Oracle <> mem_user def
+R19657:19657 Oracle <> x:256 var
+R19660:19669 Oracle <> getUserSet def
+R19671:19671 Oracle <> u:255 var
+R19674:19680 Oracle <> M_black proj
+R19683:19683 Oracle <> G proj
+R19685:19686 Oracle <> st:258 var
+binder 19633:19637 <> cond3:261
+R19700:19703 Coq.Init.Datatypes <> negb def
+R19706:19709 Coq.Init.Datatypes <> andb def
+R19718:19721 Coq.Init.Datatypes <> andb def
+R19729:19733 Oracle <> cond3:261 var
+R19723:19727 Oracle <> cond2:260 var
+R19711:19715 Oracle <> cond1:259 var
+R19770:19775 Oracle <> Unlock def
+R19777:19778 Oracle <> st:258 var
+R19780:19780 Oracle <> u:255 var
+R19782:19782 Oracle <> t:257 var
+binder 19764:19765 <> v0:262
+R19852:19855 Oracle <> addR def
+R19857:19857 Oracle <> x:256 var
+R19860:19863 Oracle <> getR def
+R19865:19865 Oracle <> u:255 var
+R19868:19870 Oracle <> L_f proj
+R19872:19873 Oracle <> v0:262 var
+R19878:19884 Oracle <> V_black proj
+R19887:19887 Oracle <> G proj
+R19889:19890 Oracle <> v0:262 var
+binder 19840:19847 <> V_black':263
+R19951:19955 Oracle <> setR2 def
+R19957:19957 Oracle <> x:256 var
+R19959:19959 Oracle <> u:255 var
+R19962:19965 Oracle <> getR def
+R19967:19967 Oracle <> u:255 var
+R19970:19972 Oracle <> L_f proj
+R19974:19975 Oracle <> v0:262 var
+R19980:19986 Oracle <> W_black proj
+R19989:19989 Oracle <> G proj
+R19991:19992 Oracle <> v0:262 var
+binder 19939:19946 <> W_black':264
+R20063:20072 Oracle <> setUserSet def
+R20074:20074 Oracle <> u:255 var
+R20077:20083 Oracle <> addUser def
+R20085:20085 Oracle <> x:256 var
+R20088:20097 Oracle <> getUserSet def
+R20099:20099 Oracle <> u:255 var
+R20102:20108 Oracle <> M_black proj
+R20111:20111 Oracle <> G proj
+R20113:20114 Oracle <> v0:262 var
+R20121:20127 Oracle <> M_black proj
+R20130:20130 Oracle <> G proj
+R20132:20133 Oracle <> v0:262 var
+binder 20051:20058 <> M_black':265
+R20190:20190 Oracle <> B proj
+R20190:20190 Oracle <> B proj
+R20190:20190 Oracle <> B proj
+R20219:20225 Oracle <> V_black proj
+R20219:20225 Oracle <> V_black proj
+R20248:20254 Oracle <> V_white proj
+R20248:20254 Oracle <> V_white proj
+R20283:20289 Oracle <> M_black proj
+R20283:20289 Oracle <> M_black proj
+R20312:20318 Oracle <> M_white proj
+R20312:20318 Oracle <> M_white proj
+R20347:20353 Oracle <> W_black proj
+R20347:20353 Oracle <> W_black proj
+R20376:20382 Oracle <> W_white proj
+R20376:20382 Oracle <> W_white proj
+R20201:20201 Oracle <> B proj
+R20204:20204 Oracle <> G proj
+R20206:20207 Oracle <> v0:262 var
+R20230:20237 Oracle <> V_black':263 var
+R20259:20265 Oracle <> V_white proj
+R20268:20268 Oracle <> G proj
+R20270:20271 Oracle <> v0:262 var
+R20294:20301 Oracle <> M_black':265 var
+R20323:20329 Oracle <> M_white proj
+R20332:20332 Oracle <> G proj
+R20334:20335 Oracle <> v0:262 var
+R20358:20365 Oracle <> W_black':264 var
+R20387:20393 Oracle <> W_white proj
+R20396:20396 Oracle <> G proj
+R20398:20399 Oracle <> v0:262 var
+R20154:20168 Oracle <> GovernanceState rec
+binder 20149:20150 <> g1:266
+R20490:20493 Oracle <> setR def
+R20495:20495 Oracle <> u:255 var
+R20497:20497 Oracle <> t:257 var
+R20500:20503 Oracle <> T_op proj
+R20505:20506 Oracle <> v0:262 var
+binder 20481:20485 <> T_op':267
+R20557:20559 Oracle <> L_l proj
+R20557:20559 Oracle <> L_l proj
+R20557:20559 Oracle <> L_l proj
+R20583:20585 Oracle <> L_f proj
+R20583:20585 Oracle <> L_f proj
+R20609:20613 Oracle <> T_dep proj
+R20609:20613 Oracle <> T_dep proj
+R20637:20640 Oracle <> T_op proj
+R20637:20640 Oracle <> T_op proj
+R20662:20667 Oracle <> P_user proj
+R20662:20667 Oracle <> P_user proj
+R20691:20696 Oracle <> W_user proj
+R20691:20696 Oracle <> W_user proj
+R20720:20725 Oracle <> T_user proj
+R20720:20725 Oracle <> T_user proj
+R20749:20752 Oracle <> pbar proj
+R20749:20752 Oracle <> pbar proj
+R20776:20781 Oracle <> ptilde proj
+R20776:20781 Oracle <> ptilde proj
+R20805:20805 Oracle <> Q proj
+R20805:20805 Oracle <> Q proj
+R20829:20829 Oracle <> P proj
+R20829:20829 Oracle <> P proj
+R20853:20857 Oracle <> t_sub proj
+R20853:20857 Oracle <> t_sub proj
+R20881:20886 Oracle <> t_last proj
+R20881:20886 Oracle <> t_last proj
+R20902:20906 Oracle <> L_tot proj
+R20902:20906 Oracle <> L_tot proj
+R20930:20930 Oracle <> G proj
+R20930:20930 Oracle <> G proj
+R20567:20569 Oracle <> L_l proj
+R20571:20572 Oracle <> v0:262 var
+R20593:20595 Oracle <> L_f proj
+R20597:20598 Oracle <> v0:262 var
+R20619:20623 Oracle <> T_dep proj
+R20625:20626 Oracle <> v0:262 var
+R20647:20651 Oracle <> T_op':267 var
+R20672:20677 Oracle <> P_user proj
+R20679:20680 Oracle <> v0:262 var
+R20701:20706 Oracle <> W_user proj
+R20708:20709 Oracle <> v0:262 var
+R20730:20735 Oracle <> T_user proj
+R20737:20738 Oracle <> v0:262 var
+R20759:20762 Oracle <> pbar proj
+R20764:20765 Oracle <> v0:262 var
+R20786:20791 Oracle <> ptilde proj
+R20793:20794 Oracle <> v0:262 var
+R20815:20815 Oracle <> Q proj
+R20817:20818 Oracle <> v0:262 var
+R20839:20839 Oracle <> P proj
+R20841:20842 Oracle <> v0:262 var
+R20863:20867 Oracle <> t_sub proj
+R20869:20870 Oracle <> v0:262 var
+R20891:20891 Oracle <> t:257 var
+R20912:20916 Oracle <> L_tot proj
+R20918:20919 Oracle <> v0:262 var
+R20940:20941 Oracle <> g1:266 var
+R20525:20535 Oracle <> OracleState rec
+binder 20520:20521 <> v1:268
+R20987:20995 Oracle <> Recompute def
+R20997:20997 Oracle <> x:256 var
+R20999:21000 Oracle <> v1:268 var
+R19746:19747 Oracle <> st:258 var
+def 21174:21187 <> whitelist_vote
+R21196:21199 Oracle <> User def
+binder 21190:21190 <> u:269
+binder 21192:21192 <> x:270
+R21207:21215 Oracle <> timestamp def
+binder 21203:21203 <> t:271
+R21224:21234 Oracle <> OracleState rec
+binder 21219:21220 <> st:272
+R21239:21249 Oracle <> OracleState rec
+R21269:21272 Coq.Init.Datatypes <> negb def
+R21275:21281 Oracle <> getBool def
+R21283:21283 Oracle <> u:269 var
+R21286:21286 Oracle <> B proj
+R21289:21289 Oracle <> G proj
+R21291:21292 Oracle <> st:272 var
+binder 21260:21264 <> cond1:273
+R21330:21333 Oracle <> :::x_'>b'_x not
+R21315:21318 Oracle <> getR def
+R21320:21320 Oracle <> u:269 var
+R21323:21325 Oracle <> L_f proj
+R21327:21328 Oracle <> st:272 var
+binder 21306:21310 <> cond2:274
+R21354:21357 Coq.Init.Datatypes <> negb def
+R21360:21367 Oracle <> mem_user def
+R21369:21369 Oracle <> x:270 var
+R21372:21381 Oracle <> getUserSet def
+R21383:21383 Oracle <> u:269 var
+R21386:21392 Oracle <> M_black proj
+R21395:21395 Oracle <> G proj
+R21397:21398 Oracle <> st:272 var
+binder 21345:21349 <> cond3:275
+R21412:21415 Coq.Init.Datatypes <> negb def
+R21418:21421 Coq.Init.Datatypes <> andb def
+R21430:21433 Coq.Init.Datatypes <> andb def
+R21441:21445 Oracle <> cond3:275 var
+R21435:21439 Oracle <> cond2:274 var
+R21423:21427 Oracle <> cond1:273 var
+R21482:21487 Oracle <> Unlock def
+R21489:21490 Oracle <> st:272 var
+R21492:21492 Oracle <> u:269 var
+R21494:21494 Oracle <> t:271 var
+binder 21476:21477 <> v0:276
+R21564:21567 Oracle <> addR def
+R21569:21569 Oracle <> x:270 var
+R21572:21575 Oracle <> getR def
+R21577:21577 Oracle <> u:269 var
+R21580:21582 Oracle <> L_f proj
+R21584:21585 Oracle <> v0:276 var
+R21590:21596 Oracle <> V_white proj
+R21599:21599 Oracle <> G proj
+R21601:21602 Oracle <> v0:276 var
+binder 21552:21559 <> V_white':277
+R21663:21667 Oracle <> setR2 def
+R21669:21669 Oracle <> x:270 var
+R21671:21671 Oracle <> u:269 var
+R21674:21677 Oracle <> getR def
+R21679:21679 Oracle <> u:269 var
+R21682:21684 Oracle <> L_f proj
+R21686:21687 Oracle <> v0:276 var
+R21692:21698 Oracle <> W_white proj
+R21701:21701 Oracle <> G proj
+R21703:21704 Oracle <> v0:276 var
+binder 21651:21658 <> W_white':278
+R21769:21778 Oracle <> getUserSet def
+R21780:21780 Oracle <> u:269 var
+R21783:21789 Oracle <> M_white proj
+R21792:21792 Oracle <> G proj
+R21794:21795 Oracle <> v0:276 var
+binder 21763:21764 <> Mu:279
+R21817:21823 Oracle <> addUser def
+R21825:21825 Oracle <> x:270 var
+R21827:21828 Oracle <> Mu:279 var
+binder 21810:21812 <> Mu':280
+R21853:21862 Oracle <> setUserSet def
+R21864:21864 Oracle <> u:269 var
+R21866:21868 Oracle <> Mu':280 var
+R21871:21877 Oracle <> M_white proj
+R21880:21880 Oracle <> G proj
+R21882:21883 Oracle <> v0:276 var
+binder 21841:21848 <> M_white':281
+R21940:21940 Oracle <> B proj
+R21940:21940 Oracle <> B proj
+R21940:21940 Oracle <> B proj
+R21969:21975 Oracle <> V_black proj
+R21969:21975 Oracle <> V_black proj
+R22004:22010 Oracle <> V_white proj
+R22004:22010 Oracle <> V_white proj
+R22033:22039 Oracle <> M_black proj
+R22033:22039 Oracle <> M_black proj
+R22068:22074 Oracle <> M_white proj
+R22068:22074 Oracle <> M_white proj
+R22097:22103 Oracle <> W_black proj
+R22097:22103 Oracle <> W_black proj
+R22132:22138 Oracle <> W_white proj
+R22132:22138 Oracle <> W_white proj
+R21951:21951 Oracle <> B proj
+R21954:21954 Oracle <> G proj
+R21956:21957 Oracle <> v0:276 var
+R21980:21986 Oracle <> V_black proj
+R21989:21989 Oracle <> G proj
+R21991:21992 Oracle <> v0:276 var
+R22015:22022 Oracle <> V_white':277 var
+R22044:22050 Oracle <> M_black proj
+R22053:22053 Oracle <> G proj
+R22055:22056 Oracle <> v0:276 var
+R22079:22086 Oracle <> M_white':281 var
+R22108:22114 Oracle <> W_black proj
+R22117:22117 Oracle <> G proj
+R22119:22120 Oracle <> v0:276 var
+R22143:22150 Oracle <> W_white':278 var
+R21904:21918 Oracle <> GovernanceState rec
+binder 21899:21900 <> g1:282
+R22240:22243 Oracle <> setR def
+R22245:22245 Oracle <> u:269 var
+R22247:22247 Oracle <> t:271 var
+R22250:22253 Oracle <> T_op proj
+R22255:22256 Oracle <> v0:276 var
+binder 22231:22235 <> T_op':283
+R22307:22309 Oracle <> L_l proj
+R22307:22309 Oracle <> L_l proj
+R22307:22309 Oracle <> L_l proj
+R22333:22335 Oracle <> L_f proj
+R22333:22335 Oracle <> L_f proj
+R22359:22363 Oracle <> T_dep proj
+R22359:22363 Oracle <> T_dep proj
+R22387:22390 Oracle <> T_op proj
+R22387:22390 Oracle <> T_op proj
+R22412:22417 Oracle <> P_user proj
+R22412:22417 Oracle <> P_user proj
+R22441:22446 Oracle <> W_user proj
+R22441:22446 Oracle <> W_user proj
+R22470:22475 Oracle <> T_user proj
+R22470:22475 Oracle <> T_user proj
+R22499:22502 Oracle <> pbar proj
+R22499:22502 Oracle <> pbar proj
+R22526:22531 Oracle <> ptilde proj
+R22526:22531 Oracle <> ptilde proj
+R22555:22555 Oracle <> Q proj
+R22555:22555 Oracle <> Q proj
+R22579:22579 Oracle <> P proj
+R22579:22579 Oracle <> P proj
+R22603:22607 Oracle <> t_sub proj
+R22603:22607 Oracle <> t_sub proj
+R22631:22636 Oracle <> t_last proj
+R22631:22636 Oracle <> t_last proj
+R22652:22656 Oracle <> L_tot proj
+R22652:22656 Oracle <> L_tot proj
+R22680:22680 Oracle <> G proj
+R22680:22680 Oracle <> G proj
+R22317:22319 Oracle <> L_l proj
+R22321:22322 Oracle <> v0:276 var
+R22343:22345 Oracle <> L_f proj
+R22347:22348 Oracle <> v0:276 var
+R22369:22373 Oracle <> T_dep proj
+R22375:22376 Oracle <> v0:276 var
+R22397:22401 Oracle <> T_op':283 var
+R22422:22427 Oracle <> P_user proj
+R22429:22430 Oracle <> v0:276 var
+R22451:22456 Oracle <> W_user proj
+R22458:22459 Oracle <> v0:276 var
+R22480:22485 Oracle <> T_user proj
+R22487:22488 Oracle <> v0:276 var
+R22509:22512 Oracle <> pbar proj
+R22514:22515 Oracle <> v0:276 var
+R22536:22541 Oracle <> ptilde proj
+R22543:22544 Oracle <> v0:276 var
+R22565:22565 Oracle <> Q proj
+R22567:22568 Oracle <> v0:276 var
+R22589:22589 Oracle <> P proj
+R22591:22592 Oracle <> v0:276 var
+R22613:22617 Oracle <> t_sub proj
+R22619:22620 Oracle <> v0:276 var
+R22641:22641 Oracle <> t:271 var
+R22662:22666 Oracle <> L_tot proj
+R22668:22669 Oracle <> v0:276 var
+R22690:22691 Oracle <> g1:282 var
+R22275:22285 Oracle <> OracleState rec
+binder 22270:22271 <> v1:284
+R22737:22745 Oracle <> Recompute def
+R22747:22747 Oracle <> x:270 var
+R22749:22750 Oracle <> v1:284 var
+R21458:21459 Oracle <> st:272 var
+def 22799:22820 <> weight_synchronization
+R22827:22830 Oracle <> User def
+binder 22823:22823 <> u:285
+R22838:22846 Oracle <> timestamp def
+binder 22834:22834 <> t:286
+R22855:22865 Oracle <> OracleState rec
+binder 22850:22851 <> st:287
+R22870:22880 Oracle <> OracleState rec
+R22897:22902 Oracle <> Unlock def
+R22904:22905 Oracle <> st:287 var
+R22907:22907 Oracle <> u:285 var
+R22909:22909 Oracle <> t:286 var
+binder 22891:22892 <> v0:288
+R22926:22933 Oracle <> Reweight def
+R22935:22935 Oracle <> u:285 var
+R22938:22941 Oracle <> getR def
+R22943:22943 Oracle <> u:285 var
+R22946:22948 Oracle <> L_f proj
+R22950:22951 Oracle <> v0:288 var
+R22955:22956 Oracle <> v0:288 var
+binder 22920:22921 <> v1:289
+R22970:22972 Oracle <> L_l proj
+R22970:22972 Oracle <> L_l proj
+R22970:22972 Oracle <> L_l proj
+R22992:22994 Oracle <> L_f proj
+R22992:22994 Oracle <> L_f proj
+R23014:23018 Oracle <> T_dep proj
+R23014:23018 Oracle <> T_dep proj
+R23038:23041 Oracle <> T_op proj
+R23038:23041 Oracle <> T_op proj
+R23061:23066 Oracle <> P_user proj
+R23061:23066 Oracle <> P_user proj
+R23086:23091 Oracle <> W_user proj
+R23086:23091 Oracle <> W_user proj
+R23111:23116 Oracle <> T_user proj
+R23111:23116 Oracle <> T_user proj
+R23136:23139 Oracle <> pbar proj
+R23136:23139 Oracle <> pbar proj
+R23159:23164 Oracle <> ptilde proj
+R23159:23164 Oracle <> ptilde proj
+R23184:23184 Oracle <> Q proj
+R23184:23184 Oracle <> Q proj
+R23204:23204 Oracle <> P proj
+R23204:23204 Oracle <> P proj
+R23224:23228 Oracle <> t_sub proj
+R23224:23228 Oracle <> t_sub proj
+R23248:23253 Oracle <> t_last proj
+R23248:23253 Oracle <> t_last proj
+R23265:23269 Oracle <> L_tot proj
+R23265:23269 Oracle <> L_tot proj
+R23289:23289 Oracle <> G proj
+R23289:23289 Oracle <> G proj
+R22980:22982 Oracle <> L_l proj
+R22984:22985 Oracle <> v1:289 var
+R23002:23004 Oracle <> L_f proj
+R23006:23007 Oracle <> v1:289 var
+R23024:23028 Oracle <> T_dep proj
+R23030:23031 Oracle <> v1:289 var
+R23048:23051 Oracle <> T_op proj
+R23053:23054 Oracle <> v1:289 var
+R23071:23076 Oracle <> P_user proj
+R23078:23079 Oracle <> v1:289 var
+R23096:23101 Oracle <> W_user proj
+R23103:23104 Oracle <> v1:289 var
+R23121:23126 Oracle <> T_user proj
+R23128:23129 Oracle <> v1:289 var
+R23146:23149 Oracle <> pbar proj
+R23151:23152 Oracle <> v1:289 var
+R23169:23174 Oracle <> ptilde proj
+R23176:23177 Oracle <> v1:289 var
+R23194:23194 Oracle <> Q proj
+R23196:23197 Oracle <> v1:289 var
+R23214:23214 Oracle <> P proj
+R23216:23217 Oracle <> v1:289 var
+R23234:23238 Oracle <> t_sub proj
+R23240:23241 Oracle <> v1:289 var
+R23258:23258 Oracle <> t:286 var
+R23275:23279 Oracle <> L_tot proj
+R23281:23282 Oracle <> v1:289 var
+R23299:23299 Oracle <> G proj
+R23301:23302 Oracle <> v1:289 var
+def 23354:23367 <> reward_funding
+R23374:23377 Oracle <> User def
+binder 23370:23370 <> u:290
+R23385:23391 Oracle <> balance def
+binder 23381:23381 <> a:291
+R23399:23407 Oracle <> timestamp def
+binder 23395:23395 <> t:292
+R23416:23420 Oracle <> State rec
+binder 23411:23412 <> st:293
+R23425:23429 Oracle <> State rec
+R23453:23456 Oracle <> addR def
+R23458:23458 Oracle <> u:290 var
+R23461:23461 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R23462:23462 Oracle <> a:291 var
+R23466:23473 Oracle <> B_user_r proj
+R23475:23476 Oracle <> st:293 var
+binder 23440:23448 <> B_user_r':294
+R23503:23503 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R23517:23520 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R23504:23513 Oracle <> B_oracle_r proj
+R23515:23516 Oracle <> st:293 var
+R23521:23521 Oracle <> a:291 var
+binder 23488:23498 <> B_oracle_r':295
+R23538:23538 Oracle <> V proj
+R23540:23541 Oracle <> st:293 var
+binder 23532:23533 <> v0:296
+R23574:23576 Oracle <> L_l proj
+R23574:23576 Oracle <> L_l proj
+R23574:23576 Oracle <> L_l proj
+R23605:23607 Oracle <> L_f proj
+R23605:23607 Oracle <> L_f proj
+R23636:23640 Oracle <> T_dep proj
+R23636:23640 Oracle <> T_dep proj
+R23669:23672 Oracle <> T_op proj
+R23669:23672 Oracle <> T_op proj
+R23701:23706 Oracle <> P_user proj
+R23701:23706 Oracle <> P_user proj
+R23735:23740 Oracle <> W_user proj
+R23735:23740 Oracle <> W_user proj
+R23769:23774 Oracle <> T_user proj
+R23769:23774 Oracle <> T_user proj
+R23803:23806 Oracle <> pbar proj
+R23803:23806 Oracle <> pbar proj
+R23835:23840 Oracle <> ptilde proj
+R23835:23840 Oracle <> ptilde proj
+R23869:23869 Oracle <> Q proj
+R23869:23869 Oracle <> Q proj
+R23898:23898 Oracle <> P proj
+R23898:23898 Oracle <> P proj
+R23927:23931 Oracle <> t_sub proj
+R23927:23931 Oracle <> t_sub proj
+R23960:23965 Oracle <> t_last proj
+R23960:23965 Oracle <> t_last proj
+R23986:23990 Oracle <> L_tot proj
+R23986:23990 Oracle <> L_tot proj
+R24019:24019 Oracle <> G proj
+R24019:24019 Oracle <> G proj
+R23584:23586 Oracle <> L_l proj
+R23588:23589 Oracle <> v0:296 var
+R23615:23617 Oracle <> L_f proj
+R23619:23620 Oracle <> v0:296 var
+R23646:23650 Oracle <> T_dep proj
+R23652:23653 Oracle <> v0:296 var
+R23679:23682 Oracle <> T_op proj
+R23684:23685 Oracle <> v0:296 var
+R23711:23716 Oracle <> P_user proj
+R23718:23719 Oracle <> v0:296 var
+R23745:23750 Oracle <> W_user proj
+R23752:23753 Oracle <> v0:296 var
+R23779:23784 Oracle <> T_user proj
+R23786:23787 Oracle <> v0:296 var
+R23813:23816 Oracle <> pbar proj
+R23818:23819 Oracle <> v0:296 var
+R23845:23850 Oracle <> ptilde proj
+R23852:23853 Oracle <> v0:296 var
+R23879:23879 Oracle <> Q proj
+R23881:23882 Oracle <> v0:296 var
+R23908:23908 Oracle <> P proj
+R23910:23911 Oracle <> v0:296 var
+R23937:23941 Oracle <> t_sub proj
+R23943:23944 Oracle <> v0:296 var
+R23970:23970 Oracle <> t:292 var
+R23996:24000 Oracle <> L_tot proj
+R24002:24003 Oracle <> v0:296 var
+R24029:24029 Oracle <> G proj
+R24031:24032 Oracle <> v0:296 var
+binder 23552:23553 <> V':297
+R24060:24060 Oracle <> V proj
+R24060:24060 Oracle <> V proj
+R24060:24060 Oracle <> V proj
+R24073:24080 Oracle <> B_user_w proj
+R24073:24080 Oracle <> B_user_w proj
+R24102:24109 Oracle <> B_user_r proj
+R24102:24109 Oracle <> B_user_r proj
+R24129:24138 Oracle <> B_oracle_w proj
+R24129:24138 Oracle <> B_oracle_w proj
+R24162:24171 Oracle <> B_oracle_r proj
+R24162:24171 Oracle <> B_oracle_r proj
+R24193:24197 Oracle <> trace proj
+R24193:24197 Oracle <> trace proj
+R24065:24066 Oracle <> V':297 var
+R24085:24092 Oracle <> B_user_w proj
+R24094:24095 Oracle <> st:293 var
+R24114:24122 Oracle <> B_user_r':294 var
+R24143:24152 Oracle <> B_oracle_w proj
+R24154:24155 Oracle <> st:293 var
+R24176:24186 Oracle <> B_oracle_r':295 var
+R24202:24206 Oracle <> trace proj
+R24208:24209 Oracle <> st:293 var
+prf 24225:24237 <> sum_list_R_le
+binder 24250:24251 <> l1:298
+binder 24253:24254 <> l2:299
+R24278:24285 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24261:24267 Coq.Lists.List <> Forall2 ind
+R24276:24277 Oracle <> l2:299 var
+R24273:24274 Oracle <> l1:298 var
+R24269:24271 Coq.Reals.Rdefinitions <> Rle def
+R24299:24302 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R24286:24295 Oracle <> sum_list_R def
+R24297:24298 Oracle <> l1:298 var
+R24303:24312 Oracle <> sum_list_R def
+R24314:24315 Oracle <> l2:299 var
+R24375:24382 Coq.Reals.RIneq <> Rle_refl thm
+R24375:24382 Coq.Reals.RIneq <> Rle_refl thm
+R24403:24412 Oracle <> sum_list_R def
+R24431:24445 Coq.Reals.RIneq <> Rplus_le_compat thm
+R24431:24445 Coq.Reals.RIneq <> Rplus_le_compat thm
+prf 24486:24498 <> Forall2_map_l
+binder 24512:24512 <> A:300
+binder 24514:24514 <> B:301
+R24530:24533 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24529:24529 Oracle <> B:301 var
+R24535:24538 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24534:24534 Oracle <> B:301 var
+binder 24525:24525 <> R:302
+R24553:24556 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24552:24552 Oracle <> A:300 var
+R24557:24557 Oracle <> B:301 var
+binder 24546:24546 <> f:303
+binder 24548:24548 <> g:304
+binder 24560:24560 <> l:305
+R24567:24567 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24601:24609 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 24575:24575 <> x:306
+R24584:24587 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24578:24579 Coq.Lists.List <> In def
+R24583:24583 Oracle <> l:305 var
+R24581:24581 Oracle <> x:306 var
+R24588:24588 Oracle <> R:302 var
+R24597:24597 Oracle <> g:304 var
+R24599:24599 Oracle <> x:306 var
+R24591:24591 Oracle <> f:303 var
+R24593:24593 Oracle <> x:306 var
+R24610:24616 Coq.Lists.List <> Forall2 ind
+R24631:24633 Coq.Lists.List <> map def
+R24637:24637 Oracle <> l:305 var
+R24635:24635 Oracle <> g:304 var
+R24621:24623 Coq.Lists.List <> map def
+R24627:24627 Oracle <> l:305 var
+R24625:24625 Oracle <> f:303 var
+R24618:24618 Oracle <> R:302 var
+prf 24817:24841 <> sum_list_R_map_mult_const
+R24859:24859 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 24855:24855 <> c:307
+R24871:24874 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24867:24870 Oracle <> User def
+R24875:24875 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 24863:24863 <> f:308
+R24883:24886 Coq.Init.Datatypes <> list ind
+R24888:24891 Oracle <> User def
+binder 24879:24879 <> l:309
+R24936:24938 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R24899:24908 Oracle <> sum_list_R def
+R24911:24913 Coq.Lists.List <> map def
+R24934:24934 Oracle <> l:309 var
+binder 24920:24920 <> u:310
+R24926:24928 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R24925:24925 Oracle <> c:307 var
+R24929:24929 Oracle <> f:308 var
+R24931:24931 Oracle <> u:310 var
+R24940:24942 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R24939:24939 Oracle <> c:307 var
+R24943:24952 Oracle <> sum_list_R def
+R24955:24957 Coq.Lists.List <> map def
+R24961:24961 Oracle <> l:309 var
+R24959:24959 Oracle <> f:308 var
+R25030:25038 Coq.Reals.RIneq <> Rmult_0_r thm
+R25030:25038 Coq.Reals.RIneq <> Rmult_0_r thm
+R25064:25081 Coq.Reals.Raxioms <> Rmult_plus_distr_l thm
+R25064:25081 Coq.Reals.Raxioms <> Rmult_plus_distr_l thm
+R25064:25081 Coq.Reals.Raxioms <> Rmult_plus_distr_l thm
+R25094:25110 Coq.Reals.RIneq <> Rplus_eq_compat_l thm
+R25094:25110 Coq.Reals.RIneq <> Rplus_eq_compat_l thm
+prf 25140:25163 <> sum_list_R_nonneg_nonneg
+R25185:25188 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25181:25184 Oracle <> User def
+R25189:25189 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 25177:25177 <> f:311
+R25197:25200 Coq.Init.Datatypes <> list ind
+R25202:25205 Oracle <> User def
+binder 25193:25193 <> l:312
+R25213:25213 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25232:25240 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 25221:25221 <> x:313
+R25227:25230 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R25224:25224 Oracle <> f:311 var
+R25226:25226 Oracle <> x:313 var
+R25261:25264 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R25241:25250 Oracle <> sum_list_R def
+R25253:25255 Coq.Lists.List <> map def
+R25259:25259 Oracle <> l:312 var
+R25257:25257 Oracle <> f:311 var
+R25317:25324 Coq.Reals.RIneq <> Rge_refl thm
+R25317:25324 Coq.Reals.RIneq <> Rge_refl thm
+R25373:25375 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R25373:25375 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R25397:25411 Coq.Reals.RIneq <> Rplus_ge_compat thm
+R25397:25411 Coq.Reals.RIneq <> Rplus_ge_compat thm
+prf 25438:25465 <> sum_list_R_nn_exists_pos_pos
+R25481:25484 Coq.Init.Datatypes <> list ind
+R25486:25489 Oracle <> User def
+binder 25479:25479 <> l:314
+R25500:25503 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25496:25499 Oracle <> User def
+R25504:25504 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 25493:25493 <> f:315
+R25512:25512 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25531:25539 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 25520:25520 <> x:316
+R25524:25527 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R25528:25528 Oracle <> f:315 var
+R25530:25530 Oracle <> x:316 var
+R25540:25540 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25568:25576 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25541:25547 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R25549:25550 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 25548:25548 <> x:317
+R25557:25560 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R25551:25552 Coq.Lists.List <> In def
+R25556:25556 Oracle <> l:314 var
+R25554:25554 Oracle <> x:317 var
+R25562:25564 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R25565:25565 Oracle <> f:315 var
+R25567:25567 Oracle <> x:317 var
+R25578:25580 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R25581:25590 Oracle <> sum_list_R def
+R25593:25595 Coq.Lists.List <> map def
+R25599:25599 Oracle <> l:314 var
+R25597:25597 Oracle <> f:315 var
+R25814:25833 Coq.Reals.RIneq <> Rplus_lt_le_0_compat thm
+R25814:25833 Coq.Reals.RIneq <> Rplus_lt_le_0_compat thm
+R25883:25886 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R25863:25872 Oracle <> sum_list_R def
+R25875:25877 Coq.Lists.List <> map def
+R25883:25886 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R25863:25872 Oracle <> sum_list_R def
+R25875:25877 Coq.Lists.List <> map def
+R25907:25930 Oracle <> sum_list_R_nonneg_nonneg thm
+R25907:25930 Oracle <> sum_list_R_nonneg_nonneg thm
+R26035:26054 Coq.Reals.RIneq <> Rplus_le_lt_0_compat thm
+R26035:26054 Coq.Reals.RIneq <> Rplus_le_lt_0_compat thm
+prf 26588:26633 <> ideal_decayed_weight_mean_function_is_constant
+R26643:26645 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R26639:26642 Coq.Init.Logic <> True ind
+R26646:26649 Coq.Init.Logic <> True ind
+def 26693:26700 <> Lambda_x
+R26707:26710 Oracle <> User def
+binder 26703:26703 <> x:318
+R26718:26726 Oracle <> timestamp def
+binder 26714:26714 <> t:319
+R26735:26745 Oracle <> OracleState rec
+binder 26730:26731 <> st:320
+R26749:26749 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R26801:26828 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R26756:26756 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R26773:26777 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R26800:26800 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R26757:26765 Oracle <> W_decayed def
+R26767:26768 Oracle <> st:320 var
+R26770:26770 Oracle <> x:318 var
+R26772:26772 Oracle <> t:319 var
+R26779:26781 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R26778:26778 Oracle <> t:319 var
+R26782:26785 Oracle <> getR def
+R26787:26787 Oracle <> x:318 var
+R26790:26795 Oracle <> T_user proj
+R26797:26798 Oracle <> st:320 var
+R26829:26838 Oracle <> sum_list_R def
+R26841:26843 Coq.Lists.List <> map def
+R26873:26877 Oracle <> Users defax
+binder 26850:26850 <> u:321
+R26855:26863 Oracle <> W_decayed def
+R26865:26866 Oracle <> st:320 var
+R26868:26868 Oracle <> u:321 var
+R26870:26870 Oracle <> t:319 var
+def 26893:26898 <> Lambda
+R26905:26913 Oracle <> timestamp def
+binder 26901:26901 <> t:322
+R26922:26932 Oracle <> OracleState rec
+binder 26917:26918 <> st:323
+R26937:26937 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R26944:26953 Oracle <> sum_list_R def
+R26956:26958 Coq.Lists.List <> map def
+R26987:26991 Oracle <> Users defax
+binder 26965:26965 <> u:324
+R26970:26977 Oracle <> Lambda_x def
+R26979:26979 Oracle <> u:324 var
+R26981:26981 Oracle <> t:322 var
+R26983:26984 Oracle <> st:323 var
+def 27600:27613 <> inactive_after
+R27620:27623 Oracle <> User def
+binder 27616:27616 <> u:325
+R27635:27643 Oracle <> timestamp def
+binder 27627:27631 <> t_end:326
+R27652:27656 Oracle <> Trace def
+binder 27647:27648 <> tr:327
+R27664:27669 Coq.Lists.List <> Forall ind
+R27817:27818 Oracle <> tr:327 var
+binder 27676:27677 <> op:328
+R27688:27689 Oracle <> op:328 var
+R27718:27727 Oracle <> Submission constr
+R27745:27748 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R27740:27742 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R27739:27739 Oracle <> u:325 var
+R27750:27753 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R27754:27758 Oracle <> t_end:326 var
+R27787:27790 Coq.Init.Logic <> True ind
+def 27833:27849 <> inactive_operator
+R27856:27859 Oracle <> User def
+binder 27852:27852 <> u:330
+R27868:27872 Oracle <> Trace def
+binder 27863:27864 <> tr:331
+R27880:27886 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R27892:27893 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 27887:27891 <> t_end:332
+R27904:27907 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R27899:27902 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R27894:27898 Oracle <> t_end:332 var
+R27908:27921 Oracle <> inactive_after def
+R27923:27923 Oracle <> u:330 var
+R27925:27929 Oracle <> t_end:332 var
+R27931:27932 Oracle <> tr:331 var
+def 27984:27998 <> no_submit_after
+R28005:28008 Oracle <> User def
+binder 28001:28001 <> u:333
+R28020:28028 Oracle <> timestamp def
+binder 28012:28016 <> t_end:334
+R28037:28041 Oracle <> Trace def
+binder 28032:28033 <> tr:335
+binder 28063:28063 <> t:336
+binder 28065:28065 <> v:337
+R28094:28097 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R28068:28069 Coq.Init.Logic <> ::type_scope:'~'_x not
+R28070:28071 Coq.Lists.List <> In def
+R28092:28093 Oracle <> tr:335 var
+R28074:28083 Oracle <> Submission constr
+R28085:28085 Oracle <> u:333 var
+R28087:28087 Oracle <> v:337 var
+R28089:28089 Oracle <> t:336 var
+R28099:28102 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R28098:28098 Oracle <> t:336 var
+R28103:28107 Oracle <> t_end:334 var
+prf 28117:28129 <> remove_not_in
+binder 28143:28143 <> A:338
+R28176:28176 Oracle <> A:338 var
+binder 28170:28170 <> x:339
+binder 28172:28172 <> y:340
+R28179:28179 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R28185:28189 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R28196:28196 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R28181:28183 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28180:28180 Oracle <> x:339 var
+R28184:28184 Oracle <> y:340 var
+R28191:28194 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R28190:28190 Oracle <> x:339 var
+R28195:28195 Oracle <> y:340 var
+binder 28154:28159 <> eq_dec:341
+R28213:28213 Oracle <> A:338 var
+binder 28209:28209 <> x:342
+R28221:28224 Coq.Init.Datatypes <> list ind
+R28226:28226 Oracle <> A:338 var
+binder 28217:28217 <> l:343
+R28242:28249 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R28234:28235 Coq.Init.Logic <> ::type_scope:'~'_x not
+R28236:28237 Coq.Lists.List <> In def
+R28241:28241 Oracle <> l:343 var
+R28239:28239 Oracle <> x:342 var
+R28250:28250 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28268:28271 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28251:28256 Coq.Lists.List <> remove def
+R28267:28267 Oracle <> l:343 var
+R28265:28265 Oracle <> x:342 var
+R28258:28263 Oracle <> eq_dec:341 var
+R28272:28272 Oracle <> l:343 var
+prf 28528:28543 <> sum_split_remove
+R28561:28564 Coq.Init.Datatypes <> list ind
+R28566:28569 Oracle <> User def
+binder 28557:28557 <> l:344
+binder 28572:28572 <> u:345
+R28583:28586 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R28579:28582 Oracle <> User def
+R28587:28587 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 28575:28575 <> f:346
+R28602:28605 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R28595:28599 Coq.Lists.List <> NoDup ind
+R28601:28601 Oracle <> l:344 var
+R28612:28619 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R28606:28607 Coq.Lists.List <> In def
+R28611:28611 Oracle <> l:344 var
+R28609:28609 Oracle <> u:345 var
+R28640:28642 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R28620:28629 Oracle <> sum_list_R def
+R28632:28634 Coq.Lists.List <> map def
+R28638:28638 Oracle <> l:344 var
+R28636:28636 Oracle <> f:346 var
+R28685:28687 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R28643:28652 Oracle <> sum_list_R def
+R28655:28657 Coq.Lists.List <> map def
+R28662:28667 Coq.Lists.List <> remove def
+R28682:28682 Oracle <> l:344 var
+R28680:28680 Oracle <> u:345 var
+R28669:28678 Coq.Arith.PeanoNat Nat eq_dec thm
+R28659:28659 Oracle <> f:346 var
+R28688:28688 Oracle <> f:346 var
+R28690:28690 Oracle <> u:345 var
+R28926:28935 Coq.Arith.PeanoNat Nat eq_dec thm
+R28926:28935 Coq.Arith.PeanoNat Nat eq_dec thm
+R28989:29001 Oracle <> remove_not_in thm
+R29003:29006 Oracle <> User def
+R28989:29001 Oracle <> remove_not_in thm
+R29003:29006 Oracle <> User def
+R28989:29001 Oracle <> remove_not_in thm
+R29003:29006 Oracle <> User def
+R29053:29062 Coq.Arith.PeanoNat Nat eq_dec thm
+R29053:29062 Coq.Arith.PeanoNat Nat eq_dec thm
+prf 29237:29255 <> Lambda_u_rewrite_38
+R29274:29284 Oracle <> OracleState rec
+binder 29269:29270 <> st:347
+R29292:29300 Oracle <> timestamp def
+binder 29288:29288 <> t:348
+R29308:29311 Oracle <> User def
+binder 29304:29304 <> u:349
+R29329:29336 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R29319:29320 Coq.Lists.List <> In def
+R29324:29328 Oracle <> Users defax
+R29322:29322 Oracle <> u:349 var
+R29348:29459 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R29337:29341 Coq.Lists.List <> NoDup ind
+R29343:29347 Oracle <> Users defax
+R29460:29460 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R29494:29566 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 29468:29468 <> x:350
+R29489:29492 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R29471:29474 Oracle <> getR def
+R29476:29476 Oracle <> x:350 var
+R29479:29484 Oracle <> W_user proj
+R29486:29487 Oracle <> st:347 var
+R29567:29567 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R29617:29625 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R29568:29574 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R29577:29578 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 29575:29576 <> u0:351
+R29590:29593 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R29579:29580 Coq.Lists.List <> In def
+R29585:29589 Oracle <> Users defax
+R29582:29583 Oracle <> u0:351 var
+R29613:29615 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R29594:29597 Oracle <> getR def
+R29599:29600 Oracle <> u0:351 var
+R29603:29608 Oracle <> W_user proj
+R29610:29611 Oracle <> st:347 var
+R29641:29649 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29626:29633 Oracle <> Lambda_x def
+R29635:29635 Oracle <> u:349 var
+R29637:29637 Oracle <> t:348 var
+R29639:29640 Oracle <> st:347 var
+R29650:29650 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R29700:29712 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R29967:29967 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R29651:29651 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R29670:29674 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R29699:29699 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R29652:29655 Oracle <> getR def
+R29657:29657 Oracle <> u:349 var
+R29660:29665 Oracle <> W_user proj
+R29667:29668 Oracle <> st:347 var
+R29676:29679 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R29698:29698 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R29675:29675 Oracle <> t:348 var
+R29680:29683 Oracle <> getR def
+R29685:29685 Oracle <> u:349 var
+R29688:29693 Oracle <> T_user proj
+R29695:29696 Oracle <> st:347 var
+R29713:29713 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R29934:29947 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R29966:29966 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R29714:29723 Oracle <> sum_list_R def
+R29738:29740 Coq.Lists.List <> map def
+R29907:29912 Coq.Lists.List <> remove def
+R29927:29931 Oracle <> Users defax
+R29925:29925 Oracle <> u:349 var
+R29914:29923 Coq.Arith.PeanoNat Nat eq_dec thm
+binder 29762:29762 <> x:352
+R29767:29767 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R29786:29817 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R29888:29888 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R29768:29771 Oracle <> getR def
+R29773:29773 Oracle <> x:352 var
+R29776:29781 Oracle <> W_user proj
+R29783:29784 Oracle <> st:347 var
+R29818:29823 Coq.Reals.Rpower <> Rpower def
+R29828:29828 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R29872:29875 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R29829:29829 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R29848:29852 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R29871:29871 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R29830:29833 Oracle <> getR def
+R29835:29835 Oracle <> x:352 var
+R29838:29843 Oracle <> T_user proj
+R29845:29846 Oracle <> st:347 var
+R29853:29856 Oracle <> getR def
+R29858:29858 Oracle <> u:349 var
+R29861:29866 Oracle <> T_user proj
+R29868:29869 Oracle <> st:347 var
+R29876:29884 Coq.Init.Specif <> proj1_sig def
+R29886:29886 Oracle <> h defax
+R29948:29951 Oracle <> getR def
+R29953:29953 Oracle <> u:349 var
+R29956:29961 Oracle <> W_user proj
+R29963:29964 Oracle <> st:347 var
+R30025:30032 Oracle <> Lambda_x def
+R30044:30052 Oracle <> W_decayed def
+R30064:30068 Oracle <> decay def
+R30083:30091 Coq.Init.Specif <> proj1_sig def
+R30093:30093 Oracle <> h defax
+R30083:30091 Coq.Init.Specif <> proj1_sig def
+R30093:30093 Oracle <> h defax
+R30108:30115 Oracle <> h defax
+R30108:30115 Oracle <> h defax
+binder 30164:30164 <> x:353
+R30180:30180 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30214:30230 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30210:30212 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30183:30186 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30209:30209 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30188:30190 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30191:30194 Oracle <> getR def
+R30196:30196 Oracle <> x:353 var
+R30199:30204 Oracle <> T_user proj
+R30231:30231 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R30265:30284 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R30330:30330 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R30261:30263 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30234:30237 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30260:30260 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30239:30241 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30242:30245 Oracle <> getR def
+R30250:30255 Oracle <> T_user proj
+R30285:30285 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30325:30328 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30304:30306 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30286:30289 Oracle <> getR def
+R30291:30291 Oracle <> x:353 var
+R30294:30299 Oracle <> T_user proj
+R30307:30310 Oracle <> getR def
+R30315:30320 Oracle <> T_user proj
+binder 30164:30164 <> x:354
+R30180:30180 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30214:30230 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30210:30212 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30183:30186 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30209:30209 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30188:30190 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30191:30194 Oracle <> getR def
+R30196:30196 Oracle <> x:354 var
+R30199:30204 Oracle <> T_user proj
+R30231:30231 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R30265:30284 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R30330:30330 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R30261:30263 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30234:30237 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30260:30260 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30239:30241 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30242:30245 Oracle <> getR def
+R30250:30255 Oracle <> T_user proj
+R30285:30285 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30325:30328 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30304:30306 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30286:30289 Oracle <> getR def
+R30291:30291 Oracle <> x:354 var
+R30294:30299 Oracle <> T_user proj
+R30307:30310 Oracle <> getR def
+R30315:30320 Oracle <> T_user proj
+R30417:30427 Coq.Reals.Rpower <> Rpower_plus thm
+R30417:30427 Coq.Reals.Rpower <> Rpower_plus thm
+R30417:30427 Coq.Reals.Rpower <> Rpower_plus thm
+R30579:30605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30466:30468 Coq.Lists.List <> map def
+R30574:30578 Oracle <> Users defax
+binder 30475:30475 <> x:355
+R30498:30527 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30480:30483 Oracle <> getR def
+R30485:30485 Oracle <> x:355 var
+R30488:30493 Oracle <> W_user proj
+R30528:30533 Coq.Reals.Rpower <> Rpower def
+R30567:30569 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30540:30543 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30566:30566 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30545:30547 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30548:30551 Oracle <> getR def
+R30553:30553 Oracle <> x:355 var
+R30556:30561 Oracle <> T_user proj
+R30606:30608 Coq.Lists.List <> map def
+R30825:30829 Oracle <> Users defax
+binder 30615:30615 <> x:356
+R30664:30667 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30822:30822 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30620:30625 Coq.Reals.Rpower <> Rpower def
+R30659:30661 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30632:30635 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30658:30658 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30637:30639 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30640:30643 Oracle <> getR def
+R30648:30653 Oracle <> T_user proj
+R30686:30765 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30668:30671 Oracle <> getR def
+R30673:30673 Oracle <> x:356 var
+R30676:30681 Oracle <> W_user proj
+R30766:30771 Coq.Reals.Rpower <> Rpower def
+R30776:30776 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30816:30819 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30795:30797 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30777:30780 Oracle <> getR def
+R30782:30782 Oracle <> x:356 var
+R30785:30790 Oracle <> T_user proj
+R30798:30801 Oracle <> getR def
+R30806:30811 Oracle <> T_user proj
+R30579:30605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R30466:30468 Coq.Lists.List <> map def
+R30574:30578 Oracle <> Users defax
+binder 30475:30475 <> x:357
+R30498:30527 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30480:30483 Oracle <> getR def
+R30485:30485 Oracle <> x:357 var
+R30488:30493 Oracle <> W_user proj
+R30528:30533 Coq.Reals.Rpower <> Rpower def
+R30567:30569 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30540:30543 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30566:30566 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30545:30547 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30548:30551 Oracle <> getR def
+R30553:30553 Oracle <> x:357 var
+R30556:30561 Oracle <> T_user proj
+R30606:30608 Coq.Lists.List <> map def
+R30825:30829 Oracle <> Users defax
+binder 30615:30615 <> x:358
+R30664:30667 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30822:30822 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30620:30625 Coq.Reals.Rpower <> Rpower def
+R30659:30661 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30632:30635 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30658:30658 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30637:30639 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30640:30643 Oracle <> getR def
+R30648:30653 Oracle <> T_user proj
+R30686:30765 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30668:30671 Oracle <> getR def
+R30673:30673 Oracle <> x:358 var
+R30676:30681 Oracle <> W_user proj
+R30766:30771 Coq.Reals.Rpower <> Rpower def
+R30776:30776 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30816:30819 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30795:30797 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R30777:30780 Oracle <> getR def
+R30782:30782 Oracle <> x:358 var
+R30785:30790 Oracle <> T_user proj
+R30798:30801 Oracle <> getR def
+R30806:30811 Oracle <> T_user proj
+R30847:30853 Coq.Lists.List <> map_ext thm
+R30847:30853 Coq.Lists.List <> map_ext thm
+R30895:30905 Coq.Reals.Rpower <> Rpower_plus thm
+R30895:30905 Coq.Reals.Rpower <> Rpower_plus thm
+R30895:30905 Coq.Reals.Rpower <> Rpower_plus thm
+R30955:30979 Oracle <> sum_list_R_map_mult_const thm
+R30982:30987 Coq.Reals.Rpower <> Rpower def
+R31021:31023 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30994:30997 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R31020:31020 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30999:31001 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31002:31005 Oracle <> getR def
+R31010:31015 Oracle <> T_user proj
+binder 31046:31046 <> x:359
+R31069:31096 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R31051:31054 Oracle <> getR def
+R31056:31056 Oracle <> x:359 var
+R31059:31064 Oracle <> W_user proj
+R31097:31102 Coq.Reals.Rpower <> Rpower def
+R31107:31107 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31147:31150 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31126:31128 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31108:31111 Oracle <> getR def
+R31113:31113 Oracle <> x:359 var
+R31116:31121 Oracle <> T_user proj
+R31129:31132 Oracle <> getR def
+R31137:31142 Oracle <> T_user proj
+R31168:31172 Oracle <> Users defax
+R30955:30979 Oracle <> sum_list_R_map_mult_const thm
+R30982:30987 Coq.Reals.Rpower <> Rpower def
+R31021:31023 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30994:30997 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R31020:31020 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30999:31001 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31002:31005 Oracle <> getR def
+R31010:31015 Oracle <> T_user proj
+binder 31046:31046 <> x:360
+R31069:31096 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R31051:31054 Oracle <> getR def
+R31056:31056 Oracle <> x:360 var
+R31059:31064 Oracle <> W_user proj
+R31097:31102 Coq.Reals.Rpower <> Rpower def
+R31107:31107 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31147:31150 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31126:31128 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31108:31111 Oracle <> getR def
+R31113:31113 Oracle <> x:360 var
+R31116:31121 Oracle <> T_user proj
+R31129:31132 Oracle <> getR def
+R31137:31142 Oracle <> T_user proj
+R31168:31172 Oracle <> Users defax
+R30955:30979 Oracle <> sum_list_R_map_mult_const thm
+R30982:30987 Coq.Reals.Rpower <> Rpower def
+R31021:31023 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R30994:30997 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R31020:31020 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R30999:31001 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31002:31005 Oracle <> getR def
+R31010:31015 Oracle <> T_user proj
+binder 31046:31046 <> x:361
+R31069:31096 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R31051:31054 Oracle <> getR def
+R31056:31056 Oracle <> x:361 var
+R31059:31064 Oracle <> W_user proj
+R31097:31102 Coq.Reals.Rpower <> Rpower def
+R31107:31107 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31147:31150 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31126:31128 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31108:31111 Oracle <> getR def
+R31113:31113 Oracle <> x:361 var
+R31116:31121 Oracle <> T_user proj
+R31129:31132 Oracle <> getR def
+R31137:31142 Oracle <> T_user proj
+R31168:31172 Oracle <> Users defax
+R31189:31196 Coq.Reals.RIneq <> Rdiv_def thm
+R31189:31196 Coq.Reals.RIneq <> Rdiv_def thm
+R31211:31211 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31251:31254 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31230:31232 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31212:31215 Oracle <> getR def
+R31220:31225 Oracle <> T_user proj
+R31233:31236 Oracle <> getR def
+R31241:31246 Oracle <> T_user proj
+R31211:31211 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31251:31254 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31230:31232 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31212:31215 Oracle <> getR def
+R31220:31225 Oracle <> T_user proj
+R31233:31236 Oracle <> getR def
+R31241:31246 Oracle <> T_user proj
+R31310:31317 Coq.Reals.Rpower <> Rpower_O thm
+R31310:31317 Coq.Reals.Rpower <> Rpower_O thm
+R31310:31317 Coq.Reals.Rpower <> Rpower_O thm
+R31341:31349 Coq.Reals.RIneq <> Rmult_1_r thm
+R31341:31349 Coq.Reals.RIneq <> Rmult_1_r thm
+R31341:31349 Coq.Reals.RIneq <> Rmult_1_r thm
+R31364:31379 Oracle <> sum_split_remove thm
+R31364:31379 Oracle <> sum_split_remove thm
+R31364:31379 Oracle <> sum_split_remove thm
+R31413:31413 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31453:31456 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31432:31434 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31414:31417 Oracle <> getR def
+R31422:31427 Oracle <> T_user proj
+R31435:31438 Oracle <> getR def
+R31443:31448 Oracle <> T_user proj
+R31413:31413 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31453:31456 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R31432:31434 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R31414:31417 Oracle <> getR def
+R31422:31427 Oracle <> T_user proj
+R31435:31438 Oracle <> getR def
+R31443:31448 Oracle <> T_user proj
+R31512:31519 Coq.Reals.Rpower <> Rpower_O thm
+R31512:31519 Coq.Reals.Rpower <> Rpower_O thm
+R31512:31519 Coq.Reals.Rpower <> Rpower_O thm
+R31542:31550 Coq.Reals.RIneq <> Rmult_1_r thm
+R31542:31550 Coq.Reals.RIneq <> Rmult_1_r thm
+R31542:31550 Coq.Reals.RIneq <> Rmult_1_r thm
+R31588:31597 Coq.Reals.RIneq <> Rgt_not_eq thm
+R31588:31597 Coq.Reals.RIneq <> Rgt_not_eq thm
+R31653:31662 Coq.Arith.PeanoNat Nat eq_dec thm
+R31653:31662 Coq.Arith.PeanoNat Nat eq_dec thm
+R31702:31704 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R31702:31704 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R31731:31748 Coq.Reals.RIneq <> Rplus_ge_gt_compat thm
+R31731:31748 Coq.Reals.RIneq <> Rplus_ge_gt_compat thm
+R31764:31787 Oracle <> sum_list_R_nonneg_nonneg thm
+R31764:31787 Oracle <> sum_list_R_nonneg_nonneg thm
+R31848:31853 Coq.Reals.Rpower <> Rpower def
+R31869:31874 Coq.Reals.RIneq <> Rle_ge thm
+R31869:31874 Coq.Reals.RIneq <> Rle_ge thm
+R31890:31901 Coq.Reals.RIneq <> Rmult_le_pos thm
+R31890:31901 Coq.Reals.RIneq <> Rmult_le_pos thm
+R31930:31932 Coq.Reals.Rdefinitions <> Rle def
+R31954:31960 Coq.Reals.Exp_prop <> exp_pos thm
+R31954:31960 Coq.Reals.Exp_prop <> exp_pos thm
+R31989:31994 Coq.Reals.RIneq <> Rlt_gt thm
+R31989:31994 Coq.Reals.RIneq <> Rlt_gt thm
+R32039:32058 Coq.Reals.RIneq <> Rplus_lt_le_0_compat thm
+R32039:32058 Coq.Reals.RIneq <> Rplus_lt_le_0_compat thm
+R32083:32110 Oracle <> sum_list_R_nn_exists_pos_pos thm
+R32083:32110 Oracle <> sum_list_R_nn_exists_pos_pos thm
+R32138:32149 Coq.Reals.RIneq <> Rmult_le_pos thm
+R32138:32149 Coq.Reals.RIneq <> Rmult_le_pos thm
+R32197:32199 Coq.Reals.Rdefinitions <> Rle def
+R32214:32220 Coq.Reals.Exp_prop <> exp_pos thm
+R32214:32220 Coq.Reals.Exp_prop <> exp_pos thm
+R32258:32269 Coq.Lists.List <> in_in_remove thm
+R32258:32269 Coq.Lists.List <> in_in_remove thm
+R32296:32301 Coq.Reals.Rpower <> Rpower def
+R32321:32337 Coq.Reals.RIneq <> Rmult_lt_0_compat thm
+R32321:32337 Coq.Reals.RIneq <> Rmult_lt_0_compat thm
+R32351:32357 Coq.Reals.Exp_prop <> exp_pos thm
+R32351:32357 Coq.Reals.Exp_prop <> exp_pos thm
+R32371:32376 Coq.Reals.Rpower <> Rpower def
+R32395:32401 Coq.Reals.Exp_prop <> exp_pos thm
+R32437:32439 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R32433:32435 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R32406:32409 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R32432:32432 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R32411:32413 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R32414:32417 Oracle <> getR def
+R32422:32427 Oracle <> T_user proj
+R32440:32441 Coq.Reals.Rpower <> ln def
+R32395:32401 Coq.Reals.Exp_prop <> exp_pos thm
+R32437:32439 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R32433:32435 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R32406:32409 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R32432:32432 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R32411:32413 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R32414:32417 Oracle <> getR def
+R32422:32427 Oracle <> T_user proj
+R32440:32441 Coq.Reals.Rpower <> ln def
+R32458:32467 Coq.Reals.RIneq <> Rlt_not_eq thm
+R32458:32467 Coq.Reals.RIneq <> Rlt_not_eq thm
+def 32630:32639 <> tends_to_0
+R32647:32650 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R32646:32646 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R32651:32651 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 32642:32642 <> f:362
+R32679:32679 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 32673:32675 <> eps:363
+R32693:32700 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R32689:32691 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R32686:32688 Oracle <> eps:363 var
+R32701:32707 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R32713:32714 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R32712:32712 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 32708:32708 <> T:364
+R32726:32726 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 32722:32722 <> t:365
+R32735:32738 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R32730:32733 Coq.Reals.Rdefinitions <> ::R_scope:x_'>='_x not
+R32729:32729 Oracle <> t:365 var
+R32734:32734 Oracle <> T:364 var
+R32749:32751 Coq.Reals.Rdefinitions <> ::R_scope:x_'<'_x not
+R32739:32742 Coq.Reals.Rbasic_fun <> Rabs def
+R32745:32745 Oracle <> f:362 var
+R32747:32747 Oracle <> t:365 var
+R32752:32754 Oracle <> eps:363 var
+prf 32764:32777 <> tends_to_0_ext
+R32797:32800 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R32796:32796 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+R32801:32801 Coq.Reals.Rdefinitions RbaseSymbolsImpl R defax
+binder 32790:32790 <> f:366
+binder 32792:32792 <> g:367
+R32808:32808 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R32828:32836 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+binder 32816:32816 <> t:368
+R32822:32824 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R32819:32819 Oracle <> f:366 var
+R32821:32821 Oracle <> t:368 var
+R32825:32825 Oracle <> g:367 var
+R32827:32827 Oracle <> t:368 var
+R32849:32856 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R32837:32846 Oracle <> tends_to_0 def
+R32848:32848 Oracle <> f:366 var
+R32857:32866 Oracle <> tends_to_0 def
+R32868:32868 Oracle <> g:367 var
+ax 33047:33063 <> W_user_nonneg_hyp
+binder 33076:33076 <> u:369
+binder 33078:33079 <> st:370
+R33087:33090 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R33091:33094 Oracle <> getR def
+R33096:33096 Oracle <> u:369 var
+R33099:33104 Oracle <> W_user proj
+R33106:33107 Oracle <> st:370 var
+prf 33120:33149 <> inactive_oracle_operator_delay
+R33168:33178 Oracle <> OracleState rec
+binder 33163:33164 <> st:372
+R33186:33194 Oracle <> timestamp def
+binder 33182:33182 <> t:373
+R33203:33207 Oracle <> Trace def
+binder 33198:33199 <> tr:374
+R33215:33218 Oracle <> User def
+binder 33211:33211 <> u:375
+R33236:33243 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R33226:33227 Coq.Lists.List <> In def
+R33231:33235 Oracle <> Users defax
+R33229:33229 Oracle <> u:375 var
+R33266:33269 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R33244:33260 Oracle <> inactive_operator def
+R33262:33262 Oracle <> u:375 var
+R33264:33265 Oracle <> tr:374 var
+R33270:33279 Oracle <> tends_to_0 def
+binder 33286:33286 <> t:376
+R33291:33298 Oracle <> Lambda_x def
+R33300:33300 Oracle <> u:375 var
+R33302:33302 Oracle <> t:376 var
+R33304:33305 Oracle <> st:372 var
+binder 33376:33376 <> t:377
+R33398:33398 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33446:33469 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33777:33777 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33399:33399 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33418:33422 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33445:33445 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33400:33403 Oracle <> getR def
+R33408:33413 Oracle <> W_user proj
+R33424:33426 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33423:33423 Oracle <> t:377 var
+R33427:33430 Oracle <> getR def
+R33435:33440 Oracle <> T_user proj
+R33470:33470 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R33735:33758 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R33471:33480 Oracle <> sum_list_R def
+R33483:33485 Coq.Lists.List <> map def
+R33708:33713 Coq.Lists.List <> remove def
+R33728:33732 Oracle <> Users defax
+R33715:33724 Coq.Arith.PeanoNat Nat eq_dec thm
+binder 33492:33492 <> x:378
+R33555:33599 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33537:33540 Oracle <> getR def
+R33542:33542 Oracle <> x:378 var
+R33545:33550 Oracle <> W_user proj
+R33600:33605 Coq.Reals.Rpower <> Rpower def
+R33610:33610 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33654:33657 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33611:33611 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33630:33634 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33653:33653 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33612:33615 Oracle <> getR def
+R33617:33617 Oracle <> x:378 var
+R33620:33625 Oracle <> T_user proj
+R33635:33638 Oracle <> getR def
+R33643:33648 Oracle <> T_user proj
+R33658:33666 Coq.Init.Specif <> proj1_sig def
+R33668:33668 Oracle <> h defax
+R33759:33762 Oracle <> getR def
+R33767:33772 Oracle <> W_user proj
+binder 33376:33376 <> t:379
+R33398:33398 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33446:33469 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33777:33777 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33399:33399 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33418:33422 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33445:33445 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33400:33403 Oracle <> getR def
+R33408:33413 Oracle <> W_user proj
+R33424:33426 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33423:33423 Oracle <> t:379 var
+R33427:33430 Oracle <> getR def
+R33435:33440 Oracle <> T_user proj
+R33470:33470 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R33735:33758 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R33471:33480 Oracle <> sum_list_R def
+R33483:33485 Coq.Lists.List <> map def
+R33708:33713 Coq.Lists.List <> remove def
+R33728:33732 Oracle <> Users defax
+R33715:33724 Coq.Arith.PeanoNat Nat eq_dec thm
+binder 33492:33492 <> x:380
+R33555:33599 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R33537:33540 Oracle <> getR def
+R33542:33542 Oracle <> x:380 var
+R33545:33550 Oracle <> W_user proj
+R33600:33605 Coq.Reals.Rpower <> Rpower def
+R33610:33610 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33654:33657 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R33611:33611 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33630:33634 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33653:33653 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R33612:33615 Oracle <> getR def
+R33617:33617 Oracle <> x:380 var
+R33620:33625 Oracle <> T_user proj
+R33635:33638 Oracle <> getR def
+R33643:33648 Oracle <> T_user proj
+R33658:33666 Coq.Init.Specif <> proj1_sig def
+R33668:33668 Oracle <> h defax
+R33759:33762 Oracle <> getR def
+R33767:33772 Oracle <> W_user proj
+binder 33807:33807 <> t:381
+R33838:33840 Coq.Init.Logic <> ::type_scope:x_'='_x not
+binder 33815:33815 <> t:382
+R33820:33827 Oracle <> Lambda_x def
+R33831:33831 Oracle <> t:382 var
+R33837:33837 Oracle <> t:381 var
+R33846:33846 Oracle <> t:381 var
+binder 33807:33807 <> t:383
+R33838:33840 Coq.Init.Logic <> ::type_scope:x_'='_x not
+binder 33815:33815 <> t:384
+R33820:33827 Oracle <> Lambda_x def
+R33831:33831 Oracle <> t:384 var
+R33837:33837 Oracle <> t:383 var
+R33846:33846 Oracle <> t:383 var
+R33892:33910 Oracle <> Lambda_u_rewrite_38 thm
+R33892:33910 Oracle <> Lambda_u_rewrite_38 thm
+R33932:33942 Oracle <> Users_NoDup prfax
+R33932:33942 Oracle <> Users_NoDup prfax
+R33965:33967 Coq.Reals.Rdefinitions <> Rge def
+R33969:33971 Coq.Reals.Rdefinitions <> Rle def
+R33980:33985 Coq.Reals.RIneq <> Rle_ge thm
+R33980:33985 Coq.Reals.RIneq <> Rle_ge thm
+R33994:34010 Oracle <> W_user_nonneg_hyp prfax
+R33994:34010 Oracle <> W_user_nonneg_hyp prfax
+R34040:34053 Oracle <> tends_to_0_ext thm
+R34040:34053 Oracle <> tends_to_0_ext thm
+def 34611:34615 <> tstar
+R34623:34633 Oracle <> OracleState rec
+binder 34618:34619 <> st:385
+R34638:34646 Oracle <> timestamp def
+R34653:34666 Coq.Reals.RList <> MinRlist def
+R34669:34671 Coq.Lists.List <> map def
+R34703:34707 Oracle <> Users defax
+binder 34678:34678 <> x:386
+R34683:34686 Oracle <> getR def
+R34688:34688 Oracle <> x:386 var
+R34691:34696 Oracle <> T_user proj
+R34698:34699 Oracle <> st:385 var
+prf 34718:34728 <> tstar_le_tu
+binder 34741:34742 <> st:387
+binder 34744:34744 <> u:388
+R34761:34768 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R34751:34752 Coq.Lists.List <> In def
+R34756:34760 Oracle <> Users defax
+R34754:34754 Oracle <> u:388 var
+R34777:34780 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R34769:34773 Oracle <> tstar def
+R34775:34776 Oracle <> st:387 var
+R34781:34784 Oracle <> getR def
+R34786:34786 Oracle <> u:388 var
+R34789:34794 Oracle <> T_user proj
+R34796:34797 Oracle <> st:387 var
+R34835:34839 Oracle <> tstar def
+R34850:34866 Coq.Reals.RList <> MinRlist_P1 thm
+R34850:34866 Coq.Reals.RList <> MinRlist_P1 thm
+R34877:34886 Coq.Lists.List <> in_map_iff thm
+R34877:34886 Coq.Lists.List <> in_map_iff thm
+prf 34948:34958 <> Lambda_x_le
+binder 34971:34971 <> u:389
+binder 34973:34973 <> t:390
+binder 34975:34976 <> st:391
+R34993:35000 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R34983:34984 Coq.Lists.List <> In def
+R34988:34992 Oracle <> Users defax
+R34986:34986 Oracle <> u:389 var
+R35022:35029 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R35002:35005 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R35006:35014 Oracle <> W_decayed def
+R35016:35017 Oracle <> st:391 var
+R35019:35019 Oracle <> u:389 var
+R35021:35021 Oracle <> t:390 var
+R35086:35093 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R35082:35084 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R35030:35039 Oracle <> sum_list_R def
+R35042:35044 Coq.Lists.List <> map def
+R35076:35080 Oracle <> Users defax
+binder 35051:35052 <> u0:392
+R35057:35065 Oracle <> W_decayed def
+R35067:35068 Oracle <> st:391 var
+R35070:35071 Oracle <> u0:392 var
+R35073:35073 Oracle <> t:390 var
+R35224:35234 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R35137:35164 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R35110:35113 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R35136:35136 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R35094:35102 Oracle <> W_decayed def
+R35104:35105 Oracle <> st:391 var
+R35107:35107 Oracle <> u:389 var
+R35109:35109 Oracle <> t:390 var
+R35115:35117 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R35114:35114 Oracle <> t:390 var
+R35118:35121 Oracle <> getR def
+R35123:35123 Oracle <> u:389 var
+R35126:35131 Oracle <> T_user proj
+R35133:35134 Oracle <> st:391 var
+R35165:35174 Oracle <> sum_list_R def
+R35177:35179 Coq.Lists.List <> map def
+R35218:35222 Oracle <> Users defax
+R35191:35194 Oracle <> User def
+binder 35186:35187 <> u0:393
+R35199:35207 Oracle <> W_decayed def
+R35209:35210 Oracle <> st:391 var
+R35212:35213 Oracle <> u0:393 var
+R35215:35215 Oracle <> t:390 var
+R35268:35295 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R35235:35235 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R35248:35251 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R35237:35239 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R35236:35236 Oracle <> t:390 var
+R35240:35244 Oracle <> tstar def
+R35246:35247 Oracle <> st:391 var
+R35252:35260 Oracle <> W_decayed def
+R35262:35263 Oracle <> st:391 var
+R35265:35265 Oracle <> u:389 var
+R35267:35267 Oracle <> t:390 var
+R35296:35305 Oracle <> sum_list_R def
+R35308:35310 Coq.Lists.List <> map def
+R35342:35346 Oracle <> Users defax
+binder 35317:35318 <> u0:394
+R35323:35331 Oracle <> W_decayed def
+R35333:35334 Oracle <> st:391 var
+R35336:35337 Oracle <> u0:394 var
+R35339:35339 Oracle <> t:390 var
+R35396:35405 Oracle <> sum_list_R def
+R35408:35410 Coq.Lists.List <> map def
+R35449:35453 Oracle <> Users defax
+R35422:35425 Oracle <> User def
+binder 35417:35418 <> u0:395
+R35430:35438 Oracle <> W_decayed def
+R35443:35444 Oracle <> u0:395 var
+R35396:35405 Oracle <> sum_list_R def
+R35408:35410 Coq.Lists.List <> map def
+R35449:35453 Oracle <> Users defax
+R35422:35425 Oracle <> User def
+binder 35417:35418 <> u0:396
+R35430:35438 Oracle <> W_decayed def
+R35443:35444 Oracle <> u0:396 var
+R35489:35496 Coq.Reals.RIneq <> Rdiv_def thm
+R35489:35496 Coq.Reals.RIneq <> Rdiv_def thm
+R35489:35496 Coq.Reals.RIneq <> Rdiv_def thm
+R35489:35496 Coq.Reals.RIneq <> Rdiv_def thm
+R35507:35523 Coq.Reals.RIneq <> Rmult_le_compat_r thm
+R35507:35523 Coq.Reals.RIneq <> Rmult_le_compat_r thm
+R35534:35549 Coq.Reals.RIneq <> Rinv_0_lt_compat thm
+R35534:35549 Coq.Reals.RIneq <> Rinv_0_lt_compat thm
+R35573:35578 Coq.Reals.RIneq <> Rlt_le thm
+R35573:35578 Coq.Reals.RIneq <> Rlt_le thm
+R35608:35617 Coq.Reals.Raxioms <> Rmult_comm thm
+R35608:35617 Coq.Reals.Raxioms <> Rmult_comm thm
+R35608:35617 Coq.Reals.Raxioms <> Rmult_comm thm
+R35628:35644 Coq.Reals.RIneq <> Rmult_le_compat_r thm
+R35628:35644 Coq.Reals.RIneq <> Rmult_le_compat_r thm
+R35671:35680 Coq.Reals.RIneq <> Rminus_def thm
+R35671:35680 Coq.Reals.RIneq <> Rminus_def thm
+R35671:35680 Coq.Reals.RIneq <> Rminus_def thm
+R35671:35680 Coq.Reals.RIneq <> Rminus_def thm
+R35693:35702 Coq.Reals.Raxioms <> Rplus_comm thm
+R35693:35702 Coq.Reals.Raxioms <> Rplus_comm thm
+R35693:35702 Coq.Reals.Raxioms <> Rplus_comm thm
+R35717:35719 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R35720:35721 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R35722:35726 Oracle <> tstar def
+R35748:35750 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R35738:35739 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R35740:35744 Oracle <> tstar def
+R35717:35719 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R35720:35721 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R35722:35726 Oracle <> tstar def
+R35748:35750 Coq.Reals.Rdefinitions <> ::R_scope:x_'+'_x not
+R35738:35739 Coq.Reals.Rdefinitions <> ::R_scope:'-'_x not
+R35740:35744 Oracle <> tstar def
+R35772:35788 Coq.Reals.RIneq <> Rplus_le_compat_r thm
+R35772:35788 Coq.Reals.RIneq <> Rplus_le_compat_r thm
+R35799:35812 Coq.Reals.RIneq <> Ropp_le_cancel thm
+R35799:35812 Coq.Reals.RIneq <> Ropp_le_cancel thm
+R35827:35841 Coq.Reals.RIneq <> Ropp_involutive thm
+R35827:35841 Coq.Reals.RIneq <> Ropp_involutive thm
+R35827:35841 Coq.Reals.RIneq <> Ropp_involutive thm
+R35827:35841 Coq.Reals.RIneq <> Ropp_involutive thm
+R35852:35862 Oracle <> tstar_le_tu thm
+R35852:35862 Oracle <> tstar_le_tu thm
+prf 35891:35918 <> optimally_small_oracle_delay
+R35936:35944 Oracle <> timestamp def
+binder 35932:35932 <> t:397
+R35953:35963 Oracle <> OracleState rec
+binder 35948:35949 <> st:398
+R36025:36087 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R36021:36023 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R35971:35980 Oracle <> sum_list_R def
+R35983:35985 Coq.Lists.List <> map def
+R36015:36019 Oracle <> Users defax
+binder 35992:35992 <> u:399
+R35997:36005 Oracle <> W_decayed def
+R36007:36008 Oracle <> st:398 var
+R36010:36010 Oracle <> u:399 var
+R36012:36012 Oracle <> t:397 var
+R36099:36102 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R36088:36093 Oracle <> Lambda def
+R36095:36095 Oracle <> t:397 var
+R36097:36098 Oracle <> st:398 var
+R36104:36106 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36103:36103 Oracle <> t:397 var
+R36107:36111 Oracle <> tstar def
+R36113:36114 Oracle <> st:398 var
+R36158:36163 Oracle <> Lambda def
+R36182:36191 Oracle <> sum_list_R def
+R36194:36196 Coq.Lists.List <> map def
+R36235:36239 Oracle <> Users defax
+R36208:36211 Oracle <> User def
+binder 36203:36204 <> u0:400
+R36216:36224 Oracle <> W_decayed def
+R36229:36230 Oracle <> u0:400 var
+R36182:36191 Oracle <> sum_list_R def
+R36194:36196 Coq.Lists.List <> map def
+R36235:36239 Oracle <> Users defax
+R36208:36211 Oracle <> User def
+binder 36203:36204 <> u0:401
+R36216:36224 Oracle <> W_decayed def
+R36229:36230 Oracle <> u0:401 var
+R36316:36332 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R36260:36269 Oracle <> sum_list_R def
+R36272:36274 Coq.Lists.List <> map def
+R36310:36314 Oracle <> Users defax
+R36285:36288 Oracle <> User def
+binder 36281:36281 <> u:402
+R36293:36300 Oracle <> Lambda_x def
+R36302:36302 Oracle <> u:402 var
+R36333:36342 Oracle <> sum_list_R def
+R36345:36347 Coq.Lists.List <> map def
+R36409:36413 Oracle <> Users defax
+R36358:36361 Oracle <> User def
+binder 36354:36354 <> u:403
+R36399:36401 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R36366:36366 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36379:36382 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36368:36370 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36371:36375 Oracle <> tstar def
+R36383:36391 Oracle <> W_decayed def
+R36396:36396 Oracle <> u:403 var
+R36316:36332 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R36260:36269 Oracle <> sum_list_R def
+R36272:36274 Coq.Lists.List <> map def
+R36310:36314 Oracle <> Users defax
+R36285:36288 Oracle <> User def
+binder 36281:36281 <> u:404
+R36293:36300 Oracle <> Lambda_x def
+R36302:36302 Oracle <> u:404 var
+R36333:36342 Oracle <> sum_list_R def
+R36345:36347 Coq.Lists.List <> map def
+R36409:36413 Oracle <> Users defax
+R36358:36361 Oracle <> User def
+binder 36354:36354 <> u:405
+R36399:36401 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R36366:36366 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36379:36382 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36368:36370 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36371:36375 Oracle <> tstar def
+R36383:36391 Oracle <> W_decayed def
+R36396:36396 Oracle <> u:405 var
+R36432:36444 Oracle <> sum_list_R_le thm
+R36432:36444 Oracle <> sum_list_R_le thm
+R36457:36469 Oracle <> Forall2_map_l thm
+R36457:36469 Oracle <> Forall2_map_l thm
+R36499:36509 Oracle <> Lambda_x_le thm
+R36499:36509 Oracle <> Lambda_x_le thm
+R36528:36543 Oracle <> W_decayed_nonneg thm
+R36528:36543 Oracle <> W_decayed_nonneg thm
+R36560:36567 Oracle <> Lambda_x def
+R36601:36610 Oracle <> sum_list_R def
+R36613:36615 Coq.Lists.List <> map def
+R36654:36658 Oracle <> Users defax
+R36627:36630 Oracle <> User def
+binder 36622:36623 <> u0:406
+R36635:36643 Oracle <> W_decayed def
+R36648:36649 Oracle <> u0:406 var
+R36601:36610 Oracle <> sum_list_R def
+R36613:36615 Coq.Lists.List <> map def
+R36654:36658 Oracle <> Users defax
+R36627:36630 Oracle <> User def
+binder 36622:36623 <> u0:407
+R36635:36643 Oracle <> W_decayed def
+R36648:36649 Oracle <> u0:407 var
+R36678:36686 Coq.Reals.RIneq <> Rle_trans thm
+R36678:36686 Coq.Reals.RIneq <> Rle_trans thm
+R36710:36716 Coq.Lists.List <> map_ext thm
+R36813:36816 Oracle <> User def
+binder 36809:36809 <> u:408
+R36821:36821 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36829:36833 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36867:36867 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36822:36823 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36834:36834 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36847:36850 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36836:36838 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36839:36843 Oracle <> tstar def
+R36851:36859 Oracle <> W_decayed def
+R36864:36864 Oracle <> u:408 var
+R36740:36743 Oracle <> User def
+binder 36736:36736 <> u:409
+R36781:36783 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R36748:36748 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36761:36764 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36750:36752 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36753:36757 Oracle <> tstar def
+R36765:36773 Oracle <> W_decayed def
+R36778:36778 Oracle <> u:409 var
+R36710:36716 Coq.Lists.List <> map_ext thm
+R36813:36816 Oracle <> User def
+binder 36809:36809 <> u:410
+R36821:36821 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36829:36833 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36867:36867 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36822:36823 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36834:36834 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36847:36850 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36836:36838 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36839:36843 Oracle <> tstar def
+R36851:36859 Oracle <> W_decayed def
+R36864:36864 Oracle <> u:410 var
+R36740:36743 Oracle <> User def
+binder 36736:36736 <> u:411
+R36781:36783 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R36748:36748 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36761:36764 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36750:36752 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36753:36757 Oracle <> tstar def
+R36765:36773 Oracle <> W_decayed def
+R36778:36778 Oracle <> u:411 var
+R36710:36716 Coq.Lists.List <> map_ext thm
+R36813:36816 Oracle <> User def
+binder 36809:36809 <> u:412
+R36821:36821 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36829:36833 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36867:36867 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36822:36823 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36834:36834 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36847:36850 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36836:36838 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36839:36843 Oracle <> tstar def
+R36851:36859 Oracle <> W_decayed def
+R36864:36864 Oracle <> u:412 var
+R36740:36743 Oracle <> User def
+binder 36736:36736 <> u:413
+R36781:36783 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R36748:36748 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36761:36764 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36750:36752 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36753:36757 Oracle <> tstar def
+R36765:36773 Oracle <> W_decayed def
+R36778:36778 Oracle <> u:413 var
+R36710:36716 Coq.Lists.List <> map_ext thm
+R36813:36816 Oracle <> User def
+binder 36809:36809 <> u:414
+R36821:36821 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36829:36833 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36867:36867 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36822:36823 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36834:36834 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36847:36850 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36836:36838 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36839:36843 Oracle <> tstar def
+R36851:36859 Oracle <> W_decayed def
+R36864:36864 Oracle <> u:414 var
+R36740:36743 Oracle <> User def
+binder 36736:36736 <> u:415
+R36781:36783 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R36748:36748 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36761:36764 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R36750:36752 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R36753:36757 Oracle <> tstar def
+R36765:36773 Oracle <> W_decayed def
+R36778:36778 Oracle <> u:415 var
+R36915:36922 Coq.Reals.RIneq <> Rdiv_def thm
+R36915:36922 Coq.Reals.RIneq <> Rdiv_def thm
+R36915:36922 Coq.Reals.RIneq <> Rdiv_def thm
+R36952:36976 Oracle <> sum_list_R_map_mult_const thm
+R36979:36980 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36990:36994 Oracle <> Users defax
+R36952:36976 Oracle <> sum_list_R_map_mult_const thm
+R36979:36980 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36990:36994 Oracle <> Users defax
+R36952:36976 Oracle <> sum_list_R_map_mult_const thm
+R36979:36980 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R36990:36994 Oracle <> Users defax
+R37009:37033 Oracle <> sum_list_R_map_mult_const thm
+R37037:37039 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37040:37044 Oracle <> tstar def
+binder 37055:37055 <> u:416
+R37060:37068 Oracle <> W_decayed def
+R37073:37073 Oracle <> u:416 var
+R37078:37082 Oracle <> Users defax
+R37009:37033 Oracle <> sum_list_R_map_mult_const thm
+R37037:37039 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37040:37044 Oracle <> tstar def
+binder 37055:37055 <> u:417
+R37060:37068 Oracle <> W_decayed def
+R37073:37073 Oracle <> u:417 var
+R37078:37082 Oracle <> Users defax
+R37009:37033 Oracle <> sum_list_R_map_mult_const thm
+R37037:37039 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37040:37044 Oracle <> tstar def
+binder 37055:37055 <> u:418
+R37060:37068 Oracle <> W_decayed def
+R37073:37073 Oracle <> u:418 var
+R37078:37082 Oracle <> Users defax
+R37109:37119 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37195:37195 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37102:37103 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R37120:37120 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37133:37137 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37122:37124 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37125:37129 Oracle <> tstar def
+R37138:37147 Oracle <> sum_list_R def
+R37150:37152 Coq.Lists.List <> map def
+R37189:37193 Oracle <> Users defax
+R37163:37166 Oracle <> User def
+binder 37159:37159 <> u:419
+R37171:37179 Oracle <> W_decayed def
+R37184:37184 Oracle <> u:419 var
+R37209:37211 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37212:37216 Oracle <> tstar def
+R37109:37119 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37195:37195 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37102:37103 Coq.Reals.Rdefinitions <> ::R_scope:'/'_x not
+R37120:37120 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37133:37137 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R37122:37124 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37125:37129 Oracle <> tstar def
+R37138:37147 Oracle <> sum_list_R def
+R37150:37152 Coq.Lists.List <> map def
+R37189:37193 Oracle <> Users defax
+R37163:37166 Oracle <> User def
+binder 37159:37159 <> u:420
+R37171:37179 Oracle <> W_decayed def
+R37184:37184 Oracle <> u:420 var
+R37209:37211 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37212:37216 Oracle <> tstar def
+R37234:37241 Coq.Reals.RIneq <> Rle_refl thm
+R37234:37241 Coq.Reals.RIneq <> Rle_refl thm
+ax 37757:37770 <> L_f_nonneg_hyp
+binder 37781:37781 <> u:421
+binder 37783:37784 <> st:422
+R37788:37791 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R37792:37795 Oracle <> getR def
+R37797:37797 Oracle <> u:421 var
+R37800:37802 Oracle <> L_f proj
+R37804:37805 Oracle <> st:422 var
+ax 37820:37831 <> Q_nonneg_hyp
+binder 37842:37843 <> st:424
+R37847:37850 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x not
+R37851:37851 Oracle <> Q proj
+R37853:37854 Oracle <> st:424 var
+prf 37864:37869 <> Q'_pos
+binder 37882:37882 <> u:426
+binder 37884:37884 <> t:427
+binder 37886:37887 <> st:428
+R37903:37905 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R37894:37895 Oracle <> Q' def
+R37897:37897 Oracle <> u:426 var
+R37899:37899 Oracle <> t:427 var
+R37901:37902 Oracle <> st:428 var
+R37935:37936 Oracle <> Q' def
+R37953:37961 Oracle <> decay_pos thm
+R37972:37974 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37964:37968 Oracle <> t_sub proj
+R37975:37976 Oracle <> tu def
+R37953:37961 Oracle <> decay_pos thm
+R37972:37974 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R37964:37968 Oracle <> t_sub proj
+R37975:37976 Oracle <> tu def
+R38000:38008 Oracle <> decay_pos thm
+R38012:38015 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38016:38020 Oracle <> t_sub proj
+R38000:38008 Oracle <> decay_pos thm
+R38012:38015 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38016:38020 Oracle <> t_sub proj
+R38042:38058 Oracle <> W_user_nonneg_hyp prfax
+R38042:38058 Oracle <> W_user_nonneg_hyp prfax
+R38081:38092 Oracle <> Q_nonneg_hyp prfax
+R38081:38092 Oracle <> Q_nonneg_hyp prfax
+R38108:38108 Oracle <> w def
+R38120:38121 Oracle <> wu def
+R38138:38151 Oracle <> L_f_nonneg_hyp prfax
+R38138:38151 Oracle <> L_f_nonneg_hyp prfax
+prf 38192:38231 <> balance_after_submission_reward_positive
+binder 38244:38245 <> t':429
+binder 38247:38248 <> St:430
+binder 38250:38250 <> u:431
+R38298:38300 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R38257:38257 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38271:38275 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38297:38297 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38258:38267 Oracle <> B_oracle_r proj
+R38269:38270 Oracle <> St:430 var
+R38276:38288 Oracle <> reward_payout def
+R38290:38290 Oracle <> u:431 var
+R38292:38293 Oracle <> t':429 var
+R38295:38296 Oracle <> St:430 var
+R38330:38342 Oracle <> reward_payout def
+R38369:38371 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38356:38365 Oracle <> B_oracle_r proj
+R38425:38428 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38457:38457 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38393:38396 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38424:38424 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38377:38379 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38372:38376 Oracle <> alpha defax
+R38380:38389 Oracle <> B_oracle_r proj
+R38407:38409 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R38397:38397 Oracle <> w def
+R38402:38402 Oracle <> V proj
+R38410:38411 Oracle <> Q' def
+R38419:38419 Oracle <> V proj
+R38430:38432 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38433:38437 Oracle <> decay def
+R38442:38444 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38445:38446 Oracle <> tu def
+R38451:38451 Oracle <> V proj
+R38470:38470 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38484:38488 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38563:38563 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38471:38480 Oracle <> B_oracle_r proj
+R38490:38492 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38530:38533 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38562:38562 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38498:38501 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38529:38529 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38493:38497 Oracle <> alpha defax
+R38512:38514 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R38502:38502 Oracle <> w def
+R38507:38507 Oracle <> V proj
+R38515:38516 Oracle <> Q' def
+R38524:38524 Oracle <> V proj
+R38535:38537 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38538:38542 Oracle <> decay def
+R38547:38549 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38550:38551 Oracle <> tu def
+R38556:38556 Oracle <> V proj
+R38369:38371 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38356:38365 Oracle <> B_oracle_r proj
+R38425:38428 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38457:38457 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38393:38396 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38424:38424 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38377:38379 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38372:38376 Oracle <> alpha defax
+R38380:38389 Oracle <> B_oracle_r proj
+R38407:38409 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R38397:38397 Oracle <> w def
+R38402:38402 Oracle <> V proj
+R38410:38411 Oracle <> Q' def
+R38419:38419 Oracle <> V proj
+R38430:38432 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38433:38437 Oracle <> decay def
+R38442:38444 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38445:38446 Oracle <> tu def
+R38451:38451 Oracle <> V proj
+R38470:38470 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38484:38488 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38563:38563 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38471:38480 Oracle <> B_oracle_r proj
+R38490:38492 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38530:38533 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38562:38562 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38498:38501 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38529:38529 Coq.Reals.Rdefinitions <> ::R_scope:x_'*'_x not
+R38493:38497 Oracle <> alpha defax
+R38512:38514 Coq.Reals.Rdefinitions <> ::R_scope:x_'/'_x not
+R38502:38502 Oracle <> w def
+R38507:38507 Oracle <> V proj
+R38515:38516 Oracle <> Q' def
+R38524:38524 Oracle <> V proj
+R38535:38537 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38538:38542 Oracle <> decay def
+R38547:38549 Coq.Reals.Rdefinitions <> ::R_scope:x_'-'_x not
+R38550:38551 Oracle <> tu def
+R38556:38556 Oracle <> V proj
+prf 38613:38631 <> sustainable_rewards
+R38649:38657 Oracle <> timestamp def
+binder 38645:38645 <> t:432
+R38666:38670 Oracle <> State rec
+binder 38661:38662 <> St:433
+R38717:38788 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R38678:38678 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R38693:38698 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R38716:38716 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R38680:38683 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x_'<'_x not
+R38689:38691 Coq.Reals.Rdefinitions <> ::R_scope:x_'<='_x_'<'_x not
+R38684:38688 Oracle <> alpha defax
+R38684:38688 Oracle <> alpha defax
+R38712:38714 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R38699:38708 Oracle <> B_oracle_r proj
+R38710:38711 Oracle <> St:433 var
+R38802:38810 Oracle <> timestamp def
+binder 38797:38798 <> t':434
+R38820:38820 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R38827:38831 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R38823:38825 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R38821:38822 Oracle <> t':434 var
+R38826:38826 Oracle <> t:432 var
+R38845:38847 Coq.Reals.Rdefinitions <> ::R_scope:x_'>'_x not
+R38832:38841 Oracle <> B_oracle_r proj
+R38843:38844 Oracle <> St:433 var
