@@ -143,7 +143,7 @@ Module UserOT := Nat_as_OT.
 
 Module UserMap := FMapList.Make(UserOT).
 
-(** *** [User] to [Real], [Bool],  fmaps *)
+(** *** [User] to [elt],  fmaps *)
 
 Definition getR (u : User) (m : UserMap.t R) : R :=
   match UserMap.find u m with
@@ -166,6 +166,9 @@ Definition setBool (u : User) (v : bool) (m : UserMap.t bool) : UserMap.t bool :
 Definition addR (u : User) (dv : R) (m : UserMap.t R) : UserMap.t R :=
   setR u (getR u m + dv) m.
 
+Definition UMap_forall {elt : Type} (pred : User * elt -> Prop) (um : UserMap.t elt) : Prop :=
+  Forall pred (UserMap.elements um).
+
 (** *** [UserPair] fmaps *)
 
 Module UserPairOT := PairOrderedType UserOT UserOT.
@@ -183,7 +186,12 @@ Definition setR2 (u v : User) (x : R) (m : UserPairMap.t R) : UserPairMap.t R :=
 Definition addR2 (u v : User) (dx : R) (m : UserPairMap.t R) : UserPairMap.t R :=
   setR2 u v (getR2 u v m + dx) m.
 
-(** *** [UserSet] maps *)
+Definition UPairMap_forall {elt : Type}
+  (pred : (User * User) * elt -> Prop)
+  (upm : UserPairMap.t elt) : Prop :=
+  Forall pred (UserPairMap.elements upm).
+
+(** *** [UserSet] fmaps *)
 
 Definition getUserSet (u : User) (m : UserMap.t UserSet) : UserSet :=
   match UserMap.find u m with
@@ -197,6 +205,7 @@ Definition setUserSet (u : User) (s : UserSet) (m : UserMap.t UserSet)
 
 Definition addUser (x : User) (s : UserSet) : UserSet :=
   x :: s.
+
 
 (** ** Parameters *)
 
@@ -255,7 +264,7 @@ Record State := {
     trace : Trace;
   }.
 
-Definition lift_oracle_state_f  (f : OracleState -> OracleState) (st : State) : State :=
+Definition lift_oracle_state  (f : OracleState -> OracleState) (st : State) : State :=
   {| V := f (V st);
     B_user_w := B_user_w st;
     B_user_r := B_user_r st;
@@ -263,6 +272,98 @@ Definition lift_oracle_state_f  (f : OracleState -> OracleState) (st : State) : 
     B_oracle_r := B_oracle_r st;
     trace := trace st;
   |}.
+
+(** ** Well-formedness of a state *)
+
+Definition UPairMap_nonneg (upm : UserPairMap.t R) : Prop :=
+  UPairMap_forall (fun ke =>
+    match ke with
+    | (_, e) => 0 <= e
+    end) upm.
+
+Definition UMap_nonneg (um : UserMap.t R) :=
+  UMap_forall (fun ke => match ke with | (_, e) => 0 <= e end) um.
+
+Definition all_user_pairs_keys {elt : Type} (U : UserSet) (upm : UserPairMap.t elt) : Prop :=
+  forall u1 u2, In u1 U -> In u2 U -> UserPairMap.In (u1, u2) upm.
+
+Definition all_users_keys {elt : Type} (U : UserSet) (um : UserMap.t elt) :=
+  forall u, In u U -> UserMap.In u um.
+
+Definition wf_governance (U : UserSet) (G : GovernanceState) : Prop :=
+  (* Totality of UserMaps on U *)
+  (* UserMaps must have an entry for every user in U *)
+  all_users_keys U (B G)             /\
+  all_users_keys U (V_black G)       /\
+  all_users_keys U (V_white G)       /\
+  all_users_keys U (M_black G)       /\
+  all_users_keys U (M_white G)       /\
+  (* UserPairMaps must have an entry for every user pair in U * U *)
+  all_user_pairs_keys U (W_black G)  /\
+  all_user_pairs_keys U (W_white G)  /\
+  (* UserMap.t weight must have nonnegative values *)
+  UMap_nonneg (V_black G)            /\
+  UMap_nonneg (V_white G)            /\
+  UPairMap_nonneg (W_black G)        /\
+  UPairMap_nonneg (W_white G)
+  (* TODO: M_black(u) and M_black(u) partitions U for every u in U *)
+.
+
+Definition wf_oracle (U : UserSet) (st : OracleState) : Prop :=
+  wf_governance U (G st) /\
+
+  (* UserMaps must have an entry for every user in U *)
+  all_users_keys U (L_l st) /\
+  all_users_keys U (L_f st) /\
+  all_users_keys U (T_dep st) /\
+  all_users_keys U (T_op st) /\
+  all_users_keys U (P_user st) /\
+  all_users_keys U (W_user st) /\
+  all_users_keys U (T_user st) /\
+
+  (* UserMap.t weight/balance/timestamp/value must have nonnegative values *)
+  UMap_nonneg (L_l st) /\
+  UMap_nonneg (L_f st) /\
+  UMap_nonneg (T_dep st) /\
+  UMap_nonneg (T_op st) /\
+  UMap_nonneg (P_user st) /\
+  UMap_nonneg (W_user st) /\
+  UMap_nonneg (T_user st) /\
+
+  (* variables weight/balance/timestamp/value must have nonnegative values *)
+  0 <= pbar st /\
+  0 <= ptilde st /\
+  0 <= Q st /\
+  0 <= t_sub st /\
+  0 <= t_last st /\
+  0 <= L_tot st /\
+
+  (* TODO: other predicates *)
+
+  (* Total deposited tokens equals sum of (locked+free) balance *)
+  (forall u, In u U ->
+      getR u (L_l st) + getR u (L_f st) <= L_tot st) /\
+
+  (* Last submission time shouldn't be after last interaction time *)
+  t_sub st <= t_last st.
+
+(* TODO: *)
+Definition wf_trace (U : UserSet) (tr : Trace) : Prop := True.
+
+Definition wf_state (U : UserSet) (st : State) : Prop :=
+  wf_oracle U (V st) /\
+  wf_trace U (trace st) /\
+  (* user external balances: total on U *)
+  all_users_keys U (B_user_w st) /\
+  all_users_keys U (B_user_r st) /\
+  (*  nonnegativity *)
+  UMap_nonneg (B_user_w st) /\
+  UMap_nonneg (B_user_r st) /\
+  (* oracle balances are nonnegative *)
+  0 <= B_oracle_w st /\
+  0 <= B_oracle_r st .
+
+  
 
 (** * Auxiliary Definitions *)
 
@@ -873,7 +974,7 @@ Definition weight_synchronization (u : User) (t : timestamp) (st : OracleState) 
     Q      := Q v1;
     P      := P v1;
     t_sub  := t_sub v1;
-    t_last := t;
+    t_last := t;                (* updated *)
     L_tot  := L_tot v1;
     G      := G v1
   |}.
@@ -909,6 +1010,8 @@ Definition reward_funding (u : User) (a : balance) (t : timestamp) (st : State) 
     B_oracle_r := B_oracle_r';
     trace := trace st;
   |}.
+
+(** ** Internal lemmas about summations and lists *)
 
 Lemma sum_list_R_le :
   forall l1 l2,
@@ -987,58 +1090,6 @@ Proof.
       exists x. auto.
 Qed.
 
-(** * Theorem 3: Equivalence of the ideal decayed weight mean function and the constant time update rule
-
-      The ideal decayed weighted mean function P(t) and the constant-time update rule pbar_k(t) - pbar are equal
-      where k is the k-th update.
-
-      P(t) = pbar_k(t) - pbar
-
-      Proof: By manipulating the definition of Lambda_u(t)
-             and getting it into a certain form at (39)
-             such that we can take the limit to be zero.
- *)
-
-Theorem ideal_decayed_weight_mean_function_is_constant :
-  True = True.
-Proof.
-(* TODO: *) Admitted.
-
-Definition Lambda_x (x : User) (t : timestamp) (st : OracleState): R :=
-  (W_decayed st x t) * (t - getR x (T_user st)) /
-                         sum_list_R (map (fun u => W_decayed st u t) Users).
-
-Definition Lambda (t : timestamp) (st : OracleState) : R :=
-  sum_list_R (map (fun u => Lambda_x u t st) Users).
-
-(** * Theorem 6: Inactive oracle operator delay
-      If an oracle operator u in U becomes inactive,
-      the operator delay Lambda_u(t) caused by this inactivity converges to 0.
-
-      That is, lim_{t -> \inf} Lambda_u(t) = 0.
-
-      Proof: By manipulating the definition of Lambda_u(t) and getting it into a certain form at (39)
-             such that we can take the limit to be zero.
- *)
-
-(** ** Inactivity
-    A user [u] is inactive for a trace [tr] if there exists a timestamp [t_end], such that
-    there are no submission operations [Submission u v t] with [t >= t_end] in [tr].
- *)
-
-Definition inactive_after (u : User) (t_end : timestamp) (tr : Trace) :=
-  Forall (fun op => match op with
-                    | Submission u' v t => u = u' \/ t <= t_end
-                    | _ => True
-                    end) tr.
-
-Definition inactive_operator (u : User) (tr : Trace) :=
-  exists t_end, t_end >= 0 /\ inactive_after u t_end tr.
-
-(* alternative definition with In *)
-Definition no_submit_after (u : User) (t_end : timestamp) (tr : Trace) : Prop :=
-  forall t v, ~ In (Submission u v t) tr \/ t <= t_end.
-
 Lemma remove_not_in :
   forall (A : Type) (eq_dec : forall x y : A, {x = y} + {x <> y})
          (x : A) (l : list A),
@@ -1075,6 +1126,60 @@ Proof.
            rewrite IH.
            ring.
 Qed.
+
+(** * Theorems in the paper *)
+
+(** ** Theorem 3: Equivalence of the ideal decayed weight mean function and the constant time update rule
+
+      The ideal decayed weighted mean function P(t) and the constant-time update rule pbar_k(t) - pbar are equal
+      where k is the k-th update.
+
+      P(t) = pbar_k(t) - pbar
+
+      Proof: By manipulating the definition of Lambda_u(t)
+             and getting it into a certain form at (39)
+             such that we can take the limit to be zero.
+ *)
+
+Theorem ideal_decayed_weight_mean_function_is_constant :
+  True = True.
+Proof.
+(* TODO: *) Admitted.
+
+Definition Lambda_x (x : User) (t : timestamp) (st : OracleState): R :=
+  (W_decayed st x t) * (t - getR x (T_user st)) /
+                         sum_list_R (map (fun u => W_decayed st u t) Users).
+
+Definition Lambda (t : timestamp) (st : OracleState) : R :=
+  sum_list_R (map (fun u => Lambda_x u t st) Users).
+
+(** ** Theorem 6: Inactive oracle operator delay
+      If an oracle operator u in U becomes inactive,
+      the operator delay Lambda_u(t) caused by this inactivity converges to 0.
+
+      That is, lim_{t -> \inf} Lambda_u(t) = 0.
+
+      Proof: By manipulating the definition of Lambda_u(t) and getting it into a certain form at (39)
+             such that we can take the limit to be zero.
+ *)
+
+(** *** Inactivity
+    A user [u] is inactive for a trace [tr] if there exists a timestamp [t_end], such that
+    there are no submission operations [Submission u v t] with [t >= t_end] in [tr].
+ *)
+
+Definition inactive_after (u : User) (t_end : timestamp) (tr : Trace) :=
+  Forall (fun op => match op with
+                    | Submission u' v t => u = u' \/ t <= t_end
+                    | _ => True
+                    end) tr.
+
+Definition inactive_operator (u : User) (tr : Trace) :=
+  exists t_end, t_end >= 0 /\ inactive_after u t_end tr.
+
+(* alternative definition with In *)
+Definition no_submit_after (u : User) (t_end : timestamp) (tr : Trace) : Prop :=
+  forall t v, ~ In (Submission u v t) tr \/ t <= t_end.
 
 Lemma Lambda_u_rewrite_38 :
   forall (st : OracleState) (t : timestamp) (u : User),
@@ -1180,9 +1285,9 @@ Proof.
     apply Rlt_not_eq in H. symmetry. apply H.
 Qed.
 
-(** *** Limits
+(** *** Limits (TODO)
 Alternatively, might use: http://coquelicot.saclay.inria.fr/html/Coquelicot.Continuity.html#is_lim
- *)
+ **)
 
 Definition tends_to_0 (f : R -> R) : Prop :=
   forall eps : R,
@@ -1208,11 +1313,15 @@ Hypothesis W_user_nonneg_hyp :
     0 <= getR u (W_user st).
 
 Theorem inactive_oracle_operator_delay :
-  forall (st : OracleState) (t : timestamp) (tr : Trace) (u : User),
+  forall (St : State) (u : User),
     In u Users ->
-    inactive_operator u tr -> tends_to_0 (fun t => Lambda_x u t st).
+    (inactive_operator u (trace St)) ->
+    tends_to_0 (fun t => Lambda_x u t (V St)).
 Proof.
-  intros st t tr u. intros Hu Hinactive.
+  intros St u Hu Hinactive.
+
+  (* rewriting to get into form of eq38 *)
+  set (st := V St).
   set (eq38 := fun t =>
                  ((getR u (W_user st)) * (t - getR u (T_user st))) /
                    ((sum_list_R (map (fun x =>
@@ -1236,7 +1345,7 @@ Proof.
 
 Admitted.
 
-(** * Theorem 7 : Optimally small oracle delay
+(** ** Theorem 7 : Optimally small oracle delay
       The oracle delay Lambda(t) is bounded above by (t - t* ) where t* = min_{x in U} t_x
 
       Proof: Expand the definitions of oracle delay and oracle operator's delay
@@ -1338,7 +1447,7 @@ Proof.
   - unfold denom in *. field. lra.
 Qed.
 
-(** * Theorem 8: Sustainable rewards
+(** ** Theorem 8: Sustainable rewards
       If 0 <= \alpha < 1 and B_oracle(tau_r) > 0 at a given time t,
       then B_oracle(\tau_r) > 0 for all times t' > t.
 
