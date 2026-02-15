@@ -1,11 +1,10 @@
-.DS_Store
-.idea
 *.log
 tmp/
 .nra.cache
-.vo
-.vok
-.vos
-.glob
-.aux
-.Oracle.aux
+
+# Coq build artifacts
+*.vo
+*.vok
+*.vos
+*.glob
+*.aux
