@@ -122,21 +122,6 @@ Definition balance : Type := R.
 
 Definition history : Type := list (timestamp * value * value). (* type for time-ordered value history *)
 
-(** ** Operations and Trace *)
-
-Inductive operation : Type :=
-| Deposit (u : User) (a : balance) (t : timestamp)
-| Withdrawal (u : User) (a : balance) (t : timestamp)
-| Submission (u : User) (v : value) (t : timestamp)
-| Reading (u : User) (t : timestamp)
-| VoteBlacklist (u x : User) (t : timestamp)
-| VoteWhitelist (u x : User) (t : timestamp)
-| WeightSync (u : User) (t : timestamp)
-| RewardFunding (u : User) (a : balance) (t : timestamp)
-| NoneOp (t : timestamp).
-
-Definition Trace : Type := list operation.
-
 (** ** Maps *)
 
 Module UserOT := Nat_as_OT.
@@ -261,17 +246,7 @@ Record State := {
     B_user_r : UserMap.t balance;      (* external reward token balance of users *)
     B_oracle_w : balance;              (* oracle token balance of oracle *)
     B_oracle_r : balance;              (* reward token balance of oracle *)
-    trace : Trace;
   }.
-
-Definition lift_oracle_state  (f : OracleState -> OracleState) (st : State) : State :=
-  {| V := f (V st);
-    B_user_w := B_user_w st;
-    B_user_r := B_user_r st;
-    B_oracle_w := B_oracle_w st;
-    B_oracle_r := B_oracle_r st;
-    trace := trace st;
-  |}.
 
 (** ** Well-formedness of a state *)
 
@@ -347,23 +322,17 @@ Definition wf_oracle (U : UserSet) (st : OracleState) : Prop :=
   (* Last submission time shouldn't be after last interaction time *)
   t_sub st <= t_last st.
 
-(* TODO: *)
-Definition wf_trace (U : UserSet) (tr : Trace) : Prop := True.
-
-Definition wf_state (U : UserSet) (st : State) : Prop :=
-  wf_oracle U (V st) /\
-  wf_trace U (trace st) /\
+Definition wf_state (U : UserSet) (St : State) : Prop :=
+  wf_oracle U (V St) /\
   (* user external balances: total on U *)
-  all_users_keys U (B_user_w st) /\
-  all_users_keys U (B_user_r st) /\
+  all_users_keys U (B_user_w St) /\
+  all_users_keys U (B_user_r St) /\
   (*  nonnegativity *)
-  UMap_nonneg (B_user_w st) /\
-  UMap_nonneg (B_user_r st) /\
+  UMap_nonneg (B_user_w St) /\
+  UMap_nonneg (B_user_r St) /\
   (* oracle balances are nonnegative *)
-  0 <= B_oracle_w st /\
-  0 <= B_oracle_r st .
-
-  
+  0 <= B_oracle_w St /\
+  0 <= B_oracle_r St .
 
 (** * Auxiliary Definitions *)
 
@@ -618,19 +587,19 @@ precondition(s):
    - requires a > 0, a t non-negative reals
  *)
 
-Definition token_deposit (u : User) (a : balance) (t : timestamp) (st : State) : State :=
+Definition token_deposit (u : User) (a : balance) (t : timestamp) (St : State) : State :=
   if (a <=b 0) then
-    st
+    St
   else
-    let V0  := V st in
+    let V0  := V St in
     let V1  := Unlock V0 u t in
 
     let L_l'   := addR u a (L_l V1) in
     let T_dep' := setR u t (T_dep V1) in
     let T_op'  := setR u t (T_op V1) in
 
-    let B_user_w'   := addR u (-a) (B_user_w st) in
-    let B_oracle_w' := (B_oracle_w st + a) in
+    let B_user_w'   := addR u (-a) (B_user_w St) in
+    let B_oracle_w' := (B_oracle_w St + a) in
 
     let V2 : OracleState :=
       {|
@@ -655,10 +624,9 @@ Definition token_deposit (u : User) (a : balance) (t : timestamp) (st : State) :
     {|
       V := V2;
       B_user_w := B_user_w';
-      B_user_r := B_user_r st;
+      B_user_r := B_user_r St;
       B_oracle_w := B_oracle_w';
-      B_oracle_r := B_oracle_r st;
-      trace := trace st;
+      B_oracle_r := B_oracle_r St;
     |}.
 
 (** ** Token Withdrawal
@@ -669,14 +637,14 @@ precondition(s):
      -  getR u (T_op (V st)) + Delta_wd <= t
  *)
 
-Definition token_withdrawal (u : User) (a : balance) (t : timestamp) (st : State) : State :=
+Definition token_withdrawal (u : User) (a : balance) (t : timestamp) (St : State) : State :=
   let cond1 := a >b 0 in
-  let cond2 := getR u (L_f (V st)) >=b a in
-  let cond3 := getR u (T_op (V st)) + Delta_wd <=b t in
+  let cond2 := getR u (L_f (V St)) >=b a in
+  let cond3 := getR u (T_op (V St)) + Delta_wd <=b t in
   if negb ((andb cond1 (andb cond2 cond3))) then
-    st
+    St
   else
-    let v0 := V st in
+    let v0 := V St in
 
     (* oracle-local updates *)
     let L_f'  := addR u (-a) (L_f v0) in
@@ -702,16 +670,15 @@ Definition token_withdrawal (u : User) (a : balance) (t : timestamp) (st : State
     in
 
     (* balance updates *)
-    let B_user_w'   := addR u a (B_user_w st) in
-    let B_oracle_w' := (B_oracle_w st - a) in
+    let B_user_w'   := addR u a (B_user_w St) in
+    let B_oracle_w' := (B_oracle_w St - a) in
 
     {|
       V := v1;
       B_user_w := B_user_w';
-      B_user_r := B_user_r st;
+      B_user_r := B_user_r St;
       B_oracle_w := B_oracle_w';
-      B_oracle_r := B_oracle_r st;
-      trace := trace st;
+      B_oracle_r := B_oracle_r St;
     |}.
 
 (** ** Value Submission *)
@@ -732,11 +699,11 @@ Definition pbar' (u : User) (v : value) (t : timestamp) (st : OracleState) : val
   (((((pbar st) * (Q st)) -  ((pu u st) * (wu u st) * (decay (t_sub st - tu u st))))
     * (decay (t - t_sub st))) + (v * (w u st))) / (Q' u t st).
 
-Definition reward_payout (u : User) (t : timestamp) (st : State) : R :=
-  alpha * (B_oracle_r st) * ((w u (V st)) / (Q' u t (V st))) * (1 - decay (t - tu u (V st))).
+Definition reward_payout (u : User) (t : timestamp) (St : State) : R :=
+  alpha * (B_oracle_r St) * ((w u (V St)) / (Q' u t (V St))) * (1 - decay (t - tu u (V St))).
 
-Definition value_submission (u : User) (v : value) (t : timestamp) (st : State) : State :=
-  let v0 := V st in
+Definition value_submission (u : User) (v : value) (t : timestamp) (St : State) : State :=
+  let v0 := V St in
   let v1 := Unlock v0 u t in
 
   (* local values after Unlock *)
@@ -744,16 +711,15 @@ Definition value_submission (u : User) (v : value) (t : timestamp) (st : State) 
   let vR   := v in
   let Qp   := Q' u t v1 in
   let pbarp := pbar' u vR t v1 in
-  let st1 : State :=
+  let St1 : State :=
     {| V := v1;
-      B_user_w := B_user_w st;
-      B_user_r := B_user_r st;
-      B_oracle_w := B_oracle_w st;
-      B_oracle_r := B_oracle_r st;
-      trace := trace st;
+      B_user_w := B_user_w St;
+      B_user_r := B_user_r St;
+      B_oracle_w := B_oracle_w St;
+      B_oracle_r := B_oracle_r St;
     |}
   in
-  let n    := reward_payout u t st1 in
+  let n    := reward_payout u t St1 in
 
   (* update per-user submission fields *)
   let P_user' := setR u v (P_user v1) in
@@ -785,16 +751,15 @@ Definition value_submission (u : User) (v : value) (t : timestamp) (st : State) 
   in
 
   (* reward token balance transfer *)
-  let B_user_r'   := addR u n (B_user_r st) in
-  let B_oracle_r' := (B_oracle_r st - n) in
+  let B_user_r'   := addR u n (B_user_r St) in
+  let B_oracle_r' := (B_oracle_r St - n) in
 
   {|
     V := v2;
-    B_user_w := B_user_w st;
+    B_user_w := B_user_w St;
     B_user_r := B_user_r';
-    B_oracle_w := B_oracle_w st;
+    B_oracle_w := B_oracle_w St;
     B_oracle_r := B_oracle_r';
-    trace := trace st;
   |}.
 
 (** ** Value reading
@@ -834,7 +799,7 @@ Definition value_reading (u : User) (t : timestamp) (st : OracleState) : OracleS
 precondition(s):
   - u not blacklisted
   - w(u) = L_f(u) > 0
-  - u has not voted on x before (x ∉ M_black(u))
+  - u has not voted on x before (x not in M_black(u))
  *)
 
 Definition blacklist_vote (u x : User) (t : timestamp) (st : OracleState) : OracleState :=
@@ -896,13 +861,13 @@ Definition blacklist_vote (u x : User) (t : timestamp) (st : OracleState) : Orac
 precondition(s):
 - u not blacklisted (getBool u (B (G st)) = false)
 - L_f(u) > 0
-- u has not voted on x before (x ∉ M_white(u))
+- u has not voted on x before (x not in M_white(u))
 *)
 
 Definition whitelist_vote (u x : User) (t : timestamp) (st : OracleState) : OracleState :=
   let cond1 := negb (getBool u (B (G st))) in
   let cond2 := getR u (L_f st) >b 0 in
-  let cond3 := negb (mem_user x (getUserSet u (M_black (G st)))) in
+  let cond3 := negb (mem_user x (getUserSet u (M_white (G st)))) in
   if negb (andb cond1 (andb cond2 cond3)) then
     st
   else
@@ -981,10 +946,10 @@ Definition weight_synchronization (u : User) (t : timestamp) (st : OracleState) 
 
 (** ** Reward Token Funding *)
 
-Definition reward_funding (u : User) (a : balance) (t : timestamp) (st : State) : State :=
-  let B_user_r' := addR u (-a) (B_user_r st) in
-  let B_oracle_r' := (B_oracle_r st) + a in
-  let v0 := V st in
+Definition reward_funding (u : User) (a : balance) (t : timestamp) (St : State) : State :=
+  let B_user_r' := addR u (-a) (B_user_r St) in
+  let B_oracle_r' := (B_oracle_r St) + a in
+  let v0 := V St in
   let V' := {|
              L_l    := L_l v0;
              L_f    := L_f v0;
@@ -1004,12 +969,128 @@ Definition reward_funding (u : User) (a : balance) (t : timestamp) (st : State) 
            |} in
   {|
     V := V';
-    B_user_w := B_user_w st;
+    B_user_w := B_user_w St;
     B_user_r := B_user_r';
-    B_oracle_w := B_oracle_w st;
+    B_oracle_w := B_oracle_w St;
     B_oracle_r := B_oracle_r';
-    trace := trace st;
   |}.
+
+(** * Traces *)
+
+Inductive Operation : Type :=
+| Deposit (u : User) (a : balance) (t : timestamp)
+| Withdrawal (u : User) (a : balance) (t : timestamp)
+| Submission (u : User) (v : value) (t : timestamp)
+| Reading (u : User) (t : timestamp)
+| VoteBlacklist (u : User) (x : User) (t : timestamp)
+| VoteWhitelist (u : User) (x : User) (t : timestamp)
+| WeightSync (u : User) (t : timestamp)
+| RewardFunding (u : User) (a : balance) (t : timestamp)
+| NoneOp (t : timestamp).
+
+Definition Trace : Type := list Operation.
+
+(* TODO: *)
+Definition wf_trace (U : UserSet) (tr : Trace) : Prop := True.
+
+(** [lift_oracle_state] is used for operations that do not update the state, just the oracle state
+    (i.e. does not affect the balances).
+ *)
+Definition lift_oracle_state  (f : OracleState -> OracleState) (St : State) : State :=
+  {| V := f (V St);
+    B_user_w := B_user_w St;
+    B_user_r := B_user_r St;
+    B_oracle_w := B_oracle_w St;
+    B_oracle_r := B_oracle_r St;
+  |}.
+
+(** ** Initial state *)
+(* TODO: initial maps are user -> 0 *)
+Parameter init_B_user_w : UserMap.t balance.
+Parameter init_B_user_r : UserMap.t balance.
+Parameter init_B_oracle_w : balance.
+Parameter init_B_oracle_r : balance.
+Parameter init_oracle : OracleState.
+
+Definition init_state : State := {|
+  V := init_oracle;
+  B_user_w := init_B_user_w;
+  B_user_r := init_B_user_r;
+  B_oracle_w := init_B_oracle_w;
+  B_oracle_r := init_B_oracle_r;
+|}.
+
+(** ** Validity of an operation (satisfies preconditions) *)
+(* Might not be needed *)
+
+Definition valid_token_deposit (u : User) (a : balance) (t : timestamp) (St : State) : bool :=
+  a >b 0.
+
+Definition valid_token_withdrawal (u : User) (a : balance) (t : timestamp) (St : State) : bool :=
+  andb (a >b 0)
+       (andb (getR u (L_f (V St)) >=b a)
+             (getR u (T_op (V St)) + Delta_wd <=b t)).
+
+Definition valid_value_submission (u : User) (v : value) (t : timestamp) (St : State) : bool :=
+  true.
+
+Definition valid_value_reading (u : User) (t : timestamp) (St : State) : bool :=
+  negb (isBlacklisted u (V St)).
+
+Definition valid_blacklist_vote (u x : User) (t : timestamp) (St : State) : bool :=
+  andb (negb (isBlacklisted u (V St)))
+       (andb (getR u (L_f (V St)) >b 0)
+             (negb (mem_user x (getUserSet u (M_black (G (V St))))))).
+
+Definition valid_whitelist_vote (u x : User) (t : timestamp) (St : State) : bool :=
+  andb (negb (isBlacklisted u (V St)))
+       (andb (getR u (L_f (V St)) >b 0)
+             (negb (mem_user x (getUserSet u (M_white (G (V St))))))).
+
+Definition valid_weight_synchronization (u : User) (t : timestamp) (St : State) : bool :=
+  true.
+
+Definition valid_reward_funding (u : User) (a : balance) (t : timestamp) (St : State) : bool :=
+  true.
+
+Definition valid_noneop (t : timestamp) (St : State) : bool :=
+  true.
+
+Definition valid_op (op : Operation) (St : State) : bool :=
+  match op with
+  | Deposit u a t        => valid_token_deposit u a t St
+  | Withdrawal u a t     => valid_token_withdrawal u a t St
+  | Submission u v t     => valid_value_submission u v t St
+  | Reading u t          => valid_value_reading u t St
+  | VoteBlacklist u x t  => valid_blacklist_vote u x t St
+  | VoteWhitelist u x t  => valid_whitelist_vote u x t St
+  | WeightSync u t       => valid_weight_synchronization u t St
+  | RewardFunding u a t  => valid_reward_funding u a t St
+  | NoneOp t             => valid_noneop t St
+  end.
+
+(** ** Execution of an operation/trace *)
+Definition exec_op (op : Operation) (St : State) : State :=
+  match op with
+  | Deposit u a t => token_deposit u a t St
+  | Withdrawal u a t => token_withdrawal u a t St
+  | Submission u v t => value_submission u v t St
+  | Reading u t => lift_oracle_state (fun st => value_reading u t st) St
+  | VoteBlacklist u x t => lift_oracle_state (fun st => blacklist_vote u x t st) St
+  | VoteWhitelist u x t => lift_oracle_state (fun st => whitelist_vote u x t st) St
+  | WeightSync u t => lift_oracle_state (fun st => weight_synchronization u t st) St
+  | RewardFunding u a t => reward_funding u a t St
+  | NoneOp t => St
+  end.
+
+Fixpoint exec_trace (tr : Trace) (St : State) : State :=
+  match tr with
+  | nil => St
+  | op :: tr' => exec_trace tr' (exec_op op St)
+  end.
+
+Definition reachable (tr : Trace) (St : State) : Prop :=
+  St = exec_trace tr init_state.
 
 (** ** Internal lemmas about summations and lists *)
 
@@ -1165,7 +1246,8 @@ Definition Lambda (t : timestamp) (st : OracleState) : R :=
 
 (** *** Inactivity
     A user [u] is inactive for a trace [tr] if there exists a timestamp [t_end], such that
-    there are no submission operations [Submission u v t] with [t >= t_end] in [tr].
+    there are no submission operations [Submission u v t] with [t >= t_end] in [tr], and
+    that any extensions of the trace [tr] will not contain a [Submission u v t] with [t >= t_end].
  *)
 
 Definition inactive_after (u : User) (t_end : timestamp) (tr : Trace) :=
@@ -1313,12 +1395,12 @@ Hypothesis W_user_nonneg_hyp :
     0 <= getR u (W_user st).
 
 Theorem inactive_oracle_operator_delay :
-  forall (St : State) (u : User),
+  forall (St : State) (u : User) (tr : Trace),
     In u Users ->
-    (inactive_operator u (trace St)) ->
+    (inactive_operator u tr) ->
     tends_to_0 (fun t => Lambda_x u t (V St)).
 Proof.
-  intros St u Hu Hinactive.
+  intros St u tr Hu Hinactive.
 
   (* rewriting to get into form of eq38 *)
   set (st := V St).
