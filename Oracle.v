@@ -394,6 +394,27 @@ Proof.
   apply H0.
 Qed.
 
+Lemma decay_add :
+  forall a b : R,
+    decay a * decay b = decay (a + b).
+Proof.
+  intros.
+  unfold decay.
+  unfold Rpower.
+  rewrite <- exp_plus.
+  f_equal.
+  lra.
+Qed.
+
+Lemma decay_0 : decay 0 = 1.
+Proof.
+  unfold decay.
+  rewrite Rmult_0_r.
+  rewrite Rdiv_0_l.
+  rewrite Rpower_O; lra.
+Qed.
+
+
 Lemma decay_pos :
   forall Delta,
     0 < decay Delta.
@@ -1573,16 +1594,794 @@ Qed.
       where k is the k-th update.
 
       P(t) = pbar_k(t) - pbar
-
-      Proof: By manipulating the definition of Lambda_u(t)
-             and getting it into a certain form at (39)
-             such that we can take the limit to be zero.
  *)
 
-Theorem ideal_decayed_weight_mean_function_is_constant :
-  True = True.
+Definition mean_eq_ctime_update (st : OracleState) : Prop :=
+  forall t : timestamp,
+    0 < Q_decayed t st ->
+    P_ st t = pbar_decayed st t / Q_decayed t st.
+
+Hypothesis init_mean : (* TODO *)
+  mean_eq_ctime_update init_oracle.
+
+Lemma mean_eq_ctime_update_ext :
+  forall st1 st2,
+    P_user st2 = P_user st1 ->
+    W_user st2 = W_user st1 ->
+    T_user st2 = T_user st1 ->
+    pbar st2 = pbar st1 ->
+    Q st2 = Q st1 ->
+    t_sub st2 = t_sub st1 ->
+    mean_eq_ctime_update st1 ->
+    mean_eq_ctime_update st2.
 Proof.
-(* TODO: *) Admitted.
+  intros st1 st2 HPuser HWuser HTuser Hpbar HQ Htsub Hmean.
+  unfold mean_eq_ctime_update in *.
+  intros t0 HQpos.
+
+  unfold P_, pbar_decayed, Q_decayed in *.
+  simpl in *.
+
+  rewrite Hpbar, HQ, Htsub in *.
+
+  rewrite (map_ext
+    (fun x : User =>
+       getR x (P_user st2) * W_decayed st2 x t0)
+    (fun x : User =>
+       getR x (P_user st1) * W_decayed st1 x t0)).
+  2:{
+    intro x.
+    unfold W_decayed.
+    rewrite HPuser, HWuser, HTuser.
+    reflexivity.
+  }
+
+  rewrite (map_ext
+    (fun x : User =>
+       W_decayed st2 x t0)
+    (fun x : User =>
+       W_decayed st1 x t0)).
+  2:{
+    intro x.
+    unfold W_decayed.
+    rewrite HWuser, HTuser.
+    reflexivity.
+  }
+
+  exact (Hmean t0 HQpos).
+Qed.
+
+Lemma token_deposit_preserves_mean_fields :
+  forall (St : State) (u : User) (a : balance) (t : timestamp),
+    P_user (V (token_deposit u a t St)) = P_user (V St) /\
+    W_user (V (token_deposit u a t St)) = W_user (V St) /\
+    T_user (V (token_deposit u a t St)) = T_user (V St) /\
+    pbar   (V (token_deposit u a t St)) = pbar   (V St) /\
+    Q      (V (token_deposit u a t St)) = Q      (V St) /\
+    t_sub  (V (token_deposit u a t St)) = t_sub  (V St).
+Proof.
+  intros St u a t.
+  unfold token_deposit.
+  destruct (a <=b 0) eqn:Ha.
+  - simpl. repeat split; reflexivity.
+  - simpl.
+    unfold Unlock.
+    destruct ((t >=b getR u (T_dep (V St)) + Delta_dep) &&
+              (getR u (L_l (V St)) >b 0)) eqn:Hunlock;
+    simpl; repeat split; reflexivity.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_deposit :
+  forall (St : State) (u : User) (a : balance) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (token_deposit u a t St)).
+Proof.
+  intros St u a t Hmean.
+  unfold mean_eq_ctime_update in *.
+  intros t0 HQ.
+
+  destruct (token_deposit_preserves_mean_fields St u a t) as
+    [HPuser [HWuser [HTuser [Hpbar [HQeq Htsub]]]]].
+
+    unfold P_, pbar_decayed, Q_decayed in *.
+  simpl in *.
+
+  rewrite Hpbar, HQeq, Htsub in *.
+
+  rewrite (map_ext
+    (fun x : User =>
+       getR x (P_user (V (token_deposit u a t St))) *
+       W_decayed (V (token_deposit u a t St)) x t0)
+    (fun x : User =>
+       getR x (P_user (V St)) *
+       W_decayed (V St) x t0)).
+  2:{
+    intro x.
+    unfold W_decayed.
+    rewrite HPuser, HWuser, HTuser.
+    reflexivity.
+  }
+
+  rewrite (map_ext
+    (fun x : User =>
+       W_decayed (V (token_deposit u a t St)) x t0)
+    (fun x : User =>
+       W_decayed (V St) x t0)).
+  2:{
+    intro x.
+    unfold W_decayed.
+    rewrite HWuser, HTuser.
+    reflexivity.
+  }
+
+  exact (Hmean t0 HQ).
+Qed.
+
+Lemma token_withdrawal_preserves_mean_fields :
+  forall (St : State) (u : User) (a : balance) (t : timestamp),
+    P_user (V (token_withdrawal u a t St)) = P_user (V St) /\
+    W_user (V (token_withdrawal u a t St)) = W_user (V St) /\
+    T_user (V (token_withdrawal u a t St)) = T_user (V St) /\
+    pbar   (V (token_withdrawal u a t St)) = pbar   (V St) /\
+    Q      (V (token_withdrawal u a t St)) = Q      (V St) /\
+    t_sub  (V (token_withdrawal u a t St)) = t_sub  (V St).
+Proof.
+  intros St u a t.
+  unfold token_withdrawal.
+  destruct (negb ((a >b 0) &&
+                  ((getR u (L_f (V St)) >=b a) &&
+                   (getR u (T_op (V St)) + Delta_wd <=b t)))) eqn:Hcond.
+  - simpl. repeat split; reflexivity.
+  - simpl. repeat split; reflexivity.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_withdrawal :
+  forall (St : State) (u : User) (a : balance) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (token_withdrawal u a t St)).
+Proof.
+  intros St u a t Hmean.
+  unfold mean_eq_ctime_update in *.
+  intros t0 HQ.
+
+  destruct (token_withdrawal_preserves_mean_fields St u a t) as
+    [HPuser [HWuser [HTuser [Hpbar [HQeq Htsub]]]]].
+
+  unfold P_, pbar_decayed, Q_decayed in *.
+  simpl in *.
+
+  rewrite Hpbar, HQeq, Htsub in *.
+
+  rewrite (map_ext
+    (fun x : User =>
+       getR x (P_user (V (token_withdrawal u a t St))) *
+       W_decayed (V (token_withdrawal u a t St)) x t0)
+    (fun x : User =>
+       getR x (P_user (V St)) *
+       W_decayed (V St) x t0)).
+  2:{
+    intro x.
+    unfold W_decayed.
+    rewrite HPuser, HWuser, HTuser.
+    reflexivity.
+  }
+
+  rewrite (map_ext
+    (fun x : User =>
+       W_decayed (V (token_withdrawal u a t St)) x t0)
+    (fun x : User =>
+       W_decayed (V St) x t0)).
+  2:{
+    intro x.
+    unfold W_decayed.
+    rewrite HWuser, HTuser.
+    reflexivity.
+  }
+
+  exact (Hmean t0 HQ).
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_submission :
+  forall (St : State) (u : User) (v : value) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (value_submission u v t St)).
+Proof.
+Admitted. (* TODO *)
+
+Lemma value_reading_preserves_mean_fields :
+  forall (st : OracleState) (u : User) (t : timestamp),
+    P_user (value_reading u t st) = P_user st /\
+    W_user (value_reading u t st) = W_user st /\
+    T_user (value_reading u t st) = T_user st /\
+    pbar   (value_reading u t st) = pbar   st /\
+    Q      (value_reading u t st) = Q      st /\
+    t_sub  (value_reading u t st) = t_sub  st.
+Proof.
+  intros st u t.
+  unfold value_reading.
+  destruct (isBlacklisted u st); simpl; repeat split; reflexivity.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_reading :
+  forall (St : State) (u : User) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (value_reading u t (V St)).
+Proof.
+  intros St u t Hmean.
+  destruct (value_reading_preserves_mean_fields (V St) u t) as [HPuser [HWuser [HTuser [Hpbar [HQ]]]]].
+  eapply mean_eq_ctime_update_ext; eauto.
+Qed.
+
+Lemma blacklist_vote_preserves_mean_fields :
+  forall (st : OracleState) (u x : User) (t : timestamp),
+    P_user (blacklist_vote u x t st) = P_user st /\
+    W_user (blacklist_vote u x t st) = W_user st /\
+    T_user (blacklist_vote u x t st) = T_user st /\
+    pbar   (blacklist_vote u x t st) = pbar   st /\
+    Q      (blacklist_vote u x t st) = Q      st /\
+    t_sub  (blacklist_vote u x t st) = t_sub  st.
+Proof.
+  intros st u x t.
+  unfold blacklist_vote.
+  destruct (negb
+           (negb (isBlacklisted u st) &&
+            ((getR u (L_f st) >b 0) &&
+             negb (mem_user x (getUserSet u (M_black (G st))))))) eqn:Hcond.
+  - simpl. repeat split; reflexivity.
+  - simpl.
+    unfold Unlock.
+    destruct ((t >=b getR u (T_dep st) + Delta_dep) &&
+              (getR u (L_l st) >b 0)) eqn:Hunlock;
+    simpl; repeat split; reflexivity.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_blacklist_vote :
+  forall (St : State) (u x : User) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (blacklist_vote u x t (V St)).
+Proof.
+  intros St u x t Hmean.
+  destruct (blacklist_vote_preserves_mean_fields (V St) u x t) as
+    [HPuser [HWuser [HTuser [Hpbar [HQ]]]]].
+  eapply mean_eq_ctime_update_ext; eauto.
+Qed.
+
+Lemma whitelist_vote_preserves_mean_fields :
+  forall (st : OracleState) (u x : User) (t : timestamp),
+    P_user (whitelist_vote u x t st) = P_user st /\
+    W_user (whitelist_vote u x t st) = W_user st /\
+    T_user (whitelist_vote u x t st) = T_user st /\
+    pbar   (whitelist_vote u x t st) = pbar   st /\
+    Q      (whitelist_vote u x t st) = Q      st /\
+    t_sub  (whitelist_vote u x t st) = t_sub  st.
+Proof.
+  intros st u x t.
+  unfold whitelist_vote.
+  destruct (negb
+           (negb (isBlacklisted u st) &&
+            ((getR u (L_f st) >b 0) &&
+             negb (mem_user x (getUserSet u (M_white (G st))))))) eqn:Hcond.
+  - simpl. repeat split; reflexivity.
+  - simpl.
+    unfold Unlock.
+    destruct ((t >=b getR u (T_dep st) + Delta_dep) &&
+              (getR u (L_l st) >b 0)) eqn:Hunlock;
+    simpl; repeat split; reflexivity.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_whitelist_vote :
+  forall (St : State) (u x : User) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (whitelist_vote u x t (V St)).
+Proof.
+  intros St u x t Hmean.
+  destruct (whitelist_vote_preserves_mean_fields (V St) u x t) as
+    [HPuser [HWuser [HTuser [Hpbar [HQ]]]]].
+  eapply mean_eq_ctime_update_ext; eauto.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_weight_sync :
+  forall (St : State) (u : User) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (weight_synchronization u t (V St)).
+Proof.
+  Admitted. (* TODO *)
+
+Lemma reward_funding_preserves_mean_fields :
+  forall (St : State) (u : User) (a : balance) (t : timestamp),
+    P_user (V (reward_funding u a t St)) = P_user (V St) /\
+    W_user (V (reward_funding u a t St)) = W_user (V St) /\
+    T_user (V (reward_funding u a t St)) = T_user (V St) /\
+    pbar   (V (reward_funding u a t St)) = pbar   (V St) /\
+    Q      (V (reward_funding u a t St)) = Q      (V St) /\
+    t_sub  (V (reward_funding u a t St)) = t_sub  (V St).
+Proof.
+  intros St u a t.
+  unfold reward_funding.
+  simpl.
+  repeat split; reflexivity.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_reward_funding :
+  forall (St : State) (u : User) (a : balance) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (reward_funding u a t St)).
+Proof.
+  intros St u a t Hmean.
+  destruct (reward_funding_preserves_mean_fields St u a t) as
+    [HPuser [HWuser [HTuser [Hpbar [HQ]]]]].
+  eapply mean_eq_ctime_update_ext; eauto.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_noneop :
+  forall (St : State) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V St).
+Proof.
+  intros St t Hmean.
+  exact Hmean.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_exec_op :
+  forall (St : State) (op : Operation),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (exec_op op St)).
+Proof.
+  intros St op Hmean.
+  destruct op as
+      [u a t
+      |u a t
+      |u v t
+      |u t
+      |u x t
+      |u x t
+      |u t
+      |u a t
+      |t].
+  - simpl. apply mean_eq_ctime_update_preserved_deposit. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_withdrawal. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_submission. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_reading. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_blacklist_vote. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_whitelist_vote. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_weight_sync. auto.
+  - simpl. eapply mean_eq_ctime_update_preserved_reward_funding. exact Hmean. Unshelve. apply u. apply a.
+  - simpl. apply mean_eq_ctime_update_preserved_noneop; auto.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_step :
+  forall (run : Run) (n : nat),
+    mean_eq_ctime_update (V (state_at run n)) ->
+    mean_eq_ctime_update (V (state_at run (S n))).
+Proof.
+  intros run n Hmean.
+  rewrite state_at_S.
+  apply mean_eq_ctime_update_preserved_exec_op.
+  exact Hmean.
+Qed.
+
+(* Argument orresponding to lines (19) -> (24) on page 8 *)
+Definition ideal_Q_at_submission_time (st : OracleState) : R :=
+  sum_list_R
+    (map (fun x =>
+            getR x (W_user st) *
+            decay (t_sub st - getR x (T_user st)))
+         Users).
+
+Lemma Q'_eq_sum_Wdecay:
+  forall (st : OracleState) (u : User) (t : timestamp),
+    In u Users ->
+    NoDup Users ->
+    Q st =
+      sum_list_R
+        (map (fun x =>
+                getR x (W_user st) *
+                decay (t_sub st - getR x (T_user st)))
+             Users) ->
+    Q' u t st =
+      sum_list_R
+        (map (fun x =>
+                if Nat.eq_dec x u
+                then w u st
+                else getR x (W_user st) *
+                     decay (t - getR x (T_user st)))
+             Users).
+Proof.
+  intros st u t Hu Hnodup HQideal.
+  unfold Q'.
+  unfold w, wu, tu.
+
+  rewrite HQideal.
+
+  rewrite (sum_split_remove
+             Users
+             u
+             (fun x =>
+                getR x (W_user st) *
+                decay (t_sub st - getR x (T_user st)))
+          ); try assumption.
+
+  replace
+    ((sum_list_R
+        (map
+           (fun x : User =>
+              getR x (W_user st) *
+              decay (t_sub st - getR x (T_user st)))
+           (remove Nat.eq_dec u Users))
+      +
+      getR u (W_user st) * decay (t_sub st - getR u (T_user st))
+      -
+      getR u (W_user st) * decay (t_sub st - getR u (T_user st)))
+     * decay (t - t_sub st) + getR u (L_f st))
+  with
+    ((sum_list_R
+        (map
+           (fun x : User =>
+              getR x (W_user st) *
+              decay (t_sub st - getR x (T_user st)))
+           (remove Nat.eq_dec u Users)))
+      * decay (t - t_sub st) + getR u (L_f st))
+  by ring.
+
+  rewrite Rmult_comm.
+  rewrite <- (sum_list_R_map_mult_const
+                (decay (t - t_sub st))
+                (fun x : User =>
+                   getR x (W_user st) *
+                     decay (t_sub st - getR x (T_user st)))
+                (remove Nat.eq_dec u Users)).
+
+  rewrite (map_ext
+             (fun x : User =>
+                decay (t - t_sub st) *
+                (getR x (W_user st) *
+                 decay (t_sub st - getR x (T_user st))))
+             (fun x : User =>
+                getR x (W_user st) *
+                decay (t - getR x (T_user st)))
+          ).
+  2:{
+    intro x.
+    rewrite <- Rmult_assoc.
+    rewrite (Rmult_comm (decay (t - t_sub st)) (getR x (W_user st))).
+    rewrite Rmult_assoc.
+    rewrite decay_add.
+    f_equal.
+    f_equal.
+    ring.
+  }
+
+  replace (getR u (L_f st))
+    with
+      ((fun x : User =>
+          if Nat.eq_dec x u
+          then w u st
+          else getR x (W_user st) * decay (t - getR x (T_user st))) u).
+  2:{
+    unfold w.
+    destruct (Nat.eq_dec u u) as [_|Hneq]; [reflexivity|contradiction].
+  }
+
+    assert (Hmap_remove :
+    map (fun x : User =>
+           getR x (W_user st) * decay (t - getR x (T_user st)))
+        (remove Nat.eq_dec u Users)
+    =
+    map (fun x : User =>
+           if Nat.eq_dec x u
+           then w u st
+           else getR x (W_user st) * decay (t - getR x (T_user st)))
+        (remove Nat.eq_dec u Users)).
+  {
+    apply map_ext_in.
+    intros x Hxin.
+    destruct (Nat.eq_dec x u) as [Heq|Hneq].
+    - subst x.
+      apply remove_In in Hxin.
+      contradiction.
+    - reflexivity.
+  }
+
+  rewrite Hmap_remove.
+
+  rewrite <- (sum_split_remove
+                Users
+                u
+                (fun x : User =>
+                   if Nat.eq_dec x u
+                   then w u st
+                   else getR x (W_user st) *
+                        decay (t - getR x (T_user st)))
+             ); try assumption.
+
+  simpl.
+  destruct (Nat.eq_dec u u) as [_|Hneq]; [reflexivity|contradiction].
+Qed.
+
+Definition ideal_num_at_submission_time (st : OracleState) : R :=
+  sum_list_R
+    (map (fun x =>
+            getR x (P_user st) *
+            getR x (W_user st) *
+            decay (t_sub st - getR x (T_user st)))
+         Users).
+
+(* Argument corresponding to lines 25 to 29 *)
+Lemma pbar'_eq_sum_PWdecay :
+  forall (st : OracleState) (u : User) (v : value) (t : timestamp),
+    In u Users ->
+    NoDup Users ->
+    pbar st * Q st =
+      ideal_num_at_submission_time st ->
+    pbar' u v t st =
+      (sum_list_R
+         (map (fun x =>
+                 if Nat.eq_dec x u
+                 then v * w u st
+                 else getR x (P_user st) *
+                      getR x (W_user st) *
+                      decay (t - getR x (T_user st)))
+              Users))
+      / (Q' u t st).
+Proof.
+  intros st u v t Hu Hnodup HNum.
+  unfold pbar'.
+  unfold ideal_num_at_submission_time in HNum.
+  unfold w, pu, wu, tu.
+
+  rewrite HNum.
+
+  rewrite (sum_split_remove
+             Users
+             u
+             (fun x =>
+                getR x (P_user st) *
+                getR x (W_user st) *
+                decay (t_sub st - getR x (T_user st)))
+          ); try assumption.
+
+  replace
+    (((sum_list_R
+         (map
+            (fun x : User =>
+               getR x (P_user st) *
+               getR x (W_user st) *
+               decay (t_sub st - getR x (T_user st)))
+            (remove Nat.eq_dec u Users))
+       +
+       getR u (P_user st) *
+       getR u (W_user st) *
+       decay (t_sub st - getR u (T_user st))
+       -
+       getR u (P_user st) *
+       getR u (W_user st) *
+       decay (t_sub st - getR u (T_user st)))
+      * decay (t - t_sub st) + v * getR u (L_f st)))
+  with
+    ((sum_list_R
+        (map
+           (fun x : User =>
+              getR x (P_user st) *
+              getR x (W_user st) *
+              decay (t_sub st - getR x (T_user st)))
+           (remove Nat.eq_dec u Users)))
+      * decay (t - t_sub st) + v * getR u (L_f st))
+  by ring.
+
+  rewrite Rmult_comm.
+  rewrite <- (sum_list_R_map_mult_const
+                (decay (t - t_sub st))
+                (fun x : User =>
+                   getR x (P_user st) *
+                   getR x (W_user st) *
+                   decay (t_sub st - getR x (T_user st)))
+                (remove Nat.eq_dec u Users)).
+
+  rewrite (map_ext
+             (fun x : User =>
+                decay (t - t_sub st) *
+                (getR x (P_user st) *
+                 getR x (W_user st) *
+                 decay (t_sub st - getR x (T_user st))))
+             (fun x : User =>
+                getR x (P_user st) *
+                getR x (W_user st) *
+                decay (t - getR x (T_user st)))).
+  2:{
+    intro a.
+    repeat rewrite <- Rmult_assoc.
+    rewrite (Rmult_comm (decay (t - t_sub st)) (getR a (P_user st))).
+    rewrite (Rmult_assoc (getR a (P_user st)) (decay (t - t_sub st)) (getR a (W_user st))).
+    rewrite (Rmult_comm (decay (t - t_sub st)) (getR a (W_user st))).
+    rewrite <- (Rmult_assoc (getR a (P_user st)) (getR a (W_user st)) (decay (t - t_sub st))).
+    rewrite (Rmult_assoc (getR a (P_user st) * getR a (W_user st))
+               (decay (t - t_sub st))
+               (decay (t_sub st - getR a (T_user st)))).
+    rewrite decay_add.
+    f_equal.
+    f_equal.
+    ring.
+  }
+
+  replace (v * getR u (L_f st))
+    with
+      ((fun x : User =>
+          if Nat.eq_dec x u
+          then v * w u st
+          else getR x (P_user st) *
+               getR x (W_user st) *
+               decay (t - getR x (T_user st))) u).
+  2:{
+    unfold w.
+    destruct (Nat.eq_dec u u) as [_|Hneq]; [reflexivity|contradiction].
+  }
+
+  assert (Hmap_remove :
+    map (fun x : User =>
+           getR x (P_user st) *
+           getR x (W_user st) *
+           decay (t - getR x (T_user st)))
+        (remove Nat.eq_dec u Users)
+    =
+    map (fun x : User =>
+           if Nat.eq_dec x u
+           then v * w u st
+           else getR x (P_user st) *
+                getR x (W_user st) *
+                decay (t - getR x (T_user st)))
+        (remove Nat.eq_dec u Users)).
+  {
+    apply map_ext_in.
+    intros x Hxin.
+    destruct (Nat.eq_dec x u) as [Heq|Hneq].
+    - subst x.
+      apply remove_In in Hxin.
+      contradiction.
+    - reflexivity.
+  }
+
+  rewrite Hmap_remove.
+
+  rewrite <- (sum_split_remove
+                Users
+                u
+                (fun x : User =>
+                   if Nat.eq_dec x u
+                   then v * w u st
+                   else getR x (P_user st) *
+                        getR x (W_user st) *
+                        decay (t - getR x (T_user st)))
+             ); try assumption.
+
+  simpl.
+  destruct (Nat.eq_dec u u) as [_|Hneq]; [reflexivity|contradiction].
+Qed.
+
+Definition submitted_oracle_state
+  (st : OracleState) (u : User) (v : value) (t : timestamp) : OracleState :=
+  {|
+    L_l    := L_l st;
+    L_f    := L_f st;
+    T_dep  := T_dep st;
+    T_op   := T_op st;
+    P_user := setR u v (P_user st);
+    W_user := setR u (w u st) (W_user st);
+    T_user := setR u t (T_user st);
+    pbar   := pbar' u v t st;
+    ptilde := v;
+    Q      := Q' u t st;
+    P      := P st;
+    t_sub  := t;
+    t_last := t;
+    L_tot  := L_tot st;
+    G      := G st
+  |}.
+
+Lemma submission_num_if_to_P__num :
+  forall (st : OracleState) (u : User) (v : value) (t : timestamp),
+    sum_list_R
+      (map (fun x =>
+              if Nat.eq_dec x u
+              then v * w u st
+              else getR x (P_user st) *
+                   getR x (W_user st) *
+                   decay (t - getR x (T_user st)))
+           Users)
+    =
+    sum_list_R
+      (map (fun x =>
+              getR x (P_user (submitted_oracle_state st u v t)) *
+              W_decayed (submitted_oracle_state st u v t) x t)
+           Users).
+Proof.
+  intros st u v t.
+  unfold W_decayed, submitted_oracle_state, w.
+  apply f_equal.
+  apply map_ext.
+  intro x.
+  destruct (Nat.eq_dec x u) as [Heq|Hneq].
+
+  - subst x.
+    simpl.
+    repeat rewrite getR_setR_eq.
+    replace (t - t) with 0 by ring.
+    rewrite decay_0.
+    ring.
+  - simpl.
+    repeat rewrite getR_setR_neq by assumption.
+    ring.
+Qed.
+
+Lemma submission_den_if_to_P__den :
+  forall (st : OracleState) (u : User) (v : value) (t : timestamp),
+    sum_list_R
+      (map (fun x =>
+              if Nat.eq_dec x u
+              then w u st
+              else getR x (W_user st) *
+                   decay (t - getR x (T_user st)))
+           Users)
+    =
+    sum_list_R
+      (map (fun x =>
+              W_decayed (submitted_oracle_state st u v t) x t)
+           Users).
+Proof.
+  intros st u v t.
+  unfold W_decayed, submitted_oracle_state, w.
+  apply f_equal.
+  apply map_ext.
+  intro x.
+  destruct (Nat.eq_dec x u) as [Heq|Hneq].
+  - subst x.
+    simpl.
+    repeat rewrite getR_setR_eq.
+    replace (t - t) with 0 by ring.
+    rewrite decay_0.
+    ring.
+  - simpl.
+    repeat rewrite getR_setR_neq by assumption.
+    ring.
+Qed.
+
+Lemma pbar'_eq_P_submitted_state :
+  forall (st : OracleState) (u : User) (v : value) (t : timestamp),
+    In u Users ->
+    NoDup Users ->
+    pbar st * Q st = ideal_num_at_submission_time st ->
+    Q st = ideal_Q_at_submission_time st ->
+    pbar' u v t st = P_ (submitted_oracle_state st u v t) t.
+Proof.
+  intros st u v t Hu Hnodup HNum HQ.
+
+  rewrite pbar'_eq_sum_PWdecay by assumption.
+  rewrite (Q'_eq_sum_Wdecay st u t Hu Hnodup HQ).
+  rewrite submission_num_if_to_P__num.
+  erewrite submission_den_if_to_P__den.
+  unfold P_.
+  reflexivity.
+Qed.
+
+Theorem ideal_decayed_weight_mean_function_is_constant :
+  forall (run : Run) (n : nat),
+    mean_eq_ctime_update (V (state_at run n)).
+Proof.
+  intros run n.
+  (* Here, we induct on the steps, instead of the n-th update
+     (in the paper, we induct on the "updates", i.e. the submission operations)
+     due to how we have formalized the notion of a "run".
+     Thus we involve all possible operations that happen on the next step. *)
+  induction n as [|n IH].
+  - unfold state_at.
+    simpl.
+    unfold init_state.
+    simpl.
+    exact init_mean.
+  - apply mean_eq_ctime_update_preserved_step.
+    (* Main lemma; has a lot of subcases,
+       the important one being submission. *)
+    exact IH.
+Qed.
 
 (** ** Theorem 6: Inactive oracle operator delay
       If an oracle operator u in U becomes inactive,
