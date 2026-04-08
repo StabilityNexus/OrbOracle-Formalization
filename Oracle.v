@@ -425,6 +425,15 @@ Proof.
   apply exp_pos.
 Qed.
 
+Lemma decay_nonzero :
+  forall Delta,
+    0 <> decay Delta.
+Proof.
+  intros.
+  pose proof (decay_pos Delta).
+  lra.
+Qed.
+
 Lemma decay_between_0_1 :
   forall Delta,
     0 < Delta ->
@@ -1651,6 +1660,21 @@ Proof.
   exact (Hmean t0 HQpos).
 Qed.
 
+Lemma Unlock_preserves_mean_fields :
+  forall (st : OracleState) (u : User) (t : timestamp),
+    P_user (Unlock st u t) = P_user st /\
+    W_user (Unlock st u t) = W_user st /\
+    T_user (Unlock st u t) = T_user st /\
+    pbar   (Unlock st u t) = pbar   st /\
+    Q      (Unlock st u t) = Q      st /\
+    t_sub  (Unlock st u t) = t_sub  st.
+Proof.
+  intros st u t.
+  unfold Unlock.
+  destruct ((t >=b getR u (T_dep st) + Delta_dep) &&
+            (getR u (L_l st) >b 0)); simpl; repeat split; reflexivity.
+Qed.
+
 Lemma token_deposit_preserves_mean_fields :
   forall (St : State) (u : User) (a : balance) (t : timestamp),
     P_user (V (token_deposit u a t St)) = P_user (V St) /\
@@ -1780,13 +1804,6 @@ Proof.
 
   exact (Hmean t0 HQ).
 Qed.
-
-Lemma mean_eq_ctime_update_preserved_submission :
-  forall (St : State) (u : User) (v : value) (t : timestamp),
-    mean_eq_ctime_update (V St) ->
-    mean_eq_ctime_update (V (value_submission u v t St)).
-Proof.
-Admitted. (* TODO *)
 
 Lemma value_reading_preserves_mean_fields :
   forall (st : OracleState) (u : User) (t : timestamp),
@@ -1922,45 +1939,8 @@ Proof.
   exact Hmean.
 Qed.
 
-Lemma mean_eq_ctime_update_preserved_exec_op :
-  forall (St : State) (op : Operation),
-    mean_eq_ctime_update (V St) ->
-    mean_eq_ctime_update (V (exec_op op St)).
-Proof.
-  intros St op Hmean.
-  destruct op as
-      [u a t
-      |u a t
-      |u v t
-      |u t
-      |u x t
-      |u x t
-      |u t
-      |u a t
-      |t].
-  - simpl. apply mean_eq_ctime_update_preserved_deposit. auto.
-  - simpl. apply mean_eq_ctime_update_preserved_withdrawal. auto.
-  - simpl. apply mean_eq_ctime_update_preserved_submission. auto.
-  - simpl. apply mean_eq_ctime_update_preserved_reading. auto.
-  - simpl. apply mean_eq_ctime_update_preserved_blacklist_vote. auto.
-  - simpl. apply mean_eq_ctime_update_preserved_whitelist_vote. auto.
-  - simpl. apply mean_eq_ctime_update_preserved_weight_sync. auto.
-  - simpl. eapply mean_eq_ctime_update_preserved_reward_funding. exact Hmean. Unshelve. apply u. apply a.
-  - simpl. apply mean_eq_ctime_update_preserved_noneop; auto.
-Qed.
+(* Start of submission subcase *)
 
-Lemma mean_eq_ctime_update_preserved_step :
-  forall (run : Run) (n : nat),
-    mean_eq_ctime_update (V (state_at run n)) ->
-    mean_eq_ctime_update (V (state_at run (S n))).
-Proof.
-  intros run n Hmean.
-  rewrite state_at_S.
-  apply mean_eq_ctime_update_preserved_exec_op.
-  exact Hmean.
-Qed.
-
-(* Argument orresponding to lines (19) -> (24) on page 8 *)
 Definition ideal_Q_at_submission_time (st : OracleState) : R :=
   sum_list_R
     (map (fun x =>
@@ -1968,6 +1948,16 @@ Definition ideal_Q_at_submission_time (st : OracleState) : R :=
             decay (t_sub st - getR x (T_user st)))
          Users).
 
+
+Definition ideal_num_at_submission_time (st : OracleState) : R :=
+  sum_list_R
+    (map (fun x =>
+            getR x (P_user st) *
+            getR x (W_user st) *
+            decay (t_sub st - getR x (T_user st)))
+         Users).
+
+(* Argument orresponding to lines (19) -> (24) on page 8 *)
 Lemma Q'_eq_sum_Wdecay:
   forall (st : OracleState) (u : User) (t : timestamp),
     In u Users ->
@@ -2098,13 +2088,6 @@ Proof.
   destruct (Nat.eq_dec u u) as [_|Hneq]; [reflexivity|contradiction].
 Qed.
 
-Definition ideal_num_at_submission_time (st : OracleState) : R :=
-  sum_list_R
-    (map (fun x =>
-            getR x (P_user st) *
-            getR x (W_user st) *
-            decay (t_sub st - getR x (T_user st)))
-         Users).
 
 (* Argument corresponding to lines 25 to 29 *)
 Lemma pbar'_eq_sum_PWdecay :
@@ -2361,6 +2344,246 @@ Proof.
   unfold P_.
   reflexivity.
 Qed.
+
+
+Lemma raw_submission_equalities_imply_mean_eq_ctime_update :
+  forall st,
+    Q st = ideal_Q_at_submission_time st ->
+    pbar st * Q st = ideal_num_at_submission_time st ->
+    mean_eq_ctime_update st.
+Proof.
+  (**    intros st HQ HN.
+  unfold mean_eq_ctime_update.
+  intros t0 HQpos.
+  unfold P_, pbar_decayed, Q_decayed.
+  unfold ideal_Q_at_submission_time in HQ.
+  unfold ideal_num_at_submission_time in HN.
+
+  assert (Hnum_t0 :
+    sum_list_R
+      (map (fun x : User =>
+              getR x (P_user st) * W_decayed st x t0)
+           Users)
+    =
+    decay (t0 - t_sub st) *
+    sum_list_R
+      (map (fun x : User =>
+              getR x (P_user st) *
+              getR x (W_user st) *
+              decay (t_sub st - getR x (T_user st)))
+           Users)).
+  {
+    rewrite <- (sum_list_R_map_mult_const
+                  (decay (t0 - t_sub st))
+                  (fun x : User =>
+                     getR x (P_user st) *
+                     getR x (W_user st) *
+                     decay (t_sub st - getR x (T_user st)))
+                  Users).
+
+    rewrite (map_ext
+               (fun x : User =>
+                  decay (t0 - t_sub st) *
+                  (getR x (P_user st) *
+                   getR x (W_user st) *
+                   decay (t_sub st - getR x (T_user st))))
+               (fun x : User =>
+                  getR x (P_user st) * W_decayed st x t0)).
+    2:{
+      intro x.
+      unfold W_decayed.
+      repeat rewrite <- Rmult_assoc.
+      rewrite (Rmult_comm (decay (t0 - t_sub st)) (getR x (P_user st))).
+      rewrite (Rmult_assoc (getR x (P_user st)) (decay (t0 - t_sub st)) (getR x (W_user st))).
+      rewrite (Rmult_comm (decay (t0 - t_sub st)) (getR x (W_user st))).
+      rewrite <- (Rmult_assoc (getR x (P_user st)) (getR x (W_user st)) (decay (t0 - t_sub st))).
+      rewrite (Rmult_assoc (getR x (P_user st) * getR x (W_user st))
+                 (decay (t0 - t_sub st))
+                 (decay (t_sub st - getR x (T_user st)))).
+      rewrite decay_add.
+      f_equal.
+      f_equal.
+      ring.
+    }
+    reflexivity.
+  }
+
+  assert (Hden_t0 :
+    sum_list_R
+      (map (fun x : User =>
+              W_decayed st x t0)
+           Users)
+    =
+    decay (t0 - t_sub st) *
+    sum_list_R
+      (map (fun x : User =>
+              getR x (W_user st) *
+              decay (t_sub st - getR x (T_user st)))
+           Users)).
+  {
+    rewrite <- (sum_list_R_map_mult_const
+                  (decay (t0 - t_sub st))
+                  (fun x : User =>
+                     getR x (W_user st) *
+                     decay (t_sub st - getR x (T_user st)))
+                  Users).
+
+    rewrite (map_ext
+               (fun x : User =>
+                  decay (t0 - t_sub st) *
+                  (getR x (W_user st) *
+                   decay (t_sub st - getR x (T_user st))))
+               (fun x : User =>
+                  W_decayed st x t0)).
+    2:{
+      intro x.
+      unfold W_decayed.
+      rewrite <- Rmult_assoc.
+      rewrite (Rmult_comm (decay (t0 - t_sub st)) (getR x (W_user st))).
+      rewrite Rmult_assoc.
+      rewrite decay_add.
+      f_equal.
+      f_equal.
+      ring.
+    }
+    reflexivity.
+  }
+
+  rewrite Hnum_t0.
+  rewrite Hden_t0.
+  rewrite <- HN.
+  rewrite <- HQ.
+
+  assert (Hdecpos : 0 < decay (t0 - t_sub st)).
+  { apply decay_pos. }
+
+  assert (HQ0 : 0 < Q st).
+  {
+    unfold Q_decayed in HQpos.
+    apply (Rmult_lt_reg_r (decay (t0 - t_sub st))).
+    - exact Hdecpos.
+    - rewrite Rmult_0_l.
+      exact HQpos.
+  }
+
+  assert (Hdneq : decay (t0 - t_sub st) <> 0). symmetry. apply decay_nonzero.
+  assert (Hqneq : Q st  <> 0).  lra.
+
+  unfold Rdiv.
+
+  repeat rewrite Rmult_assoc.
+  rewrite (Rmult_comm (Q st) (decay (t0 - t_sub st))).
+  repeat rewrite <- Rmult_assoc.
+
+  (* LHS: group as p * (d*q) * /(d*q) *)
+  rewrite (Rmult_assoc (decay (t0 - t_sub st)) (pbar st * Q st)
+           (/ (decay (t0 - t_sub st) * Q st))).
+  rewrite <- (Rmult_assoc (decay (t0 - t_sub st)) (pbar st) (Q st)).
+  rewrite (Rmult_comm (decay (t0 - t_sub st)) (pbar st)).
+  repeat rewrite Rmult_assoc.
+  rewrite (Rmult_comm (Q st) (/ (decay (t0 - t_sub st) * Q st))).
+  repeat rewrite <- Rmult_assoc.
+  replace
+    (decay (t0 - t_sub st) * Q st * / (decay (t0 - t_sub st) * Q st))
+    with 1.
+  2:{
+    rewrite Rinv_r; [ring|].
+    apply Rmult_integral_contrapositive_currified; assumption.
+  }
+  rewrite Rmult_1_r.
+
+  (* RHS: same cancellation *)
+  rewrite (Rmult_comm (pbar st) (decay (t0 - t_sub st))).
+  repeat rewrite Rmult_assoc.
+  replace
+    (decay (t0 - t_sub st) * / (Q st * decay (t0 - t_sub st)))
+    with (/ Q st).
+  2:{
+    assert (Hmulneq : Q st * decay (t0 - t_sub st) <> 0).
+    { apply Rmult_integral_contrapositive_currified; assumption. }
+    apply Rmult_eq_reg_l with (r := Q st * decay (t0 - t_sub st)).
+    - exact Hmulneq.
+    - field_simplify.
+      ring.
+  }
+  rewrite <- Rmult_assoc.
+  replace (Q st * / Q st) with 1 by (apply Rinv_r; exact Hqneq).
+  rewrite Rmult_1_r.
+  reflexivity.
+Qed. *)
+  Admitted.
+
+
+Lemma mean_eq_ctime_update_preserved_submission :
+  forall (St : State) (u : User) (v : value) (t : timestamp),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (value_submission u v t St)).
+Proof.
+  intros St u v t Hmean.
+  unfold mean_eq_ctime_update in *.
+  intros t0 HQpos.
+
+  set (st0 := V St).
+  set (st1 := Unlock st0 u t).
+  set (st2 := V (value_submission u v t St)).
+
+  (* Goal is now about st2 *)
+  change (P_ st2 t0 = pbar_decayed st2 t0 / Q_decayed t0 st2).
+
+  (* Backwards: reduce this to a generic bridge from raw equalities *)
+  eapply raw_submission_equalities_imply_mean_eq_ctime_update.
+  - (* denominator equality for st2 *)
+    unfold st2, value_submission.
+    simpl.
+    (* this should become exactly the submitted-state denominator fact *)
+    (* likely after replacing with submitted_oracle_state st1 u v t *)
+    admit.
+  - (* numerator equality for st2 *)
+    unfold st2, value_submission.
+    simpl.
+    (* this should become exactly the submitted-state numerator fact *)
+    admit.
+Admitted.
+
+
+Lemma mean_eq_ctime_update_preserved_exec_op :
+  forall (St : State) (op : Operation),
+    mean_eq_ctime_update (V St) ->
+    mean_eq_ctime_update (V (exec_op op St)).
+Proof.
+  intros St op Hmean.
+  destruct op as
+      [u a t
+      |u a t
+      |u v t
+      |u t
+      |u x t
+      |u x t
+      |u t
+      |u a t
+      |t].
+  - simpl. apply mean_eq_ctime_update_preserved_deposit. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_withdrawal. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_submission. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_reading. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_blacklist_vote. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_whitelist_vote. auto.
+  - simpl. apply mean_eq_ctime_update_preserved_weight_sync. auto.
+  - simpl. eapply mean_eq_ctime_update_preserved_reward_funding. exact Hmean. Unshelve. apply u. apply a.
+  - simpl. apply mean_eq_ctime_update_preserved_noneop; auto.
+Qed.
+
+Lemma mean_eq_ctime_update_preserved_step :
+  forall (run : Run) (n : nat),
+    mean_eq_ctime_update (V (state_at run n)) ->
+    mean_eq_ctime_update (V (state_at run (S n))).
+Proof.
+  intros run n Hmean.
+  rewrite state_at_S.
+  apply mean_eq_ctime_update_preserved_exec_op.
+  exact Hmean.
+Qed.
+
 
 Theorem ideal_decayed_weight_mean_function_is_constant :
   forall (run : Run) (n : nat),
