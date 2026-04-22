@@ -1,11 +1,12 @@
 *.log
-tmp/
-.nra.cache
 
-# Coq build artifacts
 *.vo
 *.vok
 *.vos
 *.glob
 *.aux
 .lia.cache
+.nra.cache
+
+*.html
+*.css
