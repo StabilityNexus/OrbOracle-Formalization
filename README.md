@@ -23,5 +23,5 @@ coqdoc --parse-comments --table-of-contents Oracle.v
 To clean generated files:
 
 ```sh
-rm -f *.glob *.vo *.vos *.vok *.html coqdoc.css toc.html index.html
+rm -f *.glob *.vo *.vos *.vok *.html *.css
 ```
