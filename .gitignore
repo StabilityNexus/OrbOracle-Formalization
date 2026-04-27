@@ -10,3 +10,4 @@
 
 *.html
 *.css
+deploy-coqdoc.sh
