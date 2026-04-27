@@ -2117,11 +2117,11 @@ Definition of an execution of a trace.
 
 <div class="paragraph"> </div>
 
-      <span class="inlinecode"><span class="id" title="var">P</span>(<span class="id" title="var">t</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">pbar_k</span>(<span class="id" title="var">t</span>)</span>
-
+      <span class="inlinecode"><span class="id" title="var">P</span>(<span class="id" title="var">t</span>)</span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">pbar_k</span>(<span class="id" title="var">t</span>)</span> 
 <div class="paragraph"> </div>
 
-      Proof sketch
+<a id="lab37"></a><h3 class="section">Proof sketch</h3>
+
 
 <div class="paragraph"> </div>
 
@@ -2151,7 +2151,7 @@ Definition of an execution of a trace.
  
 <div class="paragraph"> </div>
 
-<a id="lab37"></a><h3 class="section">Operations preserve relevant fields</h3>
+<a id="lab38"></a><h3 class="section">Operations preserve relevant fields</h3>
 
     The following lemmas state that operations leave mean / <span class="inlinecode"><span class="id" title="var">P</span>(<span class="id" title="var">t</span>)</span> relevant oracle fields unchanged.
  
@@ -2297,7 +2297,7 @@ Definition of an execution of a trace.
 </div>
 
 <div class="doc">
-<a id="lab38"></a><h3 class="section">Submission subcase</h3>
+<a id="lab39"></a><h3 class="section">Submission subcase</h3>
 
 <div class="paragraph"> </div>
 
@@ -2854,7 +2854,7 @@ This shows that <span class="inlinecode"><span class="id" title="var">pbar'</spa
 </div>
 
 <div class="doc">
-<a id="lab39"></a><h3 class="section">Invariants and theorem statement</h3>
+<a id="lab40"></a><h3 class="section">Invariants and theorem statement</h3>
 
 <div class="paragraph"> </div>
 
@@ -3217,7 +3217,7 @@ Needed assumptions (for submission case):
 </div>
 
 <div class="doc">
-<a id="lab40"></a><h3 class="section"><span class="inlinecode"><span class="id" title="var">mean_raw_eq_preserved_step</span></span> and subcases</h3>
+<a id="lab41"></a><h3 class="section"><span class="inlinecode"><span class="id" title="var">mean_raw_eq_preserved_step</span></span> and subcases</h3>
 
     The next few lemmas show that <span class="inlinecode"><span class="id" title="var">mean_raw_eq</span></span>, the main predicate,
  
@@ -3736,7 +3736,7 @@ Needed assumptions (for submission case):
 </div>
 
 <div class="doc">
-<a id="lab41"></a><h3 class="section">Raw invariant along runs</h3>
+<a id="lab42"></a><h3 class="section">Raw invariant along runs</h3>
 
 </div>
 <div class="code">
@@ -3759,7 +3759,7 @@ Needed assumptions (for submission case):
 </div>
 
 <div class="doc">
-<a id="lab42"></a><h3 class="section">Theorem 1 main statement</h3>
+<a id="lab43"></a><h3 class="section">Theorem 1 main statement</h3>
 
 </div>
 <div class="code">
@@ -3780,7 +3780,7 @@ Needed assumptions (for submission case):
 </div>
 
 <div class="doc">
-<a id="lab43"></a><h2 class="section">Theorem 2: Inactive oracle operator delay</h2>
+<a id="lab44"></a><h2 class="section">Theorem 2: Inactive oracle operator delay</h2>
 
 
 <div class="paragraph"> </div>
@@ -3797,7 +3797,7 @@ Needed assumptions (for submission case):
 
 <div class="paragraph"> </div>
 
-<a id="lab44"></a><h3 class="section">Proof sketch</h3>
+<a id="lab45"></a><h3 class="section">Proof sketch</h3>
 
 
 <div class="paragraph"> </div>
@@ -3895,7 +3895,7 @@ Needed assumptions (for submission case):
  
 <div class="paragraph"> </div>
 
-<a id="lab45"></a><h3 class="section">Delay definition (Defs. 4, 5)</h3>
+<a id="lab46"></a><h3 class="section">Delay definition (Defs. 4, 5)</h3>
 
 <div class="paragraph"> </div>
 
@@ -3930,7 +3930,7 @@ Oracle delay
 </div>
 
 <div class="doc">
-<a id="lab46"></a><h3 class="section">Inactivity definition</h3>
+<a id="lab47"></a><h3 class="section">Inactivity definition</h3>
 
     A user <span class="inlinecode"><span class="id" title="var">u</span></span> is inactive for a trace <span class="inlinecode"><span class="id" title="var">tr</span></span> if there exists a timestamp <span class="inlinecode"><span class="id" title="var">t_end</span></span>, such that
     there are no submission operations <span class="inlinecode"><span class="id" title="var">Submission</span></span> <span class="inlinecode"><span class="id" title="var">u</span></span> <span class="inlinecode"><span class="id" title="var">v</span></span> <span class="inlinecode"><span class="id" title="var">t</span></span> with <span class="inlinecode"><span class="id" title="var">t</span></span> <span class="inlinecode">&gt;=</span> <span class="inlinecode"><span class="id" title="var">t_end</span></span> in <span class="inlinecode"><span class="id" title="var">tr</span></span>, and
@@ -4009,7 +4009,7 @@ If a user is inactive in a run, then <span class="inlinecode"><span class="id" t
 </div>
 
 <div class="doc">
-<a id="lab47"></a><h3 class="section">Convergence / limit to zero formalization definition</h3>
+<a id="lab48"></a><h3 class="section">Convergence / limit to zero formalization definition</h3>
 
 </div>
 <div class="code">
@@ -4039,7 +4039,7 @@ If a user is inactive in a run, then <span class="inlinecode"><span class="id" t
 </div>
 
 <div class="doc">
-<a id="lab48"></a><h3 class="section">Exponential dominates linear</h3>
+<a id="lab49"></a><h3 class="section">Exponential dominates linear</h3>
 
     Crucial lemma that states that an exponential function dominates a linear function. 
 </div>
@@ -4366,7 +4366,7 @@ If a user is inactive in a run, then <span class="inlinecode"><span class="id" t
 </div>
 
 <div class="doc">
-<a id="lab49"></a><h3 class="section">Rewriting to form in line 38 in paper</h3>
+<a id="lab50"></a><h3 class="section">Rewriting to form in line 38 in paper</h3>
 
 The lemmas rewriting <span class="inlinecode"><span class="id" title="var">Lambda</span>(<span class="id" title="var">u</span>)</span> (oracle operator delay) to the form in line 38. 
 </div>
@@ -4521,7 +4521,7 @@ The lemmas rewriting <span class="inlinecode"><span class="id" title="var">Lambd
 </div>
 
 <div class="doc">
-<a id="lab50"></a><h3 class="section">Theorem 2 main statement</h3>
+<a id="lab51"></a><h3 class="section">Theorem 2 main statement</h3>
 
 </div>
 <div class="code">
@@ -4952,7 +4952,7 @@ The lemmas rewriting <span class="inlinecode"><span class="id" title="var">Lambd
 </div>
 
 <div class="doc">
-<a id="lab51"></a><h2 class="section">Theorem 3: Optimally small oracle delay</h2>
+<a id="lab52"></a><h2 class="section">Theorem 3: Optimally small oracle delay</h2>
 
 
 <div class="paragraph"> </div>
@@ -4960,7 +4960,7 @@ The lemmas rewriting <span class="inlinecode"><span class="id" title="var">Lambd
       The oracle delay <span class="inlinecode"><span class="id" title="var">Lambda</span>(<span class="id" title="var">t</span>)</span> is bounded above by <span class="inlinecode">(<span class="id" title="var">t</span></span> <span class="inlinecode">-</span> <span class="inlinecode"><span class="id" title="var">tstar</span></span> <span class="inlinecode">)</span> where <span class="inlinecode"><span class="id" title="var">tstar</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">min_</span>{<span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="tactic">in</span></span> <span class="inlinecode"><span class="id" title="var">U</span>}</span> <span class="inlinecode"><span class="id" title="var">t_x</span></span>. 
 <div class="paragraph"> </div>
 
-<a id="lab52"></a><h3 class="section">Proof sketch</h3>
+<a id="lab53"></a><h3 class="section">Proof sketch</h3>
 
 
 <div class="paragraph"> </div>
@@ -5083,7 +5083,7 @@ The denominator of Lambda is well-defined only if there is at least one positive
 </div>
 
 <div class="doc">
-<a id="lab53"></a><h3 class="section">Theorem 3 main statement</h3>
+<a id="lab54"></a><h3 class="section">Theorem 3 main statement</h3>
 
 </div>
 <div class="code">
@@ -5147,13 +5147,13 @@ The denominator of Lambda is well-defined only if there is at least one positive
 </div>
 
 <div class="doc">
-<a id="lab54"></a><h2 class="section">Theorem 4: Sustainable rewards</h2>
+<a id="lab55"></a><h2 class="section">Theorem 4: Sustainable rewards</h2>
 
       If <span class="inlinecode">0</span> <span class="inlinecode">&lt;=</span> <span class="inlinecode">\<span class="id" title="var">alpha</span></span> <span class="inlinecode">&lt;</span> <span class="inlinecode">1</span> and <span class="inlinecode"><span class="id" title="var">B_oracle</span>(<span class="id" title="var">tau_r</span>)</span> <span class="inlinecode">&gt;</span> <span class="inlinecode">0</span> at a given time <span class="inlinecode"><span class="id" title="var">t</span></span>,
       then <span class="inlinecode"><span class="id" title="var">B_oracle</span>(\<span class="id" title="var">tau_r</span>)</span> <span class="inlinecode">&gt;</span> <span class="inlinecode">0</span> for all times <span class="inlinecode"><span class="id" title="var">t'</span></span> <span class="inlinecode">&gt;</span> <span class="inlinecode"><span class="id" title="var">t</span></span>. 
 <div class="paragraph"> </div>
 
-<a id="lab55"></a><h3 class="section">Proof sketch</h3>
+<a id="lab56"></a><h3 class="section">Proof sketch</h3>
 
 
 <div class="paragraph"> </div>
@@ -5484,7 +5484,7 @@ If these assumptions hold, then whenever the balance of the oracle is positive a
 </div>
 
 <div class="doc">
-<a id="lab56"></a><h3 class="section">Theorem 4 main statement</h3>
+<a id="lab57"></a><h3 class="section">Theorem 4 main statement</h3>
 
 </div>
 <div class="code">
