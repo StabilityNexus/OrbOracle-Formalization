@@ -1574,9 +1574,9 @@ Qed.
       The ideal decayed weighted mean function [P(t)] and the constant-time update rule [pbar_k(t) - pbar] are equal
       where [k] is the [k-th] update.
 
-      [P(t) = pbar_k(t)]
+      [P(t) = pbar_k(t)] *)
 
-      Proof sketch
+(** *** Proof sketch
 
       The proof does not show [P(t) = pbar] directly. Instead, we define a stronger invariant
       [mean_raw_eq], stating that [Q] is the ideal denominator at [t_sub] and [pbar * Q] is the
