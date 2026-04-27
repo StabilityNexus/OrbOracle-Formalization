@@ -2,15 +2,16 @@
     This file, [Oracle.v], contains the formalization of the oracle protocol and theorems in the Orb Oracle paper.
 
     This file is also documented and organized to follow the paper.
-a
+
     Broadly, we introduce the protocol specification, then the protocol operations, then the formalization of the theroems in the paper in order.
 
-    Sections and subsections directly paralleling the paper are indexed, e.g. "Datatypes, Parameters (3)" refers to "Section 3" in the paper.
+    Sections and subsections directly paralleling the paper are indexed, e.g. "Auxiliary state update operations (3.2)" refers to the same-named subsection 3.2 in the paper.
 
     Some sections or subsections are formalization-specific and are not indexed relative to the paper.
 
-    The table of contents [toc.html] is included for convenience and is helpful in navigating the formalization.
-    The coq-doc generated [index.html] is also useful for quickly looking up definitions.
+        The table of contents #<a href="toc.html">toc.html</a># is included for convenience and is helpful in navigating the formalization.
+
+    The coqdoc-generated index #<a href="index.html">index.html</a># is also useful for quickly looking up definitions.
  *)
 
 (** * Imports *)
