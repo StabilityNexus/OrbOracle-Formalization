@@ -9,7 +9,7 @@
 
     Some sections or subsections are formalization-specific and are not indexed relative to the paper.
 
-        The table of contents #<a href="toc.html">toc.html</a># is included for convenience and is helpful in navigating the formalization.
+    The table of contents #<a href="toc.html">toc.html</a># is included for convenience and is helpful in navigating the formalization.
 
     The coqdoc-generated index #<a href="index.html">index.html</a># is also useful for quickly looking up definitions.
  *)
@@ -79,7 +79,7 @@ Infix "<b"  := Rltb (at level 70).
 Infix ">=b" := Rgeb (at level 70).
 Infix ">b"  := Rgtb (at level 70).
 
-(** ** Users and UserSets
+(** ** Users
     [User]s are defined as [nat] for simplicity.
     The global universe of users [Users] is defined as a list instead of a set.
     This is because we define our own summation over real numbers [sum_list_R], which is simplest to do as folding addition over a list.
@@ -95,44 +95,6 @@ Axiom Users_NoDup : NoDup Users.
 
 Definition mem_user (u : User) (s : UserSet) : bool :=
   existsb (fun x => Nat.eqb x u) s.
-
-Lemma mem_user_In :       (* [TODO]: del *)
-  forall (u : User) (s : UserSet),
-    mem_user u s = true <-> In u s.
-Proof.
-  unfold mem_user.
-  intros.
-  rewrite existsb_exists.
-  split.
-  - intros [x []].
-    apply EqNat.beq_nat_true_stt in H0.
-    subst.
-    apply H.
-  - intros.
-    exists u.
-    split; auto.
-    apply Nat.eqb_refl.
-Qed.
-
-
-Lemma negb_mem_user_not_In : (* [TODO]: del *)
-  forall (u : User) (s : UserSet),
-    mem_user u s = false <-> not (In u s).
-Proof.
-  intros.
-  split.
-  - unfold not.
-    intros.
-    apply mem_user_In in H0.
-    rewrite H in H0.
-    discriminate.
-  - intros Hnotin.
-    destruct (mem_user u s) eqn:Hmem.
-    -- apply mem_user_In in Hmem.
-       unfold not in Hnotin. apply Hnotin in Hmem.
-       destruct Hmem.
-    -- reflexivity.
-Qed.
 
 (** ** Time
     Timestamps are used in time-dependent functions used by operations in the oracle, most notably for decay.
@@ -421,7 +383,7 @@ Definition P_ (st : OracleState) (t : timestamp) : R :=
   (sum_list_R (map (fun x => Rmult (getR x (P_user st)) (W_decayed st x t))  Users))
     / (sum_list_R (map (fun x => (W_decayed st x t)) Users)).
 
-Hypothesis B_user_w_nonneg_hyp : forall u st, getR u (W_user st) >= 0. (* TODO *)
+Hypothesis B_user_w_nonneg_hyp : forall u st, getR u (W_user st) >= 0.
 
 Lemma W_decayed_nonneg :
   forall u st t,
@@ -580,16 +542,14 @@ Definition reweight_white_step (u : User) (w : weight) (x : User) (st : OracleSt
   in
   Recompute x st.
 
-(** [Reweight] updates the weights of every blacklist/whitelist vote cast by a user.
-    Precondition:
-    - [w >= 0] (implicit)
- *)
-Definition Reweight (u : User) (w : weight) (st : OracleState) : OracleState :=
+(** [Reweight] updates the weights of every blacklist/whitelist vote cast by a user. *)
+Definition Reweight (u : User)  (st : OracleState) : OracleState :=
   let gx := G st in
   let blacklisteds := getUserSet u (M_black gx) in
   let whitelisteds := getUserSet u (M_white gx) in
-  let st1 := fold_left (fun acc x => reweight_black_step u w x acc) blacklisteds st in
-  let st2 := fold_left (fun acc x => reweight_white_step u w x acc) whitelisteds st1 in
+  let lfu := getR u (L_f st) in
+  let st1 := fold_left (fun acc x => reweight_black_step u lfu x acc) blacklisteds st in
+  let st2 := fold_left (fun acc x => reweight_white_step u lfu x acc) whitelisteds st1 in
   st2.
 
 (** * Operations (3.3)
@@ -610,7 +570,6 @@ Definition Reweight (u : User) (w : weight) (st : OracleState) : OracleState :=
 
 Definition token_deposit (u : User) (a : balance) (t : timestamp) (St : State) : State :=
   if (a <=b 0) then
-    (* TODO: add t >= 0*)
     St
   else
     let V0  := V St in
@@ -660,7 +619,6 @@ Definition token_deposit (u : User) (a : balance) (t : timestamp) (St : State) :
  *)
 
 Definition token_withdrawal (u : User) (a : balance) (t : timestamp) (St : State) : State :=
-  (* TODO: add t >= 0 *)
   let cond1 := a >b 0 in
   let cond2 := getR u (L_f (V St)) >=b a in
   let cond3 := getR u (T_op (V St)) + Delta_wd <=b t in
@@ -807,15 +765,15 @@ Definition value_reading (u : User) (t : timestamp) (st : OracleState) : OracleS
       L_l    := L_l st;
       L_f    := L_f st;
       T_dep  := T_dep st;
-      T_op   := T_op st;
+      T_op   := setR u t (T_op st);
       P_user := P_user st;
       W_user := W_user st;
       T_user := T_user st;
       pbar   := pbar st;
       ptilde := ptilde st;
       Q      := Q st;
-      Phist      := Phist st;
-      t_sub  := t_sub st ;
+      Phist  := Phist st;
+      t_sub  := t_sub st;
       t_last := t;
       L_tot  := L_tot st;
       G      := G st
@@ -956,7 +914,7 @@ Definition whitelist_vote (u x : User) (t : timestamp) (st : OracleState) : Orac
 
 Definition weight_synchronization (u : User) (t : timestamp) (st : OracleState) : OracleState :=
   let v0 := Unlock st u t in
-  let v1 := Reweight u (getR u (L_f v0)) v0 in
+  let v1 := Reweight u v0 in
   {|
     L_l    := L_l v1;
     L_f    := L_f v1;
@@ -1216,48 +1174,50 @@ Proof.
 Qed.
 
 Lemma Reweight_preserves_T_user :
-  forall u0 w st u,
-    getR u (T_user (Reweight u0 w st)) = getR u (T_user st).
+  forall u0 st u,
+    getR u (T_user (Reweight u0 st)) = getR u (T_user st).
 Proof.
-  intros u0 w st u.
+  intros u0 st u.
   unfold Reweight.
   (* first fold *)
   rewrite <- (fold_left_preserves_getR_T_user
             User
-            (fun acc x => reweight_black_step u0 w x acc)
+            (fun acc x => reweight_black_step u0 (getR u0 (L_f st)) x acc)
             (getUserSet u0 (M_black (G st)))
             st u).
   2:{ intros acc x; apply reweight_black_step_preserves_T_user. }
   (* second fold *)
   rewrite (fold_left_preserves_getR_T_user
             User
-            (fun acc x => reweight_white_step u0 w x acc)
+            (fun acc x => reweight_white_step u0 (getR u0 (L_f st)) x acc)
             (getUserSet u0 (M_white (G st)))
-            (fold_left (fun acc x => reweight_black_step u0 w x acc)
-                       (getUserSet u0 (M_black (G st))) st)
+            (fold_left
+               (fun acc x => reweight_black_step u0 (getR u0 (L_f st)) x acc)
+               (getUserSet u0 (M_black (G st))) st)
             u).
   2:{ intros acc x; apply reweight_white_step_preserves_T_user. }
   reflexivity.
 Qed.
 
 Lemma Reweight_preserves_W_user :
-  forall u0 w st u,
-    getR u (W_user (Reweight u0 w st)) = getR u (W_user st).
+  forall u0 st u,
+    getR u (W_user (Reweight u0 st)) = getR u (W_user st).
 Proof.
-  intros u0 w st u.
+  intros u0 st u.
   unfold Reweight.
   rewrite <- (fold_left_preserves_getR_W_user
             User
-            (fun acc x => reweight_black_step u0 w x acc)
+            (fun acc x => reweight_black_step u0 (getR u0 (L_f st)) x acc)
             (getUserSet u0 (M_black (G st)))
             st u).
   2:{ intros acc x; apply reweight_black_step_preserves_W_user. }
   rewrite (fold_left_preserves_getR_W_user
             User
-            (fun acc x => reweight_white_step u0 w x acc)
+            (fun acc x => reweight_white_step u0 (getR u0 (L_f st)) x acc)
             (getUserSet u0 (M_white (G st)))
-            (fold_left (fun acc x => reweight_black_step u0 w x acc)
-                       (getUserSet u0 (M_black (G st))) st)
+            (fold_left
+               (fun acc x => reweight_black_step u0 (getR u0 (L_f st)) x acc)
+               (getUserSet u0 (M_black (G st))) st)
             u).
   2:{ intros acc x; apply reweight_white_step_preserves_W_user. }
   reflexivity.
@@ -1309,16 +1269,15 @@ Proof.
 
   - set (st0 := V St).
     set (st1 := Unlock st0 u0 t).
-    set (w0  := getR u0 (L_f st1)).
 
-    pose proof (Reweight_preserves_T_user u0 w0 st1 u) as HTre.
+    pose proof (Reweight_preserves_T_user u0 st1 u) as HTre.
 
     assert (HTun : getR u (T_user st1) = getR u (T_user st0)).
     { subst st1 st0. unfold Unlock.
       destruct ((t >=b getR u0 (T_dep (V St)) + Delta_dep) && (getR u0 (L_l (V St)) >b 0));
         reflexivity. }
 
-    pose proof (Reweight_preserves_W_user u0 w0 st1 u) as HWre.
+    pose proof (Reweight_preserves_W_user u0 st1 u) as HWre.
 
     assert (HWun : getR u (W_user st1) = getR u (W_user st0)).
     { subst st1 st0. unfold Unlock.
@@ -1446,6 +1405,44 @@ Proof.
     apply IHl.
 Qed.
 
+Lemma sum_list_R_nonneg :
+  forall l,
+    (forall x, In x l -> 0 <= x) ->
+    0 <= sum_list_R l.
+Proof.
+  intros l H.
+  induction l as [|a l IH].
+  - simpl. lra.
+  - simpl.
+    apply Rplus_le_le_0_compat.
+    + apply H. simpl. left. reflexivity.
+    + apply IH. intros x Hx. apply H. simpl. right. exact Hx.
+Qed.
+
+Lemma sum_list_R_pos_of_one_pos :
+  forall l x,
+    In x l ->
+    0 < x ->
+    (forall y, In y l -> 0 <= y) ->
+    0 < sum_list_R l.
+Proof.
+  intros l x Hinx Hxpos Hnonneg.
+  induction l as [|a l IH].
+  - contradiction.
+  - simpl in *.
+    destruct Hinx as [Hx | Hinx].
+    + subst a.
+      apply Rplus_lt_le_0_compat.
+      * exact Hxpos.
+      * apply sum_list_R_nonneg.
+        intros y Hy. apply Hnonneg. simpl. right. exact Hy.
+    + apply Rplus_le_lt_0_compat.
+      * apply Hnonneg. simpl. left. reflexivity.
+      * apply IH.
+        -- exact Hinx.
+        -- intros y Hy. apply Hnonneg. simpl. right. exact Hy.
+Qed.
+
 Lemma sum_list_R_nonneg_nonneg :
   forall (f : User -> R) (l : list User),
     (forall x, f x >= 0) ->
@@ -1564,6 +1561,12 @@ Qed.
 
 (** * Theorems about the oracle protocol (Section 4)
     The main content of this formalization.
+
+    While key steps and the general proof is retained from the paper, the formalization proofs do not in general follow the paper presentation closely, as we have more details in the formalization to take care of.
+
+    To ease readability, each theorem has a brief "proof sketch" at the start of their section. This proof sketch references the formalization.
+
+    Lastly, the main statements of the theorems are proved at the end of their respective section.
  *)
 
 (** ** Theorem 1: Equivalence of the ideal decayed weight mean function and the constant time update rule
@@ -1572,6 +1575,24 @@ Qed.
       where [k] is the [k-th] update.
 
       [P(t) = pbar_k(t)]
+
+      Proof sketch
+
+      The proof does not show [P(t) = pbar] directly. Instead, we define a stronger invariant
+      [mean_raw_eq], stating that [Q] is the ideal denominator at [t_sub] and [pbar * Q] is the
+      ideal numerator at [t_sub]. (ideal referring to [P(t)])
+
+      The key case is submission. There, we prove that the updated [Q'] equals the decayed weight sum
+      ([Q'_eq_sum_Wdecay]) and that [pbar'] equals the corresponding decayed weighted mean
+      ([pbar'_eq_P_submitted_state]), following the algebraic argument in the paper.
+
+      All other operations are then shown to preserve the fields relevant to this invariant
+      ([..._preserves_mean_fields]), and thus preserve [mean_raw_eq].
+
+      Finally, we prove [mean_raw_eq] along the whole run by induction on the step index
+      ([mean_raw_eq_along_run]), and recover the theorem statement through
+      [mean_raw_eq_implies_mean_eq_curr_pbar].
+
  *)
 
 (** *** Operations preserve relevant fields
@@ -2486,6 +2507,7 @@ Qed.
    - [In u Users] (needed to factor out [u] from a sum across [Users]
    - and [0 < w u (Unlock (V (state_at run n)) u t)],
      that only users with positive unlocked stake can submit.
+     (TODO: this assumption can be removed by considering the case [0 = w u (...)] separately. )
  *)
 
 Definition submission_assumptions_at (run : Run) (n : nat) : Prop :=
@@ -2834,16 +2856,17 @@ Proof.
 Qed.
 
 Lemma Reweight_preserves_mean_fields :
-  forall (u : User) (w : weight) (st : OracleState),
-    P_user (Reweight u w st) = P_user st /\
-    W_user (Reweight u w st) = W_user st /\
-    T_user (Reweight u w st) = T_user st /\
-    pbar   (Reweight u w st) = pbar   st /\
-    Q      (Reweight u w st) = Q      st /\
-    t_sub  (Reweight u w st) = t_sub  st.
+  forall (u : User) (st : OracleState),
+    P_user (Reweight u st) = P_user st /\
+    W_user (Reweight u st) = W_user st /\
+    T_user (Reweight u st) = T_user st /\
+    pbar   (Reweight u st) = pbar   st /\
+    Q      (Reweight u st) = Q      st /\
+    t_sub  (Reweight u st) = t_sub  st.
 Proof.
-  intros u w st.
+  intros u st.
   unfold Reweight.
+  set (w := getR u (L_f st)).
   set (blacklisteds := getUserSet u (M_black (G st))).
   destruct (fold_left_black_preserves_mean_fields blacklisteds u w st) as
     [HP1 [HW1 [HT1 [Hp1 [HQ1 Ht1]]]]].
@@ -2865,7 +2888,7 @@ Proof.
   destruct (Unlock_preserves_mean_fields st u t) as
     [HP0 [HW0 [HT0 [Hp0 [HQ0 Ht0]]]]].
   destruct (Reweight_preserves_mean_fields
-              u (getR u (L_f (Unlock st u t))) (Unlock st u t)) as
+              u (Unlock st u t)) as
     [HP1 [HW1 [HT1 [Hp1 [HQ1 Ht1]]]]].
   rewrite HP0, HW0, HT0, Hp0, HQ0, Ht0 in *.
   simpl.
@@ -3014,14 +3037,71 @@ Qed.
 
       That is, [lim_{t -> \inf} Lambda_u(t) = 0].
 
-      Proof: By manipulating the definition of [Lambda_u(t)] and getting it into a certain form equivalent to line (39) in the paper such that we can take the limit to be zero.
+*)
+
+(**   *** Proof sketch
+
+      The proof sketch for this theorem is a bit more detailed for readability purposes.
+
+      (0) rewrite the expression into the form in [eq38] using [Lambda_x_eq38_at].
+      Then, the proof analytically proceeds by showing that
+
+      (1) that [W_user(u)] and [T_user(u)] eventually become some constants
+      [wu0] and [tu0] by the lemma [inactive_implies_TW_eventually_constant].
+      This lemma was proven by proving that non submission operations do not affect [T_user] and [W_user.]
+
+      Then, we fix a operator [y =/= u] that keeps submitting.
+      (Note this is different from the original proof, that warranted a subset of active operators)
+
+      Let [tu0] be u's eventual timestamp constant, and [T_y(n) := getR y (T_user (V (state_at run n)))].
+
+      (2) (T_y(n) goes to infinity)
+
+      From assumption: for any threshold [T], there is some index [n0] with
+      [T <= T_y(n0)].
+
+      Using monotonicity of [T_user] along the run, this implies for all [n >= n0]:
+      [T <= T_y(n)].
+
+      (3) (Numerator is at most linear in [T_y(n)])
+
+      Numerator is [|wu0| * (t_last(n) - tu0)].
+
+      The hypotheses give [t_last(n) <= T_y(n) + K], so
+      [t_last(n) - tu0 <= (T_y(n) - tu0) + K],
+      hence [numerator <= |wu0| * (T_y(n) - tu0) + K)].
+
+      (4) (Denominator is at least [constant * exp in T_y(n)])
+
+      Denominator contains a sum over all users except [u]:
+
+      [Sum_x W_x(n) * 2^((T_x(n) - tu0)/c)  + wu0].
+
+      The sum is >= the single y-term (because all terms are nonnegative):
+
+      [>= W_y(n) * 2^((T_y(n) - tu0)/c)].
+
+      Using the uniform lower bound [W_y(n) >= wy_min] for [n >= Ny]:
+
+      [denominator >= wy_min * 2^(T_y(n) - tu0 / c)].
+
+      (5) Exponential dominates linear
+
+      Apply [exp2_dominates_linear] to conclude
+      [|wu0|*(X_n+K) < (wy_min*eps)*2^(X_n/c)]
+      for all sufficiently large n.
+
  *)
 
-(** *** Decay definition *)
+(** *** Delay definition (Defs. 4, 5) *)
+
+(** Oracle operator delay *)
 
 Definition Lambda_x (x : User) (t : timestamp) (st : OracleState): R :=
   (W_decayed st x t) * (t - getR x (T_user st)) /
                          sum_list_R (map (fun u => W_decayed st u t) Users).
+
+(** Oracle delay *)
 
 Definition Lambda (t : timestamp) (st : OracleState) : R :=
   sum_list_R (map (fun u => Lambda_x u t st) Users).
@@ -3091,16 +3171,16 @@ Qed.
 
 (** *** Convergence / limit to zero formalization definition **)
 
-Definition tends_to_0_nat (f : nat -> R) : Prop :=
+Definition tends_to_0_seq (f : nat -> R) : Prop :=
   forall eps : R,
     eps > 0 ->
     exists N : nat, forall n : nat, (n >= N)%nat -> Rabs (f n) < eps.
 
-Lemma tends_to_0_nat_ext :
+Lemma tends_to_0_seq_ext :
   forall f g : nat -> R,
     (forall n, f n = g n) ->
-    tends_to_0_nat f ->
-    tends_to_0_nat g.
+    tends_to_0_seq f ->
+    tends_to_0_seq g.
 Proof.
   intros f g Heq Ht eps Heps.
   specialize (Ht eps Heps).
@@ -3550,8 +3630,6 @@ Proof.
   apply Lambda_u_rewrite_38; auto.
 Qed.
 
-Hypothesis W_user_nonneg_hyp : forall u st, 0 <= getR u (W_user st).
-
 (** *** Theorem 2 main statement *)
 
 Theorem inactive_oracle_operator_delay :
@@ -3587,7 +3665,7 @@ Theorem inactive_oracle_operator_delay :
             exists Ny : nat,
               forall n : nat, (n >= Ny)%nat -> (* Can be simplified with just 0 *)
                 wy_min <= getR y (W_user (V (state_at run n))))) ->
-      tends_to_0_nat (Lambda_run run u).
+      tends_to_0_seq (Lambda_run run u).
 Proof.
 
   intros run u Hinu Hinact_run T_user_mono.
@@ -3595,7 +3673,7 @@ Proof.
   destruct HK as [K [HK_nonneg Htlast_le_tyK]].
   (* first, rewrite Lambda to the form in eq38, then *)
   unfold Lambda_run.
-  eapply tends_to_0_nat_ext with
+  eapply tends_to_0_seq_ext with
     (f := fun n =>
             eq38_at (V (state_at run n)) u (t_last (V (state_at run n)))).
   - intro n.
@@ -3606,7 +3684,7 @@ Proof.
     intro. apply Rle_ge.
     exact (Hwunn n x).
     exact (Hposw n).
-  - unfold tends_to_0_nat.
+  - unfold tends_to_0_seq.
     intros eps Heps.
     (* inactive means constant as run goes on *)
     pose proof (inactive_implies_TW_eventually_constant run u Hinact_run) as [N0 Hconst].
@@ -3953,15 +4031,21 @@ Qed.
 
 (** ** Theorem 3: Optimally small oracle delay
 
-      The oracle delay [Lambda(t)] is bounded above by [(t - t* )] where [t* = min_{x in U} t_x].
+      The oracle delay [Lambda(t)] is bounded above by [(t - tstar )] where [tstar = min_{x in U} t_x]. *)
 
-      Proof sketch:
-      Expand the definitions of oracle delay and oracle operator's delay and manipulate to get [Lambda(t) = (t - t* )] by (47),
-      so that [Lambda(t) <= (t - t* )].
-      We prove first [tstar_le_tu], that is, [t* <= T_user u] for any [u].
-      Then, prove [Lambda_x le], that [Lambda(x) <=  (t - t* ) / denom] (see definition of [denom] further).
+(** *** Proof sketch
+
+      In general, we follow the paper and expand the definitions of oracle delay and oracle operator's delay and manipulate to get [Lambda(t) = (t - tstar)] by (eq 47).
+
+      We prove first [tstar_le_tu], that is, [tstar <= T_user u] for any [u] using the definition of a minimum.
+
+      Then, prove [Lambda_x le], that [Lambda(x) <=  (t - tstar) / denom] (see definition of [denom] further).
+
+      This further simplifies to [Lambda(x) = (t - t* )] as in equation 47 of the paper in the proof of the main statement.
 
  *)
+
+(** Definition of [tstar] *)
 
 Definition tstar (st : OracleState) : timestamp :=
   RList.MinRlist (map (fun x => getR x (T_user st)) Users).
@@ -3979,6 +4063,7 @@ Proof.
   split; [reflexivity | exact Hu].
 Qed.
 
+(** Oracle operator delay inequality *)
 Lemma Lambda_x_le :
   forall u t st,
     In u Users ->
@@ -4009,13 +4094,48 @@ Proof.
   apply Hu.
 Qed.
 
+(** The denominator of Lambda is well-defined only if there is at least one positive weight user.
+    (and other users' weights are non-negative).
+ *)
+Lemma denom_pos_exists_wu_pos :
+  forall t st,
+    (forall u, In u Users -> 0 <= getR u (W_user st)) ->
+    (exists u0, In u0 Users /\ 0 < getR u0 (W_user st)) ->
+    sum_list_R (map (fun u => W_decayed st u t) Users) > 0.
+Proof.
+  intros t st HnonnegW [u0 [Hu0in Hu0pos]].
+
+  apply (sum_list_R_pos_of_one_pos
+           (map (fun u => W_decayed st u t) Users)
+           (W_decayed st u0 t)).
+  - apply in_map_iff. exists u0. auto.
+  - unfold W_decayed.
+    apply Rmult_lt_0_compat.
+    + exact Hu0pos.
+    + apply decay_pos.
+  - intros y Hy.
+    apply in_map_iff in Hy.
+    destruct Hy as [u [Hy Huin]].
+    subst y.
+    unfold W_decayed.
+    apply Rmult_le_pos.
+    + apply HnonnegW. exact Huin.
+    + apply Rlt_le. apply decay_pos.
+Qed.
+
 (** *** Theorem 3 main statement *)
 Theorem optimally_small_oracle_delay :
   forall (t : timestamp) (st : OracleState),
-    sum_list_R (map (fun u => W_decayed st u t) Users) > 0 -> (* that the denominator of Lambda is not zero: true *)
+    (forall u, In u Users -> 0 <= getR u (W_user st)) ->   (* that W_user gives non-negative weights (by definition) *)
+    (exists u0, In u0 Users /\ 0 < getR u0 (W_user st)) -> (* that there is one user with positive weight *)
     Lambda t st <= t - tstar st.
 Proof.
-  intros t st Hdenompos.
+  intros t st Hwunn Hpos_user.
+  (* denom is positive to avoid division by zero *)
+  pose proof (denom_pos_exists_wu_pos t st) as Hdenom.
+  pose proof (Hdenom Hwunn Hpos_user) as Hdenompos.
+
+  (* rewrite lambda *)
   unfold Lambda.
   set (denom := sum_list_R (map (fun u0 : User => W_decayed st u0 t) Users)) in *.
 
@@ -4028,7 +4148,6 @@ Proof.
     apply Lambda_x_le; auto.
     apply W_decayed_nonneg.
   }
-
   unfold Lambda_x.
   subst denom.
   set (denom := sum_list_R (map (fun u0 : User => W_decayed st u0 t) Users)) in *.
@@ -4057,13 +4176,18 @@ Qed.
 
 (** ** Theorem 4: Sustainable rewards
       If [0 <= \alpha < 1] and [B_oracle(tau_r) > 0] at a given time [t],
-      then [B_oracle(\tau_r) > 0] for all times [t' > t].
+      then [B_oracle(\tau_r) > 0] for all times [t' > t]. *)
 
-      Proof sketch:
-      We prove that the oracle balance remains positive by showing that positivity is preserved at each step of the run.
+(** *** Proof sketch
+
+      We prove that the oracle balance remains positive by showing that balance positivity is preserved at each step of the run.
+
       For submission operations, we rewrite the balance update as a multiplicative factor [B*(1 - a x)] and we also prove that [0 <= x <= 1], ensuring the factor is strictly positive.
+
       For all other operations, the balance either increases (when it is a reward funding) or remains unchanged.
+
       By induction on the number of steps from the initial time [n_0], we conclude that the balance stays strictly positive for all future states.
+
  *)
 
 Hypothesis L_f_nonneg_hyp : forall u st, 0 <= getR u (L_f st).
@@ -4217,7 +4341,7 @@ Lemma B_oracle_pos_preserved_step :
     (forall run k u v t',
       op_at run k = Submission u v t' ->
       0 < t' - tu u (V (state_at run k))) ->
-    (* whenever a submission occurs, the denominator Q' used in the reward update is strictly positive [TODO] *)
+    (* whenever a submission occurs, the denominator Q' used in the reward update is strictly positive *)
     (forall run k u v t',
       op_at run k = Submission u v t' ->
       0 < Q' u t' (Unlock (V (state_at run k)) u t')) ->
@@ -4312,14 +4436,17 @@ Qed.
 
 Theorem sustainable_rewards :
   forall (run : Run) (n0 : nat),
-    (* hypotheses for B_oracle_preserved_st *)
+    (* assm: Q, a sum, bounds its summands *)
     (forall u st, wu u st * decay (t_sub st - tu u st) <= Q st) ->
+    (* assm: whenever a reward funding operation occurs, the amount a is nonnegative *)
     (forall run k u a t,
       op_at run k = RewardFunding u a t ->
       0 <= a) ->
+    (* assm: whenever a submission occurs, its timestamp is strictly after the user's previous submission time *)
     (forall run k u v t',
       op_at run k = Submission u v t' ->
       0 < t' - tu u (V (state_at run k))) ->
+    (* assm: whenever a submission occurs, the denominator Q' used in the reward update is strictly positive *)
     (forall run k u v t',
       op_at run k = Submission u v t' ->
       0 < Q' u t' (Unlock (V (state_at run k)) u t')) ->
