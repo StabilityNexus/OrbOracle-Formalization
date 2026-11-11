@@ -4029,7 +4029,7 @@ Proof.
       lra.
 Qed.
 
-(** ** Theorem 3: Optimally small oracle delay
+(** ** Theorem 3: Upper Bound on Oracle Delay
 
       The oracle delay [Lambda(t)] is bounded above by [(t - tstar )] where [tstar = min_{x in U} t_x]. *)
 
@@ -4124,7 +4124,7 @@ Proof.
 Qed.
 
 (** *** Theorem 3 main statement *)
-Theorem optimally_small_oracle_delay :
+Theorem oracle_delay_upper_bound :
   forall (t : timestamp) (st : OracleState),
     (forall u, In u Users -> 0 <= getR u (W_user st)) ->   (* that W_user gives non-negative weights (by definition) *)
     (exists u0, In u0 Users /\ 0 < getR u0 (W_user st)) -> (* that there is one user with positive weight *)
@@ -4174,7 +4174,7 @@ Proof.
   - unfold denom in *. field. lra.
 Qed.
 
-(** ** Theorem 4: Sustainable rewards
+(** ** Theorem 4: Reward Pool Non-Exhaustion
       If [0 <= \alpha < 1] and [B_oracle(tau_r) > 0] at a given time [t],
       then [B_oracle(\tau_r) > 0] for all times [t' > t]. *)
 
@@ -4434,7 +4434,7 @@ Qed.
 
 (** *** Theorem 4 main statement *)
 
-Theorem sustainable_rewards :
+Theorem reward_pool_non_exhaustion :
   forall (run : Run) (n0 : nat),
     (* assm: Q, a sum, bounds its summands *)
     (forall u st, wu u st * decay (t_sub st - tu u st) <= Q st) ->
