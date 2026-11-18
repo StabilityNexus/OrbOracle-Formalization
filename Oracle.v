@@ -383,18 +383,15 @@ Definition P_ (st : OracleState) (t : timestamp) : R :=
   (sum_list_R (map (fun x => Rmult (getR x (P_user st)) (W_decayed st x t))  Users))
     / (sum_list_R (map (fun x => (W_decayed st x t)) Users)).
 
-Hypothesis B_user_w_nonneg_hyp : forall u st, getR u (W_user st) >= 0.
-
 Lemma W_decayed_nonneg :
   forall u st t,
-    0 <= W_decayed st u t .
+    0 <= getR u (W_user st) ->
+    0 <= W_decayed st u t.
 Proof.
-  intros u st t.
+  intros u st t Hweight.
   unfold W_decayed, decay, Rpower.
   apply Rmult_le_pos.
-  - pose proof (B_user_w_nonneg_hyp u st).
-    unfold Rge in H.
-    lra.
+  - exact Hweight.
   - left. apply exp_pos.
 Qed.
 
@@ -2265,10 +2262,11 @@ Lemma mean_raw_eq_preserved_submission :
     NoDup Users ->
     0 < w u (Unlock (V St) u t) -> (* only users who have positive unlocked stake can submit.
                                       also to ensure denominator stays positive. *)
+    (forall x, 0 <= getR x (W_user (Unlock (V St) u t))) ->
     mean_raw_eq (V St) ->
     mean_raw_eq (V (value_submission u v t St)).
 Proof.
-  intros St u v t Hu Hnodup Hwu_pos [HQraw HNraw].
+  intros St u v t Hu Hnodup Hwu_pos Hnonneg [HQraw HNraw].
 
   set (st0 := V St).
   set (st1 := Unlock st0 u t).
@@ -2414,9 +2412,7 @@ Proof.
       apply submission_den_sum_pos.
       - exact Hu.
       - apply Hnodup.
-      - intros x.
-        pose proof (B_user_w_nonneg_hyp x (Unlock (V St) u t)).
-        lra.
+      - exact Hnonneg.
       - exact Hwu_pos.
     }
 
@@ -2495,10 +2491,11 @@ Lemma mean_eq_curr_pbar_preserved_submission :
     In u Users ->
     NoDup Users ->
     0 < w u (Unlock (V St) u t) ->
+    (forall x, 0 <= getR x (W_user (Unlock (V St) u t))) ->
     mean_raw_eq (V St) ->
     mean_eq_curr_pbar (V (value_submission u v t St)).
 Proof.
-  intros St u v t Hu Hnodup Hwu_pos Hraw.
+  intros St u v t Hu Hnodup Hwu_pos Hnonneg Hraw.
   apply mean_raw_eq_implies_mean_eq_curr_pbar.
   eapply mean_raw_eq_preserved_submission; eauto.
 Qed.
@@ -2508,13 +2505,14 @@ Qed.
    - and [0 < w u (Unlock (V (state_at run n)) u t)],
      that only users with positive unlocked stake can submit.
      (TODO: this assumption can be removed by considering the case [0 = w u (...)] separately. )
+   - nonnegative stored weights after [Unlock].
  *)
-
 Definition submission_assumptions_at (run : Run) (n : nat) : Prop :=
   match run n with
   | Submission u v t =>
       In u Users /\
-      0 < w u (Unlock (V (state_at run n)) u t)
+      0 < w u (Unlock (V (state_at run n)) u t) /\
+      (forall x, 0 <= getR x (W_user (Unlock (V (state_at run n)) u t)))
   | _ => True
   end.
 
@@ -2992,8 +2990,13 @@ Proof.
   - specialize (Hsubm n).
     unfold submission_assumptions_at in Hsubm.
     rewrite Hop in Hsubm.
-    destruct Hsubm as [Hinu Hwu_pos].
-    eapply mean_raw_eq_preserved_submission. exact Hinu. apply Users_NoDup. exact Hwu_pos. exact Hraw.
+    destruct Hsubm as [Hinu [Hwu_pos Hnonneg]].
+    eapply mean_raw_eq_preserved_submission.
+    + exact Hinu.
+    + apply Users_NoDup.
+    + exact Hwu_pos.
+    + exact Hnonneg.
+    + exact Hraw.
   - simpl. apply mean_raw_eq_preserved_reading. exact Hraw.
   - simpl. apply mean_raw_eq_preserved_blacklist_vote. exact Hraw.
   - simpl. apply mean_raw_eq_preserved_whitelist_vote. exact Hraw.
@@ -3188,6 +3191,20 @@ Proof.
   exists N. intros n Hnge.
   rewrite <- Heq.
   apply HN; exact Hnge.
+Qed.
+
+Lemma tends_to_0_seq_eventually_ext :
+  forall f g : nat -> R,
+    (exists N : nat, forall n : nat, (n >= N)%nat -> f n = g n) ->
+    tends_to_0_seq f ->
+    tends_to_0_seq g.
+Proof.
+  intros f g [N Heq] Hf eps Heps.
+  destruct (Hf eps Heps) as [N' HN'].
+  exists (Nat.max N N').
+  intros n Hn.
+  rewrite <- (Heq n) by lia.
+  apply HN'. lia.
 Qed.
 
 (** *** Exponential dominates linear
@@ -3641,9 +3658,8 @@ Theorem inactive_oracle_operator_delay :
     (forall z n,
         getR z (T_user (V (state_at run n))) <=
         getR z (T_user (V (state_at run (S n))))) ->
-    (* needed for the non-zeroness (i.e. positivity) of the denominator  *)
+    (* nonnegative weights *)
     (forall i x, 0 <= getR x (W_user (V (state_at run i)))) ->
-    (forall i, exists u0, In u0 Users /\ getR u0 (W_user (V (state_at run i))) > 0) ->
     (* that there is one other user that never becomes inactive *)
     (* for any time T, there is some other user that will make a submission after *)
     (exists y,
@@ -3669,21 +3685,25 @@ Theorem inactive_oracle_operator_delay :
 Proof.
 
   intros run u Hinu Hinact_run T_user_mono.
-  intros Hwunn Hposw [y [Hiny [Hneqyu [Hysub [Hytime [HK Hyposw]]]]]].
+  intros Hwunn [y [Hiny [Hneqyu [Hysub [Hytime [HK Hyposw]]]]]].
   destruct HK as [K [HK_nonneg Htlast_le_tyK]].
+  destruct Hyposw as [wy_min [Hwy_min_pos [Ny Hwy_lb]]].
   (* first, rewrite Lambda to the form in eq38, then *)
   unfold Lambda_run.
-  eapply tends_to_0_seq_ext with
+  eapply tends_to_0_seq_eventually_ext with
     (f := fun n =>
             eq38_at (V (state_at run n)) u (t_last (V (state_at run n)))).
-  - intro n.
+  - exists Ny. intros n Hn_ge_Ny.
     symmetry.
     apply Lambda_x_eq38_at. (* majority of the rewriting part *)
-    apply Hinu.
-    apply Users_NoDup.
-    intro. apply Rle_ge.
-    exact (Hwunn n x).
-    exact (Hposw n).
+    + exact Hinu.
+    + apply Users_NoDup.
+    + intro x. apply Rle_ge. exact (Hwunn n x).
+    + exists y. split.
+      * exact Hiny.
+      * eapply Rlt_le_trans.
+        -- exact Hwy_min_pos.
+        -- exact (Hwy_lb n Hn_ge_Ny).
   - unfold tends_to_0_seq.
     intros eps Heps.
     (* inactive means constant as run goes on *)
@@ -3750,8 +3770,6 @@ Proof.
         (* finish: T <= ty(n0) <= ty(n) *)
         eapply Rle_trans; eauto.
       }
-
-      destruct Hyposw as [wy_min [Hwy_min_pos [Ny Hwy_lb]]].
 
       (* critical lemma *)
       pose proof (exp2_dominates_linear (Rabs wu0) (wy_min * eps) K (proj1_sig h)) as Hdom.
@@ -4126,7 +4144,7 @@ Qed.
 (** *** Theorem 3 main statement *)
 Theorem oracle_delay_upper_bound :
   forall (t : timestamp) (st : OracleState),
-    (forall u, In u Users -> 0 <= getR u (W_user st)) ->   (* that W_user gives non-negative weights (by definition) *)
+    (forall u, In u Users -> 0 <= getR u (W_user st)) ->   (* nonnegative weights *)
     (exists u0, In u0 Users /\ 0 < getR u0 (W_user st)) -> (* that there is one user with positive weight *)
     Lambda t st <= t - tstar st.
 Proof.
@@ -4147,6 +4165,7 @@ Proof.
     intros u Hu.
     apply Lambda_x_le; auto.
     apply W_decayed_nonneg.
+    apply Hwunn. exact Hu.
   }
   unfold Lambda_x.
   subst denom.
@@ -4189,8 +4208,6 @@ Qed.
       By induction on the number of steps from the initial time [n_0], we conclude that the balance stays strictly positive for all future states.
 
  *)
-
-Hypothesis L_f_nonneg_hyp : forall u st, 0 <= getR u (L_f st).
 
 (** If the operation is not a submission or a reward funding, then the balance of the oracle afterwards remains the same. *)
 Lemma B_oracle_step_no_reward :
@@ -4309,14 +4326,14 @@ Qed.
 (** Implicitly used in the step from (49) to (50) to establish a lower bound. *)
 Lemma w_le_Q' :
   forall u t st,
-    (forall u st, wu u st * decay (t_sub st - tu u st) <= Q st) ->
+    wu u st * decay (t_sub st - tu u st) <= Q st ->
     w u st <= Q' u t st.
 Proof.
   intros u t st Hwu_decay_le_Q.
   unfold Q'.
   assert (Hdec : 0 < decay (t - t_sub st)) by apply decay_pos.
   assert (Hmain : 0 <= Q st - wu u st * decay (t_sub st - tu u st)).
-  { pose proof (Hwu_decay_le_Q u st). lra. }
+  { lra. }
   assert (Hprod :
     0 <= (Q st - wu u st * decay (t_sub st - tu u st)) * decay (t - t_sub st)).
   {
@@ -4331,24 +4348,26 @@ Qed.
 Lemma B_oracle_pos_preserved_step :
   forall run k,
     (0 <= alpha < 1) ->
-    (* Q, a sum, bounds its summands *)
-    (forall u st, wu u st * decay (t_sub st - tu u st) <= Q st) ->
+    (forall k u v t',
+      op_at run k = Submission u v t' ->
+      let st1 := Unlock (V (state_at run k)) u t' in
+      0 <= w u st1 <= Q' u t' st1) ->
     (* whenever a reward funding operation occurs, the amount a is nonnegative *)
-    (forall run k u a t,
+    (forall k u a t,
       op_at run k = RewardFunding u a t ->
       0 <= a) ->
     (* whenever a submission occurs, its timestamp is strictly after the user's previous submission time *)
-    (forall run k u v t',
+    (forall k u v t',
       op_at run k = Submission u v t' ->
       0 < t' - tu u (V (state_at run k))) ->
     (* whenever a submission occurs, the denominator Q' used in the reward update is strictly positive *)
-    (forall run k u v t',
+    (forall k u v t',
       op_at run k = Submission u v t' ->
       0 < Q' u t' (Unlock (V (state_at run k)) u t')) ->
     B_oracle_r (state_at run k) > 0 ->
     B_oracle_r (state_at run (S k)) > 0.
 Proof.
-  intros run k Halpha Hwu_decay_le_Q Hrf_nonneg Hsub_time HQ'_pos_sub Hbpos.
+  intros run k Halpha Hreward_bounds Hrf_nonneg Hsub_time HQ'_pos_sub Hbpos.
   destruct (is_submission_dec (op_at run k)) as [Hsub | Hnsub].
   - destruct (op_at run k) as
       [u a t | u a t | u v t' | u t | u x t | u x t | u t | u a t | t']
@@ -4359,6 +4378,7 @@ Proof.
 
     set (st  := V (state_at run k)).
     set (st1 := Unlock st u t').
+    pose proof (Hreward_bounds k u v t' Hop) as [Hw0 Hwle].
     set (x := (w u st1 / Q' u t' st1) * (1 - decay (t' - tu u st1))).
 
     assert (Hx : 0 <= x <= 1).
@@ -4366,12 +4386,9 @@ Proof.
       assert (Hqpos : 0 < Q' u t' st1).
       {
         unfold st1.
-        apply HQ'_pos_sub with (run:=run) (k:=k) (u:=u) (v:=v).
+        apply HQ'_pos_sub with (k:=k) (u:=u) (v:=v).
         exact Hop.
       }
-
-      assert (Hw0 : 0 <= w u st1).
-      { unfold w; apply L_f_nonneg_hyp. }
 
       assert (Hfrac0 : 0 <= w u st1 / Q' u t' st1).
       {
@@ -4385,7 +4402,7 @@ Proof.
         apply div_le_1.
         - exact Hw0.
         - exact Hqpos.
-        - apply w_le_Q'. exact Hwu_decay_le_Q.
+        - exact Hwle.
       }
 
       assert (Htu_pres : tu u st1 = tu u st).
@@ -4399,7 +4416,7 @@ Proof.
       {
         rewrite Htu_pres.
         apply decay_between_0_1.
-        apply Hsub_time with (run:=run) (k:=k) (u:=u) (v:=v); exact Hop.
+        apply Hsub_time with (k:=k) (u:=u) (v:=v); exact Hop.
       }
 
       assert (Hone_minus : 0 <= 1 - decay (t' - tu u st1) <= 1) by lra.
@@ -4426,7 +4443,7 @@ Proof.
     + destruct (op_at run k) as
         [u a t|u a t|u v t|u t|u x t|u x t|u t|u a t|t] eqn:Hop; try contradiction.
       rewrite (B_oracle_step_funding run k u a t Hop).
-      pose proof (Hrf_nonneg run k u a t Hop).
+      pose proof (Hrf_nonneg k u a t Hop).
       lra.
     + rewrite (B_oracle_step_no_reward run k Hnsub Hnfund).
       exact Hbpos.
@@ -4436,18 +4453,21 @@ Qed.
 
 Theorem reward_pool_non_exhaustion :
   forall (run : Run) (n0 : nat),
-    (* assm: Q, a sum, bounds its summands *)
-    (forall u st, wu u st * decay (t_sub st - tu u st) <= Q st) ->
-    (* assm: whenever a reward funding operation occurs, the amount a is nonnegative *)
-    (forall run k u a t,
+    (* Q', a sum of nonnegative decayed weights, bounds its summands *)
+    (forall k u v t',
+      op_at run k = Submission u v t' ->
+      let st1 := Unlock (V (state_at run k)) u t' in
+      0 <= w u st1 <= Q' u t' st1) ->
+    (* reward funding is positive *)
+    (forall k u a t,
       op_at run k = RewardFunding u a t ->
       0 <= a) ->
-    (* assm: whenever a submission occurs, its timestamp is strictly after the user's previous submission time *)
-    (forall run k u v t',
+    (* whenever a submission occurs, its timestamp is strictly after the user's previous submission time *)
+    (forall k u v t',
       op_at run k = Submission u v t' ->
       0 < t' - tu u (V (state_at run k))) ->
-    (* assm: whenever a submission occurs, the denominator Q' used in the reward update is strictly positive *)
-    (forall run k u v t',
+    (* whenever a submission occurs, the denominator Q' used in the reward update is strictly positive *)
+    (forall k u v t',
       op_at run k = Submission u v t' ->
       0 < Q' u t' (Unlock (V (state_at run k)) u t')) ->
     (0 <= alpha < 1) ->
@@ -4456,7 +4476,7 @@ Theorem reward_pool_non_exhaustion :
       (n >= n0)%nat ->
       B_oracle_r (state_at run n) > 0.
 Proof.
-  intros run n0 Hwu_decay_le_Q Hrf_nonneg Hsub_time HQ'_pos_sub Halpha Hb0 n Hge.
+  intros run n0 Hreward_bounds Hrf_nonneg Hsub_time HQ'_pos_sub Halpha Hb0 n Hge.
 
   remember (n - n0)%nat as d.
   assert (Hn : n = (n0 + d)%nat) by (subst d; lia).
@@ -4467,6 +4487,6 @@ Proof.
   - rewrite Nat.add_0_r. exact Hb0.
   - replace (n0 + S d)%nat with (S (n0 + d))%nat by lia.
     apply (B_oracle_pos_preserved_step run (n0 + d)
-             Halpha Hwu_decay_le_Q Hrf_nonneg Hsub_time HQ'_pos_sub).
+             Halpha Hreward_bounds Hrf_nonneg Hsub_time HQ'_pos_sub).
     exact IH.
 Qed.
