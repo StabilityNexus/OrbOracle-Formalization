@@ -1,7 +1,7 @@
 # Orb Oracle Formalization
 
-This repository contains a Rocq 8.18.0 formalization of the Orb Oracle protocol.
-[Oracle.v] is documented and organized to reference the Orb Oracle paper.
+This repository contains a Rocq formalization of the Orb Oracle protocol, tested with Rocq 9.2.0.
+[`Oracle.v`](Oracle.v) is documented and organized to reference the Orb Oracle paper.
 
 ## Files
 
@@ -9,15 +9,16 @@ This repository contains a Rocq 8.18.0 formalization of the Orb Oracle protocol.
 
 ## Build
 
-To compile the development:
+To compile:
 
 ```sh
-coqc Oracle.v
+rocq compile Oracle.v
 ```
-To generate HTML documentation and a table of contents: 
+
+To generate HTML documentation and a table of contents:
 
 ```sh
-coqdoc --parse-comments --table-of-contents Oracle.v
+rocq doc --parse-comments --table-of-contents Oracle.v
 ```
 
 To clean generated files:
@@ -28,13 +29,7 @@ rm -f *.glob *.vo *.vos *.vok *.html *.css
 
 ## Installing Rocq
 
-We used Rocq/Coq 8.18.0 for this formalization.
+Install [Rocq 9.2.0](https://rocq-prover.org/releases/9.2.0) (e.g., via opam).
+Rocq 9.3 may also work, but has not been tested with this development.
 
-General installation instructions are available at the Rocq website:
-https://rocq-prover.org/install#linux-rocqide
-
-Readers should install version 8.18.0 (for example via an opam switch), since newer versions may introduce incompatibilities.
-
-We recommend the standalone IDE RocqIDE, or the VS Code extension VsCoq.
-
-Installing Rocq allows the reader to step through the proofs.
+We recommend RocqIDE or VsCoq to step through the proofs.

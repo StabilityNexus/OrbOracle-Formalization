@@ -16,17 +16,17 @@
 
 (** * Imports *)
 
-Require Import Reals.
+From Stdlib Require Import Reals.
 
-Require ZArith.
-Require Import List.
-Require Import String.
-Require Import Lia.
-Require Import Lra.
-Require Import Coq.FSets.FMapList.
-Require Import Coq.Structures.OrderedTypeEx.
-Require Import Coq.Classes.RelationClasses.
-Require Import Coq.FSets.FMapFacts.
+From Stdlib Require ZArith.
+From Stdlib Require Import List.
+From Stdlib Require Import String.
+From Stdlib Require Import Lia.
+From Stdlib Require Import Lra.
+From Stdlib Require Import FSets.FMapList.
+From Stdlib Require Import Structures.OrderedTypeEx.
+From Stdlib Require Import Classes.RelationClasses.
+From Stdlib Require Import FSets.FMapFacts.
 Local Open Scope R_scope.
 
 (** * Datatypes, Parameters (Section 3)
